@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+
+<xs:schema
+        xmlns="http://rest.immobilienscout24.de/schema/searcher/savedSearch/2.0/priceTypes"
+        xmlns:xs="http://www.w3.org/2001/XMLSchema"
+        targetNamespace="http://rest.immobilienscout24.de/schema/searcher/savedSearch/2.0/priceTypes"
+        elementFormDefault="unqualified"
+        attributeFormDefault="unqualified"
+        version="1.0">
+  
+    <xs:simpleType name="LivingBuySitePriceType">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">price types for living buy sites</xs:documentation>
+            <xs:documentation xml:lang="de-DE">Preistypen für Wohngrundstücke zum Kauf</xs:documentation>
+        </xs:annotation>
+        <xs:restriction>
+            <xs:simpleType>
+                <xs:union memberTypes="longlease buy"/>
+            </xs:simpleType>
+        </xs:restriction>
+    </xs:simpleType>
+  
+    <xs:complexType name="LivingBuySitePriceTypeList">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">list of price types for living buy sites. Only one element is supported.
+              Specifying more than one pricetype will not throw an error, but lead to undefined
+              behaviour.</xs:documentation>
+            <xs:documentation xml:lang="de-DE">Liste der Preistypen für Wohngrundstücke zum Kauf. Es wird nur ein
+              Preistyp unterstützt. Die Angabe mehrerer Preistypen führt nicht zu Fehlern, aber zu undefiniertem
+              Anwortverhalten.</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element type="LivingBuySitePriceType" name="item" minOccurs="0" maxOccurs="2"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:simpleType name="LivingRentSitePriceType">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">price types for living rent sites.</xs:documentation>
+            <xs:documentation xml:lang="de-DE">Preistypen für Wohngrundstücke zur Miete</xs:documentation>
+        </xs:annotation>
+        <xs:restriction>
+            <xs:simpleType>
+                <xs:union memberTypes="rent lease"/>
+            </xs:simpleType>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:complexType name="LivingRentSitePriceTypeList">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">list of price types for living rent site. Only one element is supported.
+              Specifying more than one pricetype will not throw an error, but lead to undefined
+              behaviour.</xs:documentation>
+            <xs:documentation xml:lang="de-DE">Liste der Preistypen für Wohngrundstücke zur Miete. Es wird nur ein
+              Preistyp unterstützt. Die Angabe mehrerer Preistypen führt nicht zu Fehlern, aber zu undefiniertem
+              Anwortverhalten.</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element type="LivingRentSitePriceType" name="item" minOccurs="0" maxOccurs="2"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:simpleType name="GastronomyPriceType">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">price types for gastronomy</xs:documentation>
+            <xs:documentation xml:lang="de-DE">Preisarten für Gastronomie-Objekte</xs:documentation>
+        </xs:annotation>
+        <xs:restriction>
+            <xs:simpleType>
+                <xs:union memberTypes="lease buy"/>
+            </xs:simpleType>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="AssistedLivingPriceType">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">price types for assisted living object</xs:documentation>
+            <xs:documentation xml:lang="de-DE">Preisarten für betreutes Wohnen</xs:documentation>
+        </xs:annotation>
+        <xs:restriction>
+            <xs:simpleType>
+                <xs:union memberTypes="buy rent"/>
+            </xs:simpleType>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:complexType name="AssistedLivingPriceTypeList">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">list of price types for assisted living. Only one element is supported.
+            Specifying more than one pricetype will not throw an error, but lead to undefined
+            behaviour.</xs:documentation>
+          <xs:documentation xml:lang="de-DE">Liste der Preistypen für betreutes Wohnen. Es wird nur ein
+            Preistyp unterstützt. Die Angabe mehrerer Preistypen führt nicht zu Fehlern, aber zu undefiniertem
+            Anwortverhalten.</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element type="AssistedLivingPriceType" name="item" minOccurs="1" maxOccurs="2"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:simpleType name="TradeSitePriceType">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">price types for trade site</xs:documentation>
+            <xs:documentation xml:lang="de-DE">Preistypen für Gewerbegrundstücke</xs:documentation>
+        </xs:annotation>
+        <xs:restriction>
+            <xs:simpleType>
+                <xs:union memberTypes="rent buy lease longlease"/>
+            </xs:simpleType>
+        </xs:restriction>
+    </xs:simpleType>
+
+  <xs:complexType name="TradeSitePriceTypeList">
+    <xs:annotation>
+      <xs:documentation xml:lang="en">list of price types for trade sites. Only one element is supported.
+        Specifying more than one pricetype will not throw an error, but lead to undefined
+        behaviour.</xs:documentation>
+      <xs:documentation xml:lang="de-DE">Liste der Preistypen für Gewerbegrundstücke. Es wird nur ein
+        Preistyp unterstützt. Die Angabe mehrerer Preistypen führt nicht zu Fehlern, aber zu undefiniertem
+        Anwortverhalten.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element type="TradeSitePriceType" name="item" minOccurs="1" maxOccurs="4"/>
+    </xs:sequence>
+  </xs:complexType>
+
+    <xs:simpleType name="CommercialPriceType">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">for industry, office, specialpurpose, store</xs:documentation>
+            <xs:documentation xml:lang="de-DE">for industry, office, specialpurpose, store</xs:documentation>
+        </xs:annotation>
+        <xs:restriction>
+            <xs:simpleType>
+                <xs:union memberTypes="rentpersqm rentpermonth buy"/>
+            </xs:simpleType>
+        </xs:restriction>
+    </xs:simpleType>
+
+
+    <xs:simpleType name="longlease">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="longlease">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">building lease</xs:documentation>
+                    <xs:documentation xml:lang="de-DE">Erbpacht</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="buy">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="buy">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">buy</xs:documentation>
+                    <xs:documentation xml:lang="de-DE">Kauf</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="lease">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="lease">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">lease</xs:documentation>
+                    <xs:documentation xml:lang="de-DE">Pacht</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="rent">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="rent">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">rent</xs:documentation>
+                    <xs:documentation xml:lang="de-DE">Mieten</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="rentpersqm">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="rentpersqm">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">rent per square meter</xs:documentation>
+                    <xs:documentation xml:lang="de-DE">Miete pro Quadratmeter</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="rentpermonth">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="rentpermonth">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">rent per month</xs:documentation>
+                    <xs:documentation xml:lang="de-DE">Miete pro Monat</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+        </xs:restriction>
+    </xs:simpleType>
+
+</xs:schema>
