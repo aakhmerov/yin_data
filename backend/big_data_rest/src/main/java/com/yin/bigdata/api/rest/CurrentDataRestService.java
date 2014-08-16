@@ -23,10 +23,10 @@ public class CurrentDataRestService {
      * Check that all internals work fine together, through the status service
      */
     @GET
-    @Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
+    @Produces({ MediaType.APPLICATION_XML})
     @Path("/load")
-    public void getStatus( @RequestParam("geocode") String geocode) {
-    	importCurrentExposeeService.importExposees(geocode);
+    public void getStatus( ) {
+    	importCurrentExposeeService.importExposees("1276003001046");
     	
     }
 }

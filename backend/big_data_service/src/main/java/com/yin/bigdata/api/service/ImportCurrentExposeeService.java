@@ -28,21 +28,22 @@ public class ImportCurrentExposeeService {
 		List<String> ids = is24Client.getExposees(geoCode);
 		for( String id: ids){
 			
-			if ( currentRealEstateRepository.findForIsExposeeID(Long.parseLong(id)) == null){
-				REExpose expose = is24Client.getExposeData(id);
-				
-				CurrentRealEstate cre = new CurrentRealEstate();
-				cre.setBalcony(expose.isBalcony());
-				cre.setCondition(expose.getCondition());
-				cre.setConstrYear(expose.getConstrYear());
-				cre.setExposeeId(expose.getExposeeId());
-				cre.setHeatingType(expose.getHeatingType());
-				cre.setLatitude(expose.getLatitude());
-				cre.setLongitude(expose.getLongitude());
-				cre.setPrices(expose.getPrices());
-				cre.setRooms(expose.getRooms());
-				cre.setSize(expose.getSize());
-				currentRealEstateRepository.save(cre);
+			if ( currentRealEstateRepository.findForIsExposeeID(Long.parseLong(id)).size() == 0){
+				REExpose expose = is24Client.getExposeData("http://www.immobilienscout24.de/expose/" + id);
+				if (expose != null){
+					CurrentRealEstate cre = new CurrentRealEstate();
+					cre.setBalcony(expose.isBalcony());
+					cre.setCondition(expose.getCondition());
+					cre.setConstrYear(expose.getConstrYear());
+					cre.setExposeeId(expose.getExposeeId());
+					cre.setHeatingType(expose.getHeatingType());
+					cre.setLatitude(expose.getLatitude());
+					cre.setLongitude(expose.getLongitude());
+					cre.setPrices(expose.getPrices());
+					cre.setRooms(expose.getRooms());
+					cre.setSize(expose.getSize());
+					currentRealEstateRepository.save(cre);
+				}
 			}
 		}
 	}

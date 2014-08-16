@@ -1,21 +1,18 @@
 package com.yin.bigdata.api.rest;
 
-import com.yin.bigdata.api.domain.entities.RealEstates;
-import com.yin.bigdata.api.domain.entities.RealEstatesHist;
-import com.yin.bigdata.api.domain.entities.Status;
-import com.yin.bigdata.api.domain.repositories.RealEstatesHistRepository;
-import com.yin.bigdata.api.domain.repositories.RealEstatesRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.stereotype.Component;
-
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
-import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+import com.yin.bigdata.api.domain.entities.RealEstates;
+import com.yin.bigdata.api.domain.entities.RealEstatesHist;
+import com.yin.bigdata.api.domain.repositories.RealEstatesHistRepository;
+import com.yin.bigdata.api.domain.repositories.RealEstatesRepository;
 
 /**
  * Created by aakhmerov on 16/08/14.

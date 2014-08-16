@@ -12,6 +12,6 @@ import java.util.List;
  * Time: 12:47 AM
  * To change this template use File | Settings | File Templates.
  */
-public interface StatusRepository extends CrudRepository<Status, Long> {
+public interface StatusRepository extends CrudRepository<Status, String> {
     List<Status> findByValue(String value);
 }

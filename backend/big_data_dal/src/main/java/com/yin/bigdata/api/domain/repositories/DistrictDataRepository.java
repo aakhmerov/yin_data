@@ -6,5 +6,6 @@ import org.springframework.data.repository.PagingAndSortingRepository;
 /**
  * Created by aakhmerov on 16/08/14.
  */
-public interface DistrictDataRepository extends PagingAndSortingRepository<DistrictData,Long> {
+public interface DistrictDataRepository {
+//extends PagingAndSortingRepository<DistrictData,Long> {
 }

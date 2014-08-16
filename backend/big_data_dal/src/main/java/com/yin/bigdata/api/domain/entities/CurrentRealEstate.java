@@ -17,7 +17,7 @@ public class CurrentRealEstate extends AbstractPersistable<Long> {
 	private double latitude ;
 	private double size ;
 	private double rooms ;
-	private double constrYear ;
+	private int constrYear ;
 	private String condition;
 	private String heatingType;
 	private boolean balcony;
@@ -63,7 +63,7 @@ public class CurrentRealEstate extends AbstractPersistable<Long> {
 	public double getConstrYear() {
 		return constrYear;
 	}
-	public void setConstrYear(double constrYear) {
+	public void setConstrYear(int constrYear) {
 		this.constrYear = constrYear;
 	}
 	public String getCondition() {
