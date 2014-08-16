@@ -8,7 +8,7 @@ import org.springframework.data.jpa.domain.AbstractPersistable;
 
 @Entity
 @XmlRootElement
-@Table (name = "currentRealEstate")
+@Table (name = "current_real_estate")
 public class CurrentRealEstate extends AbstractPersistable<Long> {
 
 	private long exposeeId;
@@ -25,6 +25,8 @@ public class CurrentRealEstate extends AbstractPersistable<Long> {
 	public long getExposeeId() {
 		return exposeeId;
 	}
+	
+	
 	public void setExposeeId(long exposeeId) {
 		this.exposeeId = exposeeId;
 	}

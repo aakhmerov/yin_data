@@ -11,7 +11,7 @@
     <groupId>com.yin</groupId>
     <name>is24 access</name>
     <artifactId>is24</artifactId>
-
+<version>1.0-SNAPSHOT</version>
     <dependencies>
 
 
