@@ -17,8 +17,9 @@ requirejs.config({
         'angular-sanitize': 'https://ajax.googleapis.com/ajax/libs/angularjs/1.3.0-beta.18/angular-sanitize.min',
         // 'angular-ui-router': 'http://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.10/angular-ui-router.min',
         'angular-ui-router': '../components/angular-ui-router/angular-ui-router',
-        'moment': 'http://cdnjs.cloudflare.com/ajax/libs/moment.js/2.7.0/moment.min',
-        'typeaheadjs': '../components/typeaheadjs/typeahead.bundle'
+        'moment': 'http://cdnjs.cloudflare.com/ajax/libs/moment.js/2.8.1/moment.min',
+        'typeaheadjs': '../components/typeaheadjs/typeahead.bundle',
+        'nouislider': '../components/jquery.nouislider/jquery.nouislider.min'
     },
     shim: {
         'bootstrap': {
@@ -43,6 +44,9 @@ requirejs.config({
             deps: ['async', 'async!https://maps.googleapis.com/maps/api/js?key=AIzaSyCBZEaZXYeqrpAOom_ww7fSHJX0VJ8pj0c&sensor=true&region=GE&libraries=places&language=EN']
         },
         'typeaheadjs': {
+            deps: ['jquery']
+        },
+        'nouislider': {
             deps: ['jquery']
         }
     }
@@ -72,7 +76,8 @@ require(['globals',
         'angular-animate', 
         'angular-sanitize', 
         'angular-ui-router',
-        'infobox'],
+        'infobox',
+        'nouislider'],
     function(globals, 
             $, 
             moment, 
