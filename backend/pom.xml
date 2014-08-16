@@ -13,6 +13,7 @@ http://maven.apache.org/xsd/maven-4.0.0.xsd">
         <module>big_data_rest</module>
         <module>big_data_service</module>
         <module>big_data_dal</module>
+		<module>is24</module>
     </modules>
 
     <build>

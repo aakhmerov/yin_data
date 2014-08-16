@@ -1,0 +1,1601 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+
+<xs:schema
+        xmlns="http://rest.immobilienscout24.de/schema/searcher/savedSearch/2.0/types"
+        xmlns:xs="http://www.w3.org/2001/XMLSchema"
+        xmlns:common="http://rest.immobilienscout24.de/schema/common/1.0"
+        targetNamespace="http://rest.immobilienscout24.de/schema/searcher/savedSearch/2.0/types"
+        elementFormDefault="unqualified"
+        attributeFormDefault="unqualified"
+        version="1.0">
+
+    <xs:import namespace="http://rest.immobilienscout24.de/schema/common/1.0"/>
+
+
+    <xs:complexType name="NumberRange">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">range for several number ranges</xs:documentation>
+            <xs:documentation xml:lang="de-DE">Bereich verschiedene Nummernbereiche</xs:documentation>
+        </xs:annotation>
+        <xs:all>
+            <xs:element name="minimal" type="xs:nonNegativeInteger" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">minimal number</xs:documentation>
+                    <xs:documentation xml:lang="de-DE">Minimale Nummer</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element
+                    name="maximal" type="xs:nonNegativeInteger" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">maximal number</xs:documentation>
+                    <xs:documentation xml:lang="de-DE">Maximale Nummer</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:all>
+    </xs:complexType>
+
+    <xs:simpleType name="DMYDate">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">date formatted "dd.mm.yyyy"</xs:documentation>
+            <xs:documentation xml:lang="de-DE">Datum im Format "dd.mm.yyyy"</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:pattern value="[0-3]{1}[0-9]{1}.[0,1]{1}[0-9]{1}.[0-9]{4}"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+ 
+
+ 
+
+
+    <!-- ============================================================================
+             Industry specific types
+     ============================================================================- -->
+
+
+    <xs:simpleType name="IndustryEquipmentType">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">industry equmpent types</xs:documentation>
+            <xs:documentation xml:lang="de-DE">Industrytypen</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="lift">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">lift</xs:documentation>
+                    <xs:documentation xml:lang="de-DE">Personenaufzug</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="autolift">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">auto lift</xs:documentation>
+                    <xs:documentation xml:lang="de-DE">HebeBühne</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="cranerunway">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">crane runway</xs:documentation>
+                    <xs:documentation xml:lang="de-DE">Kranbahn</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="ramp">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">ramp</xs:documentation>
+                    <xs:documentation xml:lang="de-DE">Rampe</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:complexType name="IndustryEquipmentList">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">list of IndustryEquipmentType elemets</xs:documentation>
+            <xs:documentation xml:lang="de-DE">List von IndustryEquipmentType-Elementen</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element type="IndustryEquipmentType" name="item" minOccurs="1" maxOccurs="4"/>
+        </xs:sequence>
+    </xs:complexType>
+
+
+    <xs:simpleType name="IndustryType">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">industry types</xs:documentation>
+            <xs:documentation xml:lang="de-DE">Halle-/Produktion-Objektart</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+
+            <xs:enumeration value="showroomspace">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">showroom space</xs:documentation>
+                    <xs:documentation xml:lang="de-DE">Ausstellungsfläche</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="hall">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">shopping centre</xs:documentation>
+                    <xs:documentation xml:lang="de-DE">Einkaufszentrum</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="highlackstorage">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">high lack storage</xs:documentation>
+                    <xs:documentation xml:lang="de-DE">Hochregallager</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="industryhall">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">industry hall</xs:documentation>
+                    <xs:documentation xml:lang="de-DE">Industriehalle</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="industryhallwithopenarea">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">industry hall with open area</xs:documentation>
+                    <xs:documentation xml:lang="de-DE">Industriehalle mit Freifläche</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="coldstorage">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">cold storage</xs:documentation>
+                    <xs:documentation xml:lang="de-DE">Kühlhaus</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="multideckcabinetstorage">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">multideck cabinet storage</xs:documentation>
+                    <xs:documentation xml:lang="de-DE">Kühlregallager</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="storagewithopenarea">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">storage with open area</xs:documentation>
+                    <xs:documentation xml:lang="de-DE">Lager mit Freifläche</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="storagearea">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">storage area</xs:documentation>
+                    <xs:documentation xml:lang="de-DE">Lagerfläche</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="storagehall">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">storage hall</xs:documentation>
+                    <xs:documentation xml:lang="de-DE">Lagerhalle</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="servicearea">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">service area</xs:documentation>
+                    <xs:documentation xml:lang="de-DE">Servicefläche</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="shippingstorage">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">shipping storage</xs:documentation>
+                    <xs:documentation xml:lang="de-DE">Speditionslager</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="repairshop">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">repair shop</xs:documentation>
+                    <xs:documentation xml:lang="de-DE">Werkstatt</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+        </xs:restriction>
+    </xs:simpleType>
+
+
+    <xs:complexType name="IndustryTypeList">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">list of industry types</xs:documentation>
+            <xs:documentation xml:lang="de-DE">Liste von Halle-/Produktion-Objektarten</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element type="IndustryType" name="item" minOccurs="1" maxOccurs="13"/>
+        </xs:sequence>
+    </xs:complexType>
+
+
+    <!-- ============================================================================
+             Office specific types
+     ============================================================================- -->
+
+
+    <xs:simpleType name="OfficeEquipmentType">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">office equipment types</xs:documentation>
+            <xs:documentation xml:lang="de-DE">Büroausstattungstypen</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="highvoltage">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">high voltage</xs:documentation>
+                    <xs:documentation xml:lang="de-DE">Starkstrom</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="airconditioning">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">air condition</xs:documentation>
+                    <xs:documentation xml:lang="de-DE">Klimaanlage</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="lancables">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">lan cables</xs:documentation>
+                    <xs:documentation xml:lang="de-DE">DV-Verkabelung</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="handicappedaccessible">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">handicapped accessible</xs:documentation>
+                    <xs:documentation xml:lang="de-DE">Barrierefrei</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:complexType name="OfficeEquipmentList">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">list of office equipment types</xs:documentation>
+            <xs:documentation xml:lang="de-DE">Liste von Büroausstattungtypen</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element type="OfficeEquipmentType" name="item" minOccurs="1" maxOccurs="4"/>
+        </xs:sequence>
+    </xs:complexType>
+
+
+    <xs:simpleType name="OfficeType">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">office types</xs:documentation>
+            <xs:documentation xml:lang="de-DE">Bürotypen</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+
+            <xs:enumeration value="loft">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">loft</xs:documentation>
+                    <xs:documentation xml:lang="de-DE">Loft</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="studio">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">studio</xs:documentation>
+                    <xs:documentation xml:lang="de-DE">Atelier</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="office">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">office</xs:documentation>
+                    <xs:documentation xml:lang="de-DE">Büro</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="officefloor">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">office floor</xs:documentation>
+                    <xs:documentation xml:lang="de-DE">Büroetage</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="officebuilding">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">office building</xs:documentation>
+                    <xs:documentation xml:lang="de-DE">Bürohaus</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="officecentre">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">office centre</xs:documentation>
+                    <xs:documentation xml:lang="de-DE">Bürozentrum</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="officestoragebuilding">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">office storage building</xs:documentation>
+                    <xs:documentation xml:lang="de-DE">Büro-/ Lagergebäude</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="surgery">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">surgery</xs:documentation>
+                    <xs:documentation xml:lang="de-DE">Praxis</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="surgeryfloor">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">surgery floor</xs:documentation>
+                    <xs:documentation xml:lang="de-DE">Praxisetage</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="surgerybuilding">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">surgery building</xs:documentation>
+                    <xs:documentation xml:lang="de-DE">Praxishaus</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="commercialcentre">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">commercial centre</xs:documentation>
+                    <xs:documentation xml:lang="de-DE">Gewerbezentrum</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="livingandcommercialbuilding">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">living and commercial building</xs:documentation>
+                    <xs:documentation xml:lang="de-DE">Wohn- und Geschäftsgebäude</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="officeandcommercialbuilding">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">office and commercial building</xs:documentation>
+                    <xs:documentation xml:lang="de-DE">Büro- und Geschäftsgebäude</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+        </xs:restriction>
+    </xs:simpleType>
+
+
+    <xs:complexType name="OfficeTypeList">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">list of office types</xs:documentation>
+            <xs:documentation xml:lang="de-DE">Liste von Büroarten</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element type="OfficeType" name="item" minOccurs="1" maxOccurs="13"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <!-- ============================================================================
+             SpecialPurpose specific types
+     ============================================================================- -->
+
+    <xs:simpleType name="SpecialPurposePropertyType">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">types for special industries</xs:documentation>
+            <xs:documentation xml:lang="de-DE">Arten von Spezialgewerbe</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="residence">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">residence</xs:documentation>
+                    <xs:documentation xml:lang="de-DE">Anwesen</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="farm">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">farm</xs:documentation>
+                    <xs:documentation xml:lang="de-DE">Bauernhof</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="horsefarm">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">horse farm</xs:documentation>
+                    <xs:documentation xml:lang="de-DE">Reiterhof</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="vineyard">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">vineyard</xs:documentation>
+                    <xs:documentation xml:lang="de-DE">Weingut</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="repairshop">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">repair shop</xs:documentation>
+                    <xs:documentation xml:lang="de-DE">Werkstatt</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="leisurefacility">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">leisure facility</xs:documentation>
+                    <xs:documentation xml:lang="de-DE">Freizeitanlage</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="industrialarea">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">industrial area</xs:documentation>
+                    <xs:documentation xml:lang="de-DE">Gewerbefläche</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="specialestate">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">special estate</xs:documentation>
+                    <xs:documentation xml:lang="de-DE">Spezialobjekt</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="commercialcentre">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">commercial centre</xs:documentation>
+                    <xs:documentation xml:lang="de-DE">Gewerbepark</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:complexType name="SpecialPurposePropertyTypeList">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">list of types for special industries</xs:documentation>
+            <xs:documentation xml:lang="de-DE">Liste der Arten von Spezialgewerbe</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element type="SpecialPurposePropertyType" name="item" minOccurs="1" maxOccurs="9"/>
+        </xs:sequence>
+    </xs:complexType>
+
+
+    <!-- ============================================================================
+             Equipment type for Store, SpecialPurpose, Gastronomy
+     ============================================================================= -->
+
+
+    <xs:simpleType name="CellarOnlyEquipmentType">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">equipment type for specialpurpose, store and gastronomy</xs:documentation>
+            <xs:documentation xml:lang="de-DE">Ausstattung für Spezialgewerbe, Einzelhandel und Gastronomie</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+
+            <xs:enumeration value="cellar">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">cellar</xs:documentation>
+                    <xs:documentation xml:lang="de-DE">Keller</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+        </xs:restriction>
+    </xs:simpleType>
+
+
+    <xs:complexType name="CellarOnlyEquipmentList">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">'list' of equipment for specialpurpose, store and gastronomy</xs:documentation>
+            <xs:documentation xml:lang="de-DE">'Liste' der Ausstattung für Spezialgewerbe, Einzelhandel und Gastronomie</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element type="CellarOnlyEquipmentType" name="item" minOccurs="1" maxOccurs="1"/>
+        </xs:sequence>
+    </xs:complexType>
+
+
+    <!-- ============================================================================
+             Store specific types
+     ============================================================================= -->
+
+    <xs:simpleType name="StoreType">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">store type</xs:documentation>
+            <xs:documentation xml:lang="de-DE">Einzelhandels-Objektart</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="showroomspace">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">showroom space</xs:documentation>
+                    <xs:documentation xml:lang="de-DE">Ausstellungsfläche</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="shoppingcentre">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">shopping centre</xs:documentation>
+                    <xs:documentation xml:lang="de-DE">Einkaufszentrum</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="factoryoutlet">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">factory outlet</xs:documentation>
+                    <xs:documentation xml:lang="de-DE">Factory Outlet</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="departmentstore">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">department store</xs:documentation>
+                    <xs:documentation xml:lang="de-DE">Kaufhaus</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="kiosk">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">kiosk</xs:documentation>
+                    <xs:documentation xml:lang="de-DE">Kiosk</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="store">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">store</xs:documentation>
+                    <xs:documentation xml:lang="de-DE">Laden</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="selfservicemarket">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">self-service market</xs:documentation>
+                    <xs:documentation xml:lang="de-DE">SB-Markt</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="salesarea">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">sales area</xs:documentation>
+                    <xs:documentation xml:lang="de-DE">Verkaufsfläche</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="saleshall">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">sales hall</xs:documentation>
+                    <xs:documentation xml:lang="de-DE">Verkaufshalle</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:complexType name="StoreTypeList">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">list of store types</xs:documentation>
+            <xs:documentation xml:lang="de-DE">Liste von Einzelhandels-Objektarten</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element type="StoreType" name="item" minOccurs="1" maxOccurs="9"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:simpleType name="LocationClassificationType">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">location classification type</xs:documentation>
+            <xs:documentation xml:lang="de-DE">Lageart</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="a">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">classification a</xs:documentation>
+                    <xs:documentation xml:lang="de-DE">A-Lage</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="b">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">classification b</xs:documentation>
+                    <xs:documentation xml:lang="de-DE">B-Lage</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="shoppingcentre">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">within shopping centre</xs:documentation>
+                    <xs:documentation xml:lang="de-DE">im Schoppingcenter</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:complexType name="LocationClassificationTypeList">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">list of location classification types</xs:documentation>
+            <xs:documentation xml:lang="de-DE">Liste der Lagearten</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element type="LocationClassificationType" name="item" minOccurs="1" maxOccurs="3"/>
+        </xs:sequence>
+    </xs:complexType>
+
+
+    <!-- ============================================================================
+             Gastronomy specific types
+     ============================================================================- -->
+
+
+    
+
+    <xs:simpleType name="GastronomyType">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">types for gastronomy</xs:documentation>
+            <xs:documentation xml:lang="de-DE">Arten von Gatronomie</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="guestshouse">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">guest house</xs:documentation>
+                    <xs:documentation xml:lang="de-DE">Gästehaus</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="clubdisco">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">club or discothek</xs:documentation>
+                    <xs:documentation xml:lang="de-DE">Club/Diskothek</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="barlounge">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">bar or lounge</xs:documentation>
+                    <xs:documentation xml:lang="de-DE">Barbetrieb/Lounge</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="cafe">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">cafe</xs:documentation>
+                    <xs:documentation xml:lang="de-DE">Cafe</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="hotelresidence">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">hotel residence</xs:documentation>
+                    <xs:documentation xml:lang="de-DE">Hotelanwesen</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="tavern">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">tavern</xs:documentation>
+                    <xs:documentation xml:lang="de-DE">Gaststätte</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="hotelgarni">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">hotel garni (hotel with breakfast only)</xs:documentation>
+                    <xs:documentation xml:lang="de-DE">Hotel garni (Ein Hotel, dass nur Frühstück anbietet / Tageshotel)</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="hotel">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">hotel</xs:documentation>
+                    <xs:documentation xml:lang="de-DE">Hotel</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="restaurant">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">restaurant</xs:documentation>
+                    <xs:documentation xml:lang="de-DE">Restaurant</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="pension">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">pension</xs:documentation>
+                    <xs:documentation xml:lang="de-DE">Pension</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="bungalow">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">bungalow</xs:documentation>
+                    <xs:documentation xml:lang="de-DE">Ferienbungalows</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:complexType name="GastronomyTypeList">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">list of gastronomy types</xs:documentation>
+            <xs:documentation xml:lang="de-DE">Liste von Gatronomie-Arten</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element type="GastronomyType" name="item" minOccurs="1" maxOccurs="11"/>
+        </xs:sequence>
+    </xs:complexType>
+
+
+
+    <!-- ============================================================================
+             Garage specific types
+     ============================================================================- -->
+
+
+    <xs:simpleType name="GarageType">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">garage types</xs:documentation>
+            <xs:documentation xml:lang="de-DE">Garagentypen</xs:documentation>
+            <!--  TODO erstmal nur 2, wegen domain de.is24.search.query.domain.GarageQueryType  -->
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="garage">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">garage</xs:documentation>
+                    <xs:documentation xml:lang="de-DE">Garage</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="streetparking">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">streek parking place</xs:documentation>
+                    <xs:documentation xml:lang="de-DE">Parkplatz auf der Straße</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            </xs:restriction>
+    </xs:simpleType>
+
+    <xs:complexType name="GarageTypeList">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">list of garage types</xs:documentation>
+            <xs:documentation xml:lang="de-DE">Liste von Garagentypen</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element type="GarageType" name="item" minOccurs="1" maxOccurs="6"/>
+        </xs:sequence>
+    </xs:complexType>
+
+
+    <!-- ============================================================================
+             CompulsoryAuction specific types
+     ============================================================================- -->
+
+
+    <xs:simpleType name="AuctionObjectType">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">object type of the auction</xs:documentation>
+            <xs:documentation xml:lang="de-DE">Objektart der Auktion</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="freeholdflat">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">freehold flat</xs:documentation>
+                    <xs:documentation xml:lang="de-DE">Eigentumswohnungen</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="familyhouse">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">family house</xs:documentation>
+                    <xs:documentation xml:lang="de-DE">1+2 Familienhäuser</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="businessandyield">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">business and yield</xs:documentation>
+                    <xs:documentation xml:lang="de-DE">Gewerbe + Rendite</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="lot">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">lot</xs:documentation>
+                    <xs:documentation xml:lang="de-DE">Grundstücke</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="garageandother">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">garage and other</xs:documentation>
+                    <xs:documentation xml:lang="de-DE">Garagen + Sonstiges</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+        </xs:restriction>
+    </xs:simpleType>
+
+
+    <xs:complexType name="AuctionObjectTypeList">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">list of object types of the auction</xs:documentation>
+            <xs:documentation xml:lang="de-DE">Liste der Objektarten der Auktion</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element type="AuctionObjectType" name="item" minOccurs="1" maxOccurs="5"/>
+        </xs:sequence>
+    </xs:complexType>
+
+
+    <xs:simpleType name="AuctionType">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">auction types</xs:documentation>
+            <xs:documentation xml:lang="de-DE">Auktionsarten</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="recurrenceappointment">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Second date for the auction</xs:documentation>
+                    <xs:documentation xml:lang="de-DE">Wiederholungstermin (Zweiter Termin)</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="splittingauction">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">splitting auction</xs:documentation>
+                    <xs:documentation xml:lang="de-DE">Teilungsversteigerung</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:complexType name="AuctionTypeList">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">list of auction types</xs:documentation>
+            <xs:documentation xml:lang="de-DE">Liste der Auktionsarten</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element type="AuctionType" name="item" minOccurs="1" maxOccurs="2"/>
+        </xs:sequence>
+    </xs:complexType>
+
+
+    <!-- ============================================================================
+             Investment specific types
+     ============================================================================- -->
+
+    <!-- taken from savedSearch-1.0.xsd -->
+    <xs:complexType name="PriceMultiplierRange">
+        <xs:all>
+            <xs:element name="minimal" type="common:PriceMultiplierType" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">minimal price multiplier</xs:documentation>
+                    <xs:documentation xml:lang="de-DE">Minimaler Preismultiplikator</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="maximal" type="common:PriceMultiplierType" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">maximal price multiplier</xs:documentation>
+                    <xs:documentation xml:lang="de-DE">Maximaler Preismultiplikator</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:all>
+    </xs:complexType>
+
+    <xs:simpleType name="InvestmentType">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">types for investment objects</xs:documentation>
+            <xs:documentation xml:lang="de-DE">Arten von Anlageimmobilien-Objekte</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+
+            <xs:enumeration value="singlefamilyhouse">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">single family house</xs:documentation>
+                    <xs:documentation xml:lang="de-DE">Einfamilienhaus</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="multifamilyhouse">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">multi family house</xs:documentation>
+                    <xs:documentation xml:lang="de-DE">Mehrfamilienhaus</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="freeholdflat">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">freehold flat</xs:documentation>
+                    <xs:documentation xml:lang="de-DE">Eigentumswohnung</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="shoppingcentre">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">shopping centre</xs:documentation>
+                    <xs:documentation xml:lang="de-DE">Einkaufszentrum</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="restaurant">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">restaurant</xs:documentation>
+                    <xs:documentation xml:lang="de-DE">Gaststätte</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="hotel">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">hotel</xs:documentation>
+                    <xs:documentation xml:lang="de-DE">Hotel</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="leisurefacility">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">leisure facility</xs:documentation>
+                    <xs:documentation xml:lang="de-DE">Freizeitanlage</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="commercialunit">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">commercial unit</xs:documentation>
+                    <xs:documentation xml:lang="de-DE">Gewerbeeinheit</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="officebuilding">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">office building</xs:documentation>
+                    <xs:documentation xml:lang="de-DE">Bürogebäude</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="commercialbuilding">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">commercial building</xs:documentation>
+                    <xs:documentation xml:lang="de-DE">Geschäftshaus</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="commercialproperty">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">commercial property</xs:documentation>
+                    <xs:documentation xml:lang="de-DE">Gewerbeanwesen</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="hallstorage">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">hall or storage</xs:documentation>
+                    <xs:documentation xml:lang="de-DE">Halle/Lager</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="industrialproperty">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">industrial property</xs:documentation>
+                    <xs:documentation xml:lang="de-DE">Industrieanwesen</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="shopsalesfloor">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">shop sales floor</xs:documentation>
+                    <xs:documentation xml:lang="de-DE">Laden/Verkaufsfläche</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="servicecentre">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">service centre</xs:documentation>
+                    <xs:documentation xml:lang="de-DE">Servicecenter</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="other">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">other</xs:documentation>
+                    <xs:documentation xml:lang="de-DE">Sonstige</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="supermarket">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">supermarket</xs:documentation>
+                    <xs:documentation xml:lang="de-DE">Supermarkt</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="livingbusinesshouse">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">living and business house</xs:documentation>
+                    <xs:documentation xml:lang="de-DE">Wohn-/ Geschäftshaus</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+            <xs:enumeration value="housingestate">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">housing estate</xs:documentation>
+                    <xs:documentation xml:lang="de-DE">Wohnanlage</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:complexType name="InvestmentTypeList">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">list of investment objects types</xs:documentation>
+            <xs:documentation xml:lang="de-DE">Liste der Arten von Anlageimmobilien-Objekte</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element type="InvestmentType" name="item" minOccurs="1" maxOccurs="20"/>
+        </xs:sequence>
+    </xs:complexType>
+
+
+    <!-- ============================================================================
+             SeniorCare specific types
+     ============================================================================- -->
+
+
+    <!-- TODO: as single element item list ? -->
+    <xs:simpleType name="SeniorCareAdditionalServicesType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="petsallowed">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">pets are allowed</xs:documentation>
+                    <xs:documentation xml:lang="de-DE">Haustiere erlaubt</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="SeniorCareEquipmentType">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">equipment types for SeniorCare objects</xs:documentation>
+            <xs:documentation xml:lang="de-DE">Ausstattung der Altenpflege-Objekte</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="balcony">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">has a balcony</xs:documentation>
+                    <xs:documentation xml:lang="de-DE">Balkon vorhanden</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:complexType name="SeniorCareEquipmentList">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">'list' of equipment types for SeniorCare objects</xs:documentation>
+            <xs:documentation xml:lang="de-DE">Ausstattungs-Liste der Altenpflege-Objekte</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element type="SeniorCareEquipmentType" name="item" minOccurs="1" maxOccurs="1"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:simpleType name="SeniorCareRoomType">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">room type</xs:documentation>
+            <xs:documentation xml:lang="de-DE">Zimmertyp</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="singlebedroom">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">a single room</xs:documentation>
+                    <xs:documentation xml:lang="de-DE">Einzelzimmer</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="sharedroom">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">a shared room (multiple occupancy)</xs:documentation>
+                    <xs:documentation xml:lang="de-DE">Mehrbettzimmer</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:complexType name="SeniorCareRoomTypeList">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">list of room types</xs:documentation>
+            <xs:documentation xml:lang="de-DE">List von Zimmertypen</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element type="SeniorCareRoomType" name="item" minOccurs="1" maxOccurs="2"/>
+        </xs:sequence>
+    </xs:complexType>
+
+
+    <xs:simpleType name="SeniorCareType">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">type of care</xs:documentation>
+            <xs:documentation xml:lang="de-DE">Pflegeplatztypen</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="stationary">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">stationary care</xs:documentation>
+                    <xs:documentation xml:lang="de-DE">Vollstationäre Pflege</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="day">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">day care</xs:documentation>
+                    <xs:documentation xml:lang="de-DE">Tagespflege</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="shortterm">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">short term care</xs:documentation>
+                    <xs:documentation xml:lang="de-DE">Kurzzeitpflege</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="respite">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">respite care</xs:documentation>
+                    <xs:documentation xml:lang="de-DE">Verhinderungspflege</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:complexType name="SeniorCareTypeList">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">list of type of care</xs:documentation>
+            <xs:documentation xml:lang="de-DE">Liste von Pflegeplatztypen</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element type="SeniorCareType" name="item" minOccurs="1" maxOccurs="5"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:simpleType name="SeniorCareLevelType">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">care levels for senior care facilities</xs:documentation>
+            <xs:documentation xml:lang="de-DE">versorgte Pflegestufen einer Altenpflegeeinrichtung</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="level1">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">care level 1</xs:documentation>
+                    <xs:documentation xml:lang="de-DE">Pflegestufe 1</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="level2">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">care level 2</xs:documentation>
+                    <xs:documentation xml:lang="de-DE">Pflegestufe 2</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="level3">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">care level 3</xs:documentation>
+                    <xs:documentation xml:lang="de-DE">Pflegestufe 3</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:complexType name="SeniorCareLevelList">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">list of care levels for senior care facilities</xs:documentation>
+            <xs:documentation xml:lang="de-DE">Liste derf versorgten Pflegestufen einer Altenpflegeeinrichtung</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element type="SeniorCareLevelType" name="item" minOccurs="1" maxOccurs="3"/>
+        </xs:sequence>
+    </xs:complexType>
+
+
+    <xs:simpleType name="SeniorCareCareOfType">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">diseases taken care of</xs:documentation>
+            <xs:documentation xml:lang="de-DE">in der Altenpflegeeinrichtung versorgte Erkrankungen</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="dementia">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Care of dementia patients</xs:documentation>
+                    <xs:documentation xml:lang="de-DE">Pflege von Demenzpatienten</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="artificialrespiration">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Care of artificial respiration</xs:documentation>
+                    <xs:documentation xml:lang="de-DE">Pflege von kuenstlicher Beatmung</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="comavigil">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Care of coma vigil</xs:documentation>
+                    <xs:documentation xml:lang="de-DE">Pflege von Wachkoma</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="stroke">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">care of stroke patients</xs:documentation>
+                    <xs:documentation xml:lang="de-DE">Pflege von Schlaganfall</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="parkinson">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">care of parkinson patients</xs:documentation>
+                    <xs:documentation xml:lang="de-DE">Pflege von Parkinsonpatienten</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="alzheimer">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">care of alzheimer patients</xs:documentation>
+                    <xs:documentation xml:lang="de-DE">Pflege von Alzheimerpatienten</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="multiplesclerosis">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">care of multiple sclerosis</xs:documentation>
+                    <xs:documentation xml:lang="de-DE">Pflege von multipler Sklerosis</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:complexType name="SeniorCareCareOfList">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">list of diseases taken care of</xs:documentation>
+            <xs:documentation xml:lang="de-DE">Liste der in der Altenpflegeeinrichtung versorgten Erkrankungen</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element type="SeniorCareCareOfType" name="item" minOccurs="1" maxOccurs="7"/>
+        </xs:sequence>
+    </xs:complexType>
+
+
+    <!-- ============================================================================
+             AssistedLiving specific types
+     ============================================================================- -->
+
+
+    <xs:simpleType name="AssistedLivingAdditionalServicesType">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">additional properties</xs:documentation>
+            <xs:documentation xml:lang="de-DE">zusätzliche Eigenschaften</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="petsallowed">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">pets are allowed</xs:documentation>
+                    <xs:documentation xml:lang="de-DE">Haustiere erlaubt</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="trialliving">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">test living in the real estate</xs:documentation>
+                    <xs:documentation xml:lang="de-DE">Probewohnen</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:complexType name="AssistedLivingAdditionalServicesList">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">list of additional properties</xs:documentation>
+            <xs:documentation xml:lang="de-DE">Liste zusätzlicher Eigenschaften</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element type="AssistedLivingAdditionalServicesType" name="item" minOccurs="1" maxOccurs="2"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="SeniorCareAdditionalServicesTypeList">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">list of additional properties</xs:documentation>
+            <xs:documentation xml:lang="de-DE">Liste zusätzlicher Eigenschaften</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element type="SeniorCareAdditionalServicesType" name="item" minOccurs="1" maxOccurs="1"/>
+        </xs:sequence>
+    </xs:complexType>
+
+
+    <xs:simpleType name="AssistedLivingEquipmentType">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">assisted living equipment types</xs:documentation>
+            <xs:documentation xml:lang="de-DE">Ausstattung für betreute Wohneinrichtungen</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="balcony">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">has a balcony</xs:documentation>
+                    <xs:documentation xml:lang="de-DE">Balkon verfügbar</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="cookingpossibility">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">has a cooking possibilty</xs:documentation>
+                    <xs:documentation xml:lang="de-DE">Eigene Kochmöglichkeit</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="garden">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Garden/park available</xs:documentation>
+                    <xs:documentation xml:lang="de-DE">Gartenanlage/Park verfügbar</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="handicappedaccessible">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">handicapped accessible</xs:documentation>
+                    <xs:documentation xml:lang="de-DE">Barrierefrei</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="ownfurnishing">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Own furniture possible</xs:documentation>
+                    <xs:documentation xml:lang="de-DE">Mitnahme eigener Möbel möglich</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="parking">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Garage/parking available</xs:documentation>
+                    <xs:documentation xml:lang="de-DE">Garage/ Stellplatz verfügbar</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:complexType name="AssistedLivingEquipmentList">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">assisted living equipment types</xs:documentation>
+            <xs:documentation xml:lang="de-DE">Ausstattung für betreute Wohneinrichtungen</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element type="AssistedLivingEquipmentType" name="item" minOccurs="1" maxOccurs="6"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:simpleType name="AssistedLivingMedicalServicesType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="ambulantnursingservice">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Ambulant nursing service available</xs:documentation>
+                    <xs:documentation xml:lang="de-DE">Ambulanter Pflegedienst verfügbar</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+        </xs:restriction>
+    </xs:simpleType>
+
+   
+
+    <!-- ============================================================================
+             FlatShareRoom specific types
+     ============================================================================- -->
+
+
+    <xs:simpleType name="FlatShareRoomEquipmentType">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">equipment for flat share room objects</xs:documentation>
+            <xs:documentation xml:lang="de-DE">Ausstattung für WGs</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="cooker">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">cooker or stove</xs:documentation>
+                    <xs:documentation xml:lang="de-DE">Herd</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="dishwasher">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">dishwasher</xs:documentation>
+                    <xs:documentation xml:lang="de-DE">Spülmaschine</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="fridge">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">refrigerator</xs:documentation>
+                    <xs:documentation xml:lang="de-DE">Kühlschrank</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="handicappedaccessible">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">handicapped accessible</xs:documentation>
+                    <xs:documentation xml:lang="de-DE">Barrierefrei</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="internet">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">type of internet connection</xs:documentation>
+                    <xs:documentation xml:lang="de-DE">Art des Internetanschlusses</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="oven">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">oven</xs:documentation>
+                    <xs:documentation xml:lang="de-DE">Backofen</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="petsallowed">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">pets are allowed in the real estate</xs:documentation>
+                    <xs:documentation xml:lang="de-DE">Haustiere erlaubt</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:complexType name="FlatShareRoomEquipmentList">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">equipment list for flat share room objects</xs:documentation>
+            <xs:documentation xml:lang="de-DE">Liste der Ausstattungsmerkmale für WGs</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element type="FlatShareRoomEquipmentType" name="item" minOccurs="1" maxOccurs="7"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:simpleType name="FlatShareRoomFlatSizeType">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">flat share size</xs:documentation>
+            <xs:documentation xml:lang="de-DE">WG-Größe</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="2"></xs:enumeration>
+            <xs:enumeration value="3"></xs:enumeration>
+            <xs:enumeration value="4"></xs:enumeration>
+            <xs:enumeration value="5"></xs:enumeration>
+            <xs:enumeration value="6"></xs:enumeration>
+            <xs:enumeration value="7"></xs:enumeration>
+            <xs:enumeration value="8"></xs:enumeration>
+            <xs:enumeration value="9"></xs:enumeration>
+            <xs:enumeration value="10"></xs:enumeration>
+            <xs:enumeration value="greaterthenten">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">greater than ten</xs:documentation>
+                    <xs:documentation xml:lang="de-DE">mehr als zehn</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+        </xs:restriction>
+    </xs:simpleType>
+
+
+    <xs:simpleType name="FlatShareRoomGenderType">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">requested gender</xs:documentation>
+            <xs:documentation xml:lang="de-DE">Geschlecht des gesuchten Mitbewohners</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="female">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">female</xs:documentation>
+                    <xs:documentation xml:lang="de-DE">weiblich</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="male">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">male</xs:documentation>
+                    <xs:documentation xml:lang="de-DE">männlich</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="FlatShareRoomSmokingAllowedType">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">smoking allowed</xs:documentation>
+            <xs:documentation xml:lang="de-DE">Rauchen erlaubt</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="noinformation">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">no information</xs:documentation>
+                    <xs:documentation xml:lang="de-DE">Keine Angabe</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="allowed">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">allowed</xs:documentation>
+                    <xs:documentation xml:lang="de-DE">Erlaubt</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="ownroomonly">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">own room only</xs:documentation>
+                    <xs:documentation xml:lang="de-DE">Nur im eigenem Zimmer</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="unwanted">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">unwanted</xs:documentation>
+                    <xs:documentation xml:lang="de-DE">Unerwünscht</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="FlatShareRoomRentalDurationType">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">rental duration (1-100)</xs:documentation>
+            <xs:documentation xml:lang="de-DE">Mietdauer (1-100)</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:int">
+            <xs:minInclusive value="1" fixed="true"/>
+            <xs:maxInclusive value="100" fixed="true"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+
+    <!-- ============================================================================
+             ShortTermAccommodation specific types
+     ============================================================================- -->
+
+
+    <xs:simpleType name="ShortTermAccommodationType">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">type of the short term accomodation</xs:documentation>
+            <xs:documentation xml:lang="de-DE">Typ von Wohnen auf Zeit</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="flat">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">flat</xs:documentation>
+                    <xs:documentation xml:lang="de-DE">Wohnung</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="house">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">house</xs:documentation>
+                    <xs:documentation xml:lang="de-DE">Haus</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="room">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">room</xs:documentation>
+                    <xs:documentation xml:lang="de-DE">Zimmer</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="apartment">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">apartment</xs:documentation>
+                    <xs:documentation xml:lang="de-DE">Apartment</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+        </xs:restriction>
+    </xs:simpleType>
+
+
+    <xs:simpleType name="ShortTermAccommodationIntervalType">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">interval type</xs:documentation>
+            <xs:documentation xml:lang="de-DE">Interval-Typ</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="month">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">month</xs:documentation>
+                    <xs:documentation xml:lang="de-DE">Monat</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="week">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Week</xs:documentation>
+                    <xs:documentation xml:lang="de-DE">Woche</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="day">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">day</xs:documentation>
+                    <xs:documentation xml:lang="de-DE">Tag</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="ShortTermAccommodationEquipmentType">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">equipment types for short term accommodation</xs:documentation>
+            <xs:documentation xml:lang="de-DE">Ausstattungstypen für Wohnen auf Zeit</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="cellar">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">cellar</xs:documentation>
+                    <xs:documentation xml:lang="de-DE">Keller</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="guesttoilet">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">guest toilet</xs:documentation>
+                    <xs:documentation xml:lang="de-DE">Gästetoilette</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="parking">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">parking possibility</xs:documentation>
+                    <xs:documentation xml:lang="de-DE">Parkmöglichkeit</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+        </xs:restriction>
+    </xs:simpleType>
+
+
+    <xs:complexType name="ShortTermAccommodationEquipmentList">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">list of equipment types for short term accommodation</xs:documentation>
+            <xs:documentation xml:lang="de-DE">Liste der Ausstattungstypen für Wohnen auf Zeit</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element type="ShortTermAccommodationEquipmentType" name="item" minOccurs="1" maxOccurs="3"/>
+        </xs:sequence>
+    </xs:complexType>
+
+</xs:schema>
