@@ -66,7 +66,19 @@ define(['globals', 'angular', 'moment', './configs'],
         factory('api', ['$http', '$state',
             function($http, $state) {
                 var api = {
-                    
+                    predictions: {
+                        get: function(lat, lng, radius) {
+                            return $http({
+                                method: 'POST',
+                                url: '/api/getPredictions',
+                                data: {
+                                    lat: lat,
+                                    lng: lng,
+                                    radius: radius
+                                }
+                            });
+                        }
+                    }    
                 };
                 return api;
             }

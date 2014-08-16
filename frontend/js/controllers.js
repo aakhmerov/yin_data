@@ -51,7 +51,32 @@ define(['angular', 'moment', './filters'], function(angular, moment) {
      */
     controllers.SearchController = ['$scope', 'Data', 'api',
         function($scope, Data, api) {
-
+            var lat, lng, radius;
+            api.predictions.get(lat, lng, radius).then(
+                // success rseponse
+                function (response) {
+                    /*
+                     * response object will look like this:
+                     {
+                        // one entry for each grid containing all the price values
+                        // for the past years
+                        {
+                            lat1: Number,
+                            lng1: Number,
+                            lat2: Number,
+                            lng2: Number,
+                            prices: {
+                                averageSellprices...
+                            }
+                        }
+                     }
+                    **/
+                },
+                // error response
+                function (response) {
+                    // think about error handling
+                }
+            );
         }
     ];
 
