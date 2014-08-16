@@ -1,10 +1,6 @@
 package com.yin.bigdata.is24;
 
-import java.net.URL;
-import java.util.StringTokenizer;
-
-import javax.xml.bind.JAXBContext;
-
+import com.yin.bigdata.is24.Expose;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Scope;
@@ -12,7 +8,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
-import com.yin.bigdata.is24.Expose;
+import javax.xml.bind.JAXBContext;
+import java.net.URL;
+import java.util.StringTokenizer;
 
 
 @Component
@@ -27,9 +25,6 @@ public class Is24Client{
 	
 	
 	private String mainUrl = "http://rest.immobilienscout24.de/restapi/";
-	
-	
-	
 
 	private RestTemplate restTemplate;
 	
