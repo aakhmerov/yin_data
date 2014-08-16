@@ -6,6 +6,7 @@ import javax.annotation.Resource;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.yin.bigdata.api.domain.entities.CurrentRealEstate;
 import com.yin.bigdata.api.domain.repositories.CurrentRealEstateRepository;
@@ -21,7 +22,7 @@ public class ImportCurrentExposeeService {
 	@Resource
 	private CurrentRealEstateRepository currentRealEstateRepository;
 
-	
+	@Transactional
 	public void importExposees(String geoCode){
 		
 		List<String> ids = is24Client.getExposees(geoCode);
