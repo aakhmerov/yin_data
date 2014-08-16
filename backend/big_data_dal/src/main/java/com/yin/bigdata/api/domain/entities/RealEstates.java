@@ -6,6 +6,12 @@ import java.util.Date;
  * Created by aakhmerov on 16/08/14.
  */
 public class RealEstates {
+    private String GKZ;
+    private Long OBID;
+    private String SCOUTID;
+    private Long SOID;
+    private Long OQID;
+    private Long OK1ID;
     private Long OK2ID;
     private String VTCODE;
     private String STCODE_STANDORT;
