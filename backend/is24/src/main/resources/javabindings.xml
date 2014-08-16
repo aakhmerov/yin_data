@@ -1,0 +1,15 @@
+<jaxws:bindings xmlns:jxb="http://java.sun.com/xml/ns/jaxb" xmlns="http://java.sun.com/xml/ns/jaxws" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:jaxws="http://java.sun.com/xml/ns/jaxws" wsdllocation="test.wsdl" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns1="VOLARISWS">
+ 
+       <jaxws:schemabindings>
+ 
+<jaxws:bindings node="wsdl:definitions">
+  <jaxws:bindings node=".//xs:element[@name='_a']">
+     
+            <jxb:property name="oldA">
+       </jxb:property></jaxws:bindings>
+        
+ 
+    </jaxws:bindings>
+ </jaxws:schemabindings>
+ 
+</jaxws:bindings>

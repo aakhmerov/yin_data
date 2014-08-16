@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+
+<xs:schema
+        xmlns="http://rest.immobilienscout24.de/schema/searcher/savedSearch/2.0/livingTypes"
+        xmlns:xs="http://www.w3.org/2001/XMLSchema"
+        targetNamespace="http://rest.immobilienscout24.de/schema/searcher/savedSearch/2.0/livingTypes"
+        elementFormDefault="unqualified"
+        attributeFormDefault="unqualified"
+        version="1.0">
+
+    <xs:simpleType name="apartmentTypes">
+        <xs:list itemType="apartmentType"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="heatingTypes">
+        <xs:list itemType="heatingType"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="buildingTypes">
+        <xs:list itemType="buildingType"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="constructionPhases">
+        <xs:list itemType="constructionPhase"/>
+    </xs:simpleType>
+
+    <xs:simpleType name="apartmentType">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">criterias for apartment living real estates.</xs:documentation>
+            <xs:documentation xml:lang="de-DE">Kriterien für Wohnimmobilien Wohnung Miete und Wohnung Kauf.</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="roofstorey">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">roof storey</xs:documentation>
+                    <xs:documentation xml:lang="de-DE">Dachgeschoss</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="loft">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">loft</xs:documentation>
+                    <xs:documentation xml:lang="de-DE">Loft</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="maisonette">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">maisonette</xs:documentation>
+                    <xs:documentation xml:lang="de-DE">Maisonette</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="penthouse">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">penthouse</xs:documentation>
+                    <xs:documentation xml:lang="de-DE">Penthouse</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="terracedflat">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">terraced flat</xs:documentation>
+                    <xs:documentation xml:lang="de-DE">Terrassenwohnung</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="groundfloor">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">ground floor</xs:documentation>
+                    <xs:documentation xml:lang="de-DE">Erdgeschosswohnung</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="apartment">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">apartment</xs:documentation>
+                    <xs:documentation xml:lang="de-DE">Etagenwohnung</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="raisedgroundfloor">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">raised ground floor</xs:documentation>
+                    <xs:documentation xml:lang="de-DE">Hochparterre</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="halfbasement">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">half basement</xs:documentation>
+                    <xs:documentation xml:lang="de-DE">Souterrain</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="other">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">other</xs:documentation>
+                    <xs:documentation xml:lang="de-DE">Sonstige</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+        </xs:restriction>
+    </xs:simpleType>
+
+
+    <xs:simpleType name="heatingType">
+    <xs:annotation>
+        <xs:documentation xml:lang="en">heating types</xs:documentation>
+        <xs:documentation xml:lang="de-DE">Heizungsarten</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+        <xs:enumeration value="selfcontainedcentral">
+            <xs:annotation>
+                <xs:documentation xml:lang="en">self contained central heating</xs:documentation>
+                <xs:documentation xml:lang="de-DE">Etagenheizung</xs:documentation>
+            </xs:annotation>
+        </xs:enumeration>
+        <xs:enumeration value="stove">
+            <xs:annotation>
+                <xs:documentation xml:lang="en">stove heating</xs:documentation>
+                <xs:documentation xml:lang="de-DE">Ofenheizung</xs:documentation>
+            </xs:annotation>
+        </xs:enumeration>
+        <xs:enumeration value="central">
+            <xs:annotation>
+                <xs:documentation xml:lang="en">central heating</xs:documentation>
+                <xs:documentation xml:lang="de-DE">Zentralheizung</xs:documentation>
+            </xs:annotation>
+        </xs:enumeration>
+    </xs:restriction>
+    </xs:simpleType>
+
+
+    <xs:simpleType name="buildingType">
+    <xs:annotation>
+        <xs:documentation xml:lang="en">Types of building</xs:documentation>
+        <xs:documentation xml:lang="de-DE">Typ vom Haus.</xs:documentation>
+    </xs:annotation>
+ 
+    <xs:restriction base="xs:string">
+        <xs:enumeration value="singlefamilyhouse">
+            <xs:annotation>
+                <xs:documentation xml:lang="en">single family house</xs:documentation>
+                <xs:documentation xml:lang="de-DE">Einfamilienhaus (freistehend)</xs:documentation>
+            </xs:annotation>
+        </xs:enumeration>
+        <xs:enumeration value="midterracehouse">
+            <xs:annotation>
+                <xs:documentation xml:lang="en">mid terrace house</xs:documentation>
+                <xs:documentation xml:lang="de-DE">Reihenmittelhaus</xs:documentation>
+            </xs:annotation>
+        </xs:enumeration>
+        <xs:enumeration value="endterracehouse">
+            <xs:annotation>
+                <xs:documentation xml:lang="en">end terrace house</xs:documentation>
+                <xs:documentation xml:lang="de-DE">Reiheneckhaus</xs:documentation>
+            </xs:annotation>
+        </xs:enumeration>
+        <xs:enumeration value="multifamilyhouse">
+            <xs:annotation>
+                <xs:documentation xml:lang="en">multi family house</xs:documentation>
+                <xs:documentation xml:lang="de-DE">Mehrfamilienhaus</xs:documentation>
+            </xs:annotation>
+        </xs:enumeration>
+        <xs:enumeration value="bungalow">
+            <xs:annotation>
+                <xs:documentation xml:lang="en">bungalow</xs:documentation>
+                <xs:documentation xml:lang="de-DE">Bungalow</xs:documentation>
+            </xs:annotation>
+        </xs:enumeration>
+        <xs:enumeration value="farmhouse">
+            <xs:annotation>
+                <xs:documentation xml:lang="en">farm house</xs:documentation>
+                <xs:documentation xml:lang="de-DE">Bauernhaus</xs:documentation>
+            </xs:annotation>
+        </xs:enumeration>
+        <xs:enumeration value="semidetachedhouse">
+            <xs:annotation>
+                <xs:documentation xml:lang="en">semi detached house</xs:documentation>
+                <xs:documentation xml:lang="de-DE">Doppelhaushälfte</xs:documentation>
+            </xs:annotation>
+        </xs:enumeration>
+        <xs:enumeration value="villa">
+            <xs:annotation>
+                <xs:documentation xml:lang="en">villa</xs:documentation>
+                <xs:documentation xml:lang="de-DE">Villa</xs:documentation>
+            </xs:annotation>
+        </xs:enumeration>
+        <xs:enumeration value="castlemanorhouse">
+            <xs:annotation>
+                <xs:documentation xml:lang="en">castle manor house</xs:documentation>
+                <xs:documentation xml:lang="de-DE">Burg/Schloss</xs:documentation>
+            </xs:annotation>
+        </xs:enumeration>
+        <xs:enumeration value="specialrealestate">
+            <xs:annotation>
+                <xs:documentation xml:lang="en">special real estate</xs:documentation>
+                <xs:documentation xml:lang="de-DE">Besondere Immobilie</xs:documentation>
+            </xs:annotation>
+        </xs:enumeration>
+        <xs:enumeration value="terracehouse">
+            <xs:annotation>
+                <xs:documentation xml:lang="en">terrace house</xs:documentation>
+                <xs:documentation xml:lang="de-DE">Reihenterrhaus</xs:documentation>
+            </xs:annotation>
+        </xs:enumeration>
+        <xs:enumeration value="otherrealestate">
+            <xs:annotation>
+                <xs:documentation xml:lang="en">other</xs:documentation>
+                <xs:documentation xml:lang="de-DE">Wohnimmobilie (sonstige)</xs:documentation>
+            </xs:annotation>
+        </xs:enumeration>
+    </xs:restriction>
+    </xs:simpleType>
+
+
+    <xs:simpleType name="constructionPhase">
+    <xs:annotation>
+        <xs:documentation xml:lang="en">criterias for apartment living real estates.</xs:documentation>
+        <xs:documentation xml:lang="de-DE">Kriterien für Wohnimmobilien Wohnung Miete und Wohnung Kauf.</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+        <xs:enumeration value="projected">
+            <xs:annotation>
+                <xs:documentation xml:lang="en">projected</xs:documentation>
+                <xs:documentation xml:lang="de-DE">Haus in Planung</xs:documentation>
+            </xs:annotation>
+        </xs:enumeration>
+        <xs:enumeration value="underconstruction">
+            <xs:annotation>
+                <xs:documentation xml:lang="en">under construction</xs:documentation>
+                <xs:documentation xml:lang="de-DE">Haus in Bau</xs:documentation>
+            </xs:annotation>
+        </xs:enumeration>
+        <xs:enumeration value="completed">
+            <xs:annotation>
+                <xs:documentation xml:lang="en">completed</xs:documentation>
+                <xs:documentation xml:lang="de-DE">Haus fertig gestellt</xs:documentation>
+            </xs:annotation>
+        </xs:enumeration>
+        <xs:enumeration value="noinformation">
+            <xs:annotation>
+                <xs:documentation xml:lang="en">no information about construction phase</xs:documentation>
+                <xs:documentation xml:lang="de-DE">keine genaue Angabe zur Bauphase</xs:documentation>
+            </xs:annotation>
+        </xs:enumeration>
+    </xs:restriction>
+    </xs:simpleType>       
+</xs:schema>

@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+
+<xs:schema
+        xmlns="http://rest.immobilienscout24.de/schema/searcher/savedSearch/2.0/sites"
+        xmlns:xs="http://www.w3.org/2001/XMLSchema"
+        targetNamespace="http://rest.immobilienscout24.de/schema/searcher/savedSearch/2.0/sites"
+        elementFormDefault="unqualified"
+        attributeFormDefault="unqualified"
+        version="1.0">
+
+
+    
+
+    <xs:complexType name="SiteConstructibleTypeList">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">liste site constructible types</xs:documentation>
+            <xs:documentation xml:lang="de-DE">Liste von Bebauungsarten</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element type="SiteConstructibleType" name="item" minOccurs="0" maxOccurs="3"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:simpleType name="SiteConstructibleType">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">site constructible types</xs:documentation>
+            <xs:documentation xml:lang="de-DE">Bebaubar nach</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="externalarea">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">external area</xs:documentation>
+                    <xs:documentation xml:lang="de-DE">Aussengebiet</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="constructionplan">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">construction plan</xs:documentation>
+                    <xs:documentation xml:lang="de-DE">Bebauungsplan</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="neighbourconstruction">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">neighbour construction</xs:documentation>
+                    <xs:documentation xml:lang="de-DE">Nachbarbebauung</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+        </xs:restriction>
+    </xs:simpleType>
+
+
+    <xs:simpleType name="SiteDevelopmentType">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">site development types</xs:documentation>
+            <xs:documentation xml:lang="de-DE">Erschließungsarten</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="developed">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">developed</xs:documentation>
+                    <xs:documentation xml:lang="de-DE">Erschlossen</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="developedpartially">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">developed partially</xs:documentation>
+                    <xs:documentation xml:lang="de-DE">Teilerschlossen</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="notdeveloped">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">not developed</xs:documentation>
+                    <xs:documentation xml:lang="de-DE">Unerschlossen</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:complexType name="SiteDevelopmentTypeList">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">list of site development types</xs:documentation>
+            <xs:documentation xml:lang="de-DE">Liste der Erschließungsarten</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element type="SiteDevelopmentType" name="item" minOccurs="0" maxOccurs="3"/>
+        </xs:sequence>
+    </xs:complexType>
+
+
+
+
+    <xs:simpleType name="TradeSiteUtilizationType">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">trade site utilization types</xs:documentation>
+            <xs:documentation xml:lang="de-DE">Nutzungsarten für Gewerbegrundstücke</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="leisure">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">leisure</xs:documentation>
+                    <xs:documentation xml:lang="de-DE">Freizeit</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="agricultureforestry">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">agriculture forestry</xs:documentation>
+                    <xs:documentation xml:lang="de-DE">Land- / Forstwirtschaft</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="trade">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">trade</xs:documentation>
+                    <xs:documentation xml:lang="de-DE">Gewerbe</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:complexType name="TradeSiteUtilizationList">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">trade site utilization list</xs:documentation>
+            <xs:documentation xml:lang="de-DE">Liste der Nutzungsarten für Gewerbegrundstücke</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element type="TradeSiteUtilizationType" name="item" minOccurs="0" maxOccurs="3"/>
+        </xs:sequence>
+    </xs:complexType>
+</xs:schema>

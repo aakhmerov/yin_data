@@ -1,0 +1,592 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xs:schema
+        xmlns="http://rest.immobilienscout24.de/schema/search/saveSearch/1.0"
+        xmlns:xs="http://www.w3.org/2001/XMLSchema"
+        xmlns:common="http://rest.immobilienscout24.de/schema/common/1.0"
+        xmlns:equipment="http://rest.immobilienscout24.de/schema/searcher/savedSearch/2.0/equipment"
+        xmlns:livingType="http://rest.immobilienscout24.de/schema/searcher/savedSearch/2.0/livingTypes"
+        xmlns:types="http://rest.immobilienscout24.de/schema/searcher/savedSearch/2.0/types"
+        xmlns:sites="http://rest.immobilienscout24.de/schema/searcher/savedSearch/2.0/sites"
+        xmlns:priceTypes="http://rest.immobilienscout24.de/schema/searcher/savedSearch/2.0/priceTypes"
+        targetNamespace="http://rest.immobilienscout24.de/schema/search/saveSearch/1.0"
+        elementFormDefault="unqualified"
+        attributeFormDefault="unqualified"
+        version="1.0">
+
+    <xs:import namespace="http://rest.immobilienscout24.de/schema/common/1.0"/>
+    <xs:import namespace="http://rest.immobilienscout24.de/schema/searcher/savedSearch/2.0/equipment"
+               schemaLocation="savedSearch-equipment-2.0.xsd"/>
+    <xs:import namespace="http://rest.immobilienscout24.de/schema/searcher/savedSearch/2.0/livingTypes"
+               schemaLocation="savedSearch-livingTypes-2.0.xsd"/>
+    <xs:import namespace="http://rest.immobilienscout24.de/schema/searcher/savedSearch/2.0/types"
+               schemaLocation="savedSearch-types-2.0.xsd"/>
+    <xs:import namespace="http://rest.immobilienscout24.de/schema/searcher/savedSearch/2.0/sites"
+               schemaLocation="savedSearch-sites-2.0.xsd"/>
+    <xs:import namespace="http://rest.immobilienscout24.de/schema/searcher/savedSearch/2.0/priceTypes"
+               schemaLocation="savedSearch-priceTypes-2.0.xsd"/>
+
+    <xs:element name="savedSearches">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">Represents all persisted searches of an user.</xs:documentation>
+            <xs:documentation xml:lang="de-DE">Repräsentiert alle gespeicherten Gesuche eines Benutzers.
+            </xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="savedSearch" type="savedSearch" minOccurs="0" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="savedSearch" type="savedSearch">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">Saved search with all informations.</xs:documentation>
+            <xs:documentation xml:lang="de-DE">Ein gespeichertes Gesuch.</xs:documentation>
+        </xs:annotation>
+    </xs:element>
+
+    <xs:complexType name="savedSearch">
+        <xs:all>
+            <xs:element name="name" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Name of this saved search.</xs:documentation>
+                    <xs:documentation xml:lang="de-DE">Name der Gesuchsspeicherung.</xs:documentation>
+                </xs:annotation>
+                <xs:simpleType>
+                    <xs:restriction base="common:TextField">
+                        <xs:maxLength value="60"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="fulfillmentActivated" type="xs:boolean" default="false" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Indicates whether the fulfillment process is acticated.
+                    </xs:documentation>
+                    <xs:documentation xml:lang="de-DE">Gibt an of der Benachrichtungsservice aktiviert ist.
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="fulltext" type="common:TextField" minOccurs="0" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">query for full text search.</xs:documentation>
+                    <xs:documentation xml:lang="de-DE">Wert für Volltextsuche.</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="geoCriteria" type="common:AbstractGeoCriteria" minOccurs="1" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Geoinformations of the underlying search.</xs:documentation>
+                    <xs:documentation xml:lang="de-DE">Geoinformationen der zugrundeliegenden Suche.</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="searchQuery" type="AbstractSearchQuery" minOccurs="1" maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">Query with all informations.</xs:documentation>
+                    <xs:documentation xml:lang="de-DE">Suche mit allen Informationen.</xs:documentation>
+                </xs:annotation>
+            </xs:element>
+
+        </xs:all>
+        <xs:attributeGroup ref="common:Reference"/>
+    </xs:complexType>
+
+
+    <xs:complexType name="apartmentrent">
+        <xs:complexContent>
+            <xs:extension base="AbstractSearchQuery">
+                <xs:all>
+                    <xs:element name="price" type="common:PriceRange" minOccurs="0"/>
+                    <xs:element name="priceType" type="common:PriceType" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                            <xs:documentation xml:lang="en">pricetype (only rent per month allowed)</xs:documentation>
+                            <xs:documentation xml:lang="de-DE">Preistyp (Nur Miete pro Monat erlaubt)</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                    <xs:element name="numberofrooms" type="common:NumberOfRoomsRange" minOccurs="0" maxOccurs="1"/>
+                    <xs:element name="apartmenttypes" type="apartmentTypeList" minOccurs="0" maxOccurs="1"/>
+                    <xs:element name="freeofcourtageonly" type="TrueType" minOccurs="0"
+                                maxOccurs="1"/>
+                    <xs:element name="livingspace" type="common:AreaRange" minOccurs="0" maxOccurs="1"/>
+                    <xs:element name="heatingtypes" minOccurs="0" maxOccurs="1" type="heatingTypeList"/>
+                    <xs:element name="equipment" type="equipmentListForApartment" minOccurs="0" maxOccurs="1"/>
+                    <xs:element name="constructionyear" type="common:YearRange" minOccurs="0" maxOccurs="1"/>
+                    <xs:element name="newbuilding" type="TrueType" minOccurs="0" maxOccurs="1"/>
+                    <xs:element name="haspromotion" type="TrueFalseType" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                            <xs:documentation xml:lang="en">certificate of eligibility needed</xs:documentation>
+                            <xs:documentation xml:lang="de-DE">Wohnberechtigungsschein erforderlich</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                  <xs:element name="floor" type="common:FloorRange" minOccurs="0" maxOccurs="1"/>
+                </xs:all>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:complexType name="apartmentbuy">
+        <xs:complexContent>
+            <xs:extension base="AbstractSearchQuery">
+                <xs:all>
+                    <xs:element name="price" type="common:PriceRange" minOccurs="0" maxOccurs="1"/>
+                    <xs:element name="numberofrooms" type="common:NumberOfRoomsRange" minOccurs="0" maxOccurs="1"/>
+                    <xs:element name="apartmenttypes" type="apartmentTypeList" minOccurs="0" maxOccurs="1"/>
+                    <xs:element name="heatingtypes" type="heatingTypeList" minOccurs="0" maxOccurs="1"/>
+                    <xs:element name="freeofcourtageonly" type="TrueType" minOccurs="0"
+                                maxOccurs="1"/>
+                    <xs:element name="livingspace" type="common:AreaRange" minOccurs="0" maxOccurs="1"/>
+                    <xs:element name="equipment" type="equipmentListForApartment" minOccurs="0" maxOccurs="1"/>
+                    <xs:element name="constructionyear" type="common:YearRange" minOccurs="0" maxOccurs="1"/>
+                    <xs:element name="newbuilding" type="TrueType" minOccurs="0" maxOccurs="1"/>
+                    <xs:element name="buildingproject" type="TrueType" minOccurs="0" maxOccurs="1"/>
+                    <xs:element name="rented" type="TrueFalseType" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                            <xs:documentation xml:lang="en">rented</xs:documentation>
+                            <xs:documentation xml:lang="de-DE">vermietet</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                  <xs:element name="floor" type="common:FloorRange" minOccurs="0" maxOccurs="1"/>
+                </xs:all>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:complexType name="housebuy">
+        <xs:complexContent>
+            <xs:extension base="AbstractSearchQuery">
+                <xs:all>
+                    <xs:element name="price" type="common:PriceRange" minOccurs="0" maxOccurs="1"/>
+                    <xs:element name="numberofrooms" type="common:NumberOfRoomsRange" minOccurs="0" maxOccurs="1"/>
+                    <xs:element name="heatingtypes" type="heatingTypeList" minOccurs="0" maxOccurs="1"/>
+                    <xs:element name="freeofcourtageonly" type="TrueType" minOccurs="0"
+                                maxOccurs="1"/>
+                    <xs:element name="livingspace" type="common:AreaRange" minOccurs="0" maxOccurs="1"/>
+                    <xs:element name="equipment" type="equipmentListForHouseBuy" minOccurs="0" maxOccurs="1"/>
+                    <xs:element name="constructionyear" type="common:YearRange" minOccurs="0" maxOccurs="1"/>
+                    <xs:element name="newbuilding" type="TrueType" minOccurs="0" maxOccurs="1"/>
+                    <xs:element name="buildingproject" type="TrueType" minOccurs="0" maxOccurs="1"/>
+                    <xs:element name="constructionphasetypes"  type="constructionPhaseList" minOccurs="0" maxOccurs="1"/>
+                    <xs:element name="buildingtypes" type="buildingTypeList" minOccurs="0" maxOccurs="1"/>
+                    <xs:element name="ground" type="common:AreaRange" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                            <xs:documentation xml:lang="en">plot area</xs:documentation>
+                            <xs:documentation xml:lang="de-DE">Grundstücksfläche</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                    <xs:element name="rented" type="TrueFalseType" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                            <xs:documentation xml:lang="en">rented</xs:documentation>
+                            <xs:documentation xml:lang="de-DE">vermietet</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                </xs:all>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+
+    <xs:complexType name="houserent">
+        <xs:complexContent>
+            <xs:extension base="AbstractSearchQuery">
+                <xs:all>
+                    <xs:element name="price" type="common:PriceRange" minOccurs="0" maxOccurs="1"/>
+                    <xs:element name="livingspace" type="common:AreaRange" minOccurs="0" maxOccurs="1"/>
+                    <xs:element name="heatingtypes" type="heatingTypeList" minOccurs="0" maxOccurs="1"/>
+                    <xs:element name="buildingtypes" type="buildingTypeList" minOccurs="0" maxOccurs="1"/>
+                    <xs:element name="numberofrooms" type="common:NumberOfRoomsRange" minOccurs="0" maxOccurs="1"/>
+                    <xs:element name="constructionyear" type="common:YearRange" minOccurs="0" maxOccurs="1"/>
+                    <xs:element name="freeofcourtageonly" type="TrueType" minOccurs="0"
+                                maxOccurs="1"/>
+                    <xs:element name="equipment" type="equipmentListForHouseRent" minOccurs="0" maxOccurs="1"/>
+                    <xs:element name="newbuilding" type="TrueType" minOccurs="0" maxOccurs="1"/>
+                    <xs:element name="ground" type="common:AreaRange" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                            <xs:documentation xml:lang="en">plot area</xs:documentation>
+                            <xs:documentation xml:lang="de-DE">Grundstücksfläche</xs:documentation>
+                        </xs:annotation>
+                    </xs:element>
+                </xs:all>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:complexType name="heatingTypeList">
+        <xs:sequence>
+            <xs:element type="livingType:heatingType" name="item" minOccurs="0" maxOccurs="3"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="rentDurationList">
+        <xs:sequence>
+            <xs:element type="rentDuration" name="item" minOccurs="0" maxOccurs="4"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:simpleType name="rentDuration">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">rent durations</xs:documentation>
+            <xs:documentation xml:lang="de-DE">Mietdauer</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="weekly">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">weekly</xs:documentation>
+                    <xs:documentation xml:lang="de-DE">wochenweise</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="monthly">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">monthly</xs:documentation>
+                    <xs:documentation xml:lang="de-DE">monatsweise</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="yearly">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">1-2 years</xs:documentation>
+                    <xs:documentation xml:lang="de-DE">1 bis 2 Jahre</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="longterm">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">longterm</xs:documentation>
+                    <xs:documentation xml:lang="de-DE">langfristig</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:complexType name="AbstractSearchQuery" abstract="true">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">Query with all general informations.</xs:documentation>
+            <xs:documentation xml:lang="de-DE">Suche mit allen generellen Informationen.</xs:documentation>
+        </xs:annotation>
+    </xs:complexType>
+
+    <xs:simpleType name="TrueType">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">Enumeration for two-state boolean elements</xs:documentation>
+            <xs:documentation xml:lang="de-DE">Aufzählung für ein-status Elemente</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="true">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">yes</xs:documentation>
+                    <xs:documentation xml:lang="de-DE">Ja</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:simpleType name="TrueFalseType">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">Enumeration for two-state boolean elements</xs:documentation>
+            <xs:documentation xml:lang="de-DE">Aufzählung für zwei-status Elemente</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="true">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">true</xs:documentation>
+                    <xs:documentation xml:lang="de-DE">Ja</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="false">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">false</xs:documentation>
+                    <xs:documentation xml:lang="de-DE">Nein</xs:documentation>
+                </xs:annotation>
+            </xs:enumeration>
+        </xs:restriction>
+    </xs:simpleType>
+
+    <xs:complexType name="buildingTypeList">
+        <xs:sequence>
+            <xs:element type="livingType:buildingType" name="item" minOccurs="0" maxOccurs="12"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="apartmentTypeList">
+        <xs:sequence>
+            <xs:element type="livingType:apartmentType" name="item" minOccurs="0" maxOccurs="11"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="constructionPhaseList">
+        <xs:annotation>
+            <xs:documentation xml:lang="en">construction phase types</xs:documentation>
+            <xs:documentation xml:lang="de-DE">Bauphasen</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element type="livingType:constructionPhase" name="item" minOccurs="0" maxOccurs="4"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="equipmentListForApartment">
+        <xs:sequence>
+            <xs:element type="equipment:equipmentCriteriaForApartment" name="item" minOccurs="0" maxOccurs="10"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="equipmentListForHouseRent">
+        <xs:sequence>
+            <xs:element type="equipment:equipmentCriteriaForHouseRent" name="item" minOccurs="0" maxOccurs="5"/>
+        </xs:sequence>
+    </xs:complexType>
+    
+    <xs:complexType name="equipmentListForHouseBuy">
+        <xs:sequence>
+            <xs:element type="equipment:equipmentCriteriaForHouseBuy" name="item" minOccurs="0" maxOccurs="5"/>
+        </xs:sequence>
+    </xs:complexType>
+    
+    <xs:complexType name="livingbuysite">
+        <xs:complexContent>
+            <xs:extension base="AbstractSearchQuery">
+                <xs:all>
+                    <xs:element name="price" type="common:PriceRange" minOccurs="0" maxOccurs="1"/>
+                    <xs:element name="pricetype" type="priceTypes:LivingBuySitePriceTypeList" minOccurs="0" maxOccurs="1"/>
+                    <xs:element name="plotarea" type="common:AreaRange" minOccurs="0" maxOccurs="1"/>
+                    <xs:element name="shorttermconstructible" type="TrueType" minOccurs="0" maxOccurs="1"/>
+                    <xs:element name="buildingpermission" type="TrueType" minOccurs="0" maxOccurs="1"/>
+                    <xs:element name="siteconstructibletypes" type="sites:SiteConstructibleTypeList" minOccurs="0" maxOccurs="1"/>
+                    <xs:element name="sitedevelopmenttypes" type="sites:SiteDevelopmentTypeList" minOccurs="0" maxOccurs="1"/>
+                    <xs:element name="freeofcourtageonly" type="TrueType" minOccurs="0" maxOccurs="1"/>
+                </xs:all>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:complexType name="livingrentsite">
+        <xs:complexContent>
+            <xs:extension base="AbstractSearchQuery">
+                <xs:all>
+                    <xs:element name="price" type="common:PriceRange" minOccurs="0" maxOccurs="1"/>
+                    <xs:element name="pricetype" type="priceTypes:LivingRentSitePriceTypeList" minOccurs="0" maxOccurs="1"/>
+                    <xs:element name="plotarea" type="common:AreaRange" minOccurs="0" maxOccurs="1"/>
+                    <xs:element name="shorttermconstructible" type="TrueType" minOccurs="0" maxOccurs="1"/>
+                    <xs:element name="buildingpermission" type="TrueType" minOccurs="0" maxOccurs="1"/>
+                    <xs:element name="siteconstructibletypes" type="sites:SiteConstructibleTypeList" minOccurs="0" maxOccurs="1"/>
+                    <xs:element name="sitedevelopmenttypes" type="sites:SiteDevelopmentTypeList" minOccurs="0" maxOccurs="1"/>
+                    <xs:element name="freeofcourtageonly" type="TrueType" minOccurs="0" maxOccurs="1"/>
+                </xs:all>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:complexType name="tradesite">
+        <xs:complexContent>
+            <xs:extension base="AbstractSearchQuery">
+                <xs:all>
+                    <xs:element name="price" type="common:PriceRange" minOccurs="0" maxOccurs="1"/>
+                    <xs:element name="pricetype" type="priceTypes:TradeSitePriceTypeList" minOccurs="0" maxOccurs="1"/>
+                    <xs:element name="utilizationtradesites" type="sites:TradeSiteUtilizationList" minOccurs="0" maxOccurs="1"/>
+                    <xs:element name="plotarea" type="common:AreaRange" minOccurs="0" maxOccurs="1"/>
+                    <xs:element name="shorttermconstructible" type="TrueType" minOccurs="0" maxOccurs="1"/>
+                    <xs:element name="buildingpermission" type="TrueType" minOccurs="0" maxOccurs="1"/>
+                    <xs:element name="siteconstructibletypes" type="sites:SiteConstructibleTypeList" minOccurs="0" maxOccurs="1"/>
+                    <xs:element name="sitedevelopmenttypes" type="sites:SiteDevelopmentTypeList" minOccurs="0" maxOccurs="1"/>
+                    <xs:element name="freeofcourtageonly" type="TrueType" minOccurs="0" maxOccurs="1"/>
+                </xs:all>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+	<!-- neu -->
+    <xs:complexType name="industry">
+        <xs:complexContent>
+            <xs:extension base="AbstractSearchQuery">
+                <xs:all>
+                    <xs:element name="industrytypes" type="types:IndustryTypeList" minOccurs="0" maxOccurs="1"/>                 
+                    <xs:element name="equipment" type="types:IndustryEquipmentList" minOccurs="0" maxOccurs="1"/> 
+                    <xs:element name="totalfloorspace" type="common:AreaRange" minOccurs="0" maxOccurs="1"/> 
+                    <xs:element name="netfloorspace" type="common:AreaRange" minOccurs="0" maxOccurs="1"/> 
+                    <xs:element name="price" type="common:PriceRange" minOccurs="0" maxOccurs="1"/>
+                    <xs:element name="pricetype" type="priceTypes:CommercialPriceType" minOccurs="0" maxOccurs="1"/>
+                    <xs:element name="freeofcourtageonly" type="TrueType" minOccurs="0" maxOccurs="1"/>
+                </xs:all>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+	
+    <xs:complexType name="office">
+        <xs:complexContent>
+            <xs:extension base="AbstractSearchQuery">
+                <xs:all>
+                    <xs:element name="equipment" type="types:OfficeEquipmentList" minOccurs="0" maxOccurs="1"/>
+                    <xs:element name="numberofparkingspaces" type="common:ParkingSpaceRange" minOccurs="0" maxOccurs="1"/>
+                    <xs:element name="netfloorspace" type="common:AreaRange" minOccurs="0" maxOccurs="1"/>
+                    <xs:element name="officetypes" type="types:OfficeTypeList" minOccurs="0" maxOccurs="1"/>
+                    <xs:element name="price" type="common:PriceRange" minOccurs="0" maxOccurs="1"/>
+                    <xs:element name="pricetype" type="priceTypes:CommercialPriceType" minOccurs="0" maxOccurs="1"/>
+                    <xs:element name="freeofcourtageonly" type="TrueType" minOccurs="0" maxOccurs="1"/>
+                    <xs:element name="rentduration" minOccurs="0" maxOccurs="1" type="rentDurationList"/>
+                </xs:all>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+	
+    <xs:complexType name="specialpurpose">
+        <xs:complexContent>
+            <xs:extension base="AbstractSearchQuery">
+                <xs:all>
+                    <xs:element name="specialpurposetypes" type="types:SpecialPurposePropertyTypeList" minOccurs="0" maxOccurs="1"/>
+                    <xs:element name="equipment" type="types:CellarOnlyEquipmentList" minOccurs="0" maxOccurs="1"/>
+                    <xs:element name="totalfloorspace" type="common:AreaRange" minOccurs="0" maxOccurs="1"/>
+                    <xs:element name="price" type="common:PriceRange" minOccurs="0" maxOccurs="1"/>
+                    <xs:element name="pricetype" type="priceTypes:CommercialPriceType" minOccurs="0" maxOccurs="1"/>
+                    <xs:element name="freeofcourtageonly" type="TrueType" minOccurs="0" maxOccurs="1"/>
+                </xs:all>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+	
+    <xs:complexType name="store">
+        <xs:complexContent>
+            <xs:extension base="AbstractSearchQuery">
+                <xs:all>
+                    <xs:element name="storetypes" type="types:StoreTypeList" minOccurs="0" maxOccurs="1"/>
+                    <xs:element name="equipment" type="types:CellarOnlyEquipmentList" minOccurs="0" maxOccurs="1"/>
+                    <xs:element name="totalfloorspace" type="common:AreaRange" minOccurs="0" maxOccurs="1"/>
+                    <xs:element name="netfloorspace" type="common:AreaRange" minOccurs="0" maxOccurs="1"/>
+                    <xs:element name="locationclassification" type="types:LocationClassificationTypeList" minOccurs="0" maxOccurs="1"/>
+                    <xs:element name="price" type="common:PriceRange" minOccurs="0" maxOccurs="1"/>
+                    <xs:element name="pricetype" type="priceTypes:CommercialPriceType" minOccurs="0" maxOccurs="1"/>
+                    <xs:element name="freeofcourtageonly" type="TrueType" minOccurs="0" maxOccurs="1"/>
+                </xs:all>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:complexType name="gastronomy">
+        <xs:complexContent>
+            <xs:extension base="AbstractSearchQuery">
+                <xs:all>
+                    <xs:element name="gastronomytypes" type="types:GastronomyTypeList" minOccurs="0" maxOccurs="1"/>
+                    <xs:element name="equipment" type="types:CellarOnlyEquipmentList" minOccurs="0" maxOccurs="1"/>
+                    <xs:element name="totalfloorspace" type="common:AreaRange" minOccurs="0" maxOccurs="1"/>
+                    <xs:element name="numberofbeds" type="types:NumberRange" minOccurs="0" maxOccurs="1"/>
+                    <xs:element name="numberofseats" type="types:NumberRange" minOccurs="0" maxOccurs="1"/>
+                    <xs:element name="price" type="common:PriceRange" minOccurs="0" maxOccurs="1"/>
+                    <xs:element name="pricetype" type="priceTypes:GastronomyPriceType" minOccurs="0" maxOccurs="1"/>
+                    <xs:element name="freeofcourtageonly" type="TrueType" minOccurs="0" maxOccurs="1"/>
+                </xs:all>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:complexType name="garagerent">
+        <xs:complexContent>
+            <xs:extension base="AbstractSearchQuery">
+                <xs:all>
+                    <xs:element name="price" type="common:PriceRange" minOccurs="0" maxOccurs="1"/>
+                    <xs:element name="garagetypes" type="types:GarageTypeList" minOccurs="0" maxOccurs="1"/>
+                    <xs:element name="freeofcourtageonly" type="TrueType" minOccurs="0" maxOccurs="1"/>
+                </xs:all>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:complexType name="garagebuy">
+        <xs:complexContent>
+            <xs:extension base="AbstractSearchQuery">
+                <xs:all>
+                    <xs:element name="price" type="common:PriceRange" minOccurs="0" maxOccurs="1"/>
+                    <xs:element name="garagetypes" type="types:GarageTypeList" minOccurs="0" maxOccurs="1"/>
+                    <xs:element name="freeofcourtageonly" type="TrueType" minOccurs="0" maxOccurs="1"/>
+                </xs:all>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:complexType name="compulsoryauction">
+        <xs:complexContent>
+            <xs:extension base="AbstractSearchQuery">
+                <xs:all>
+                    <xs:element name="marketvalue" type="common:PriceRange" minOccurs="0" maxOccurs="1"/>
+                    <xs:element name="auctionobjecttypes" type="types:AuctionObjectTypeList" minOccurs="0" maxOccurs="1"/>
+                    <xs:element name="auctiontypes" type="types:AuctionTypeList" minOccurs="0" maxOccurs="1"/>
+                </xs:all>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:complexType name="investment">
+        <xs:complexContent>
+            <xs:extension base="AbstractSearchQuery">
+                <xs:all>
+                    <xs:element name="price" type="common:PriceRange" minOccurs="0" maxOccurs="1"/>
+                    <xs:element name="netfloorspace" type="common:AreaRange" minOccurs="0" maxOccurs="1"/>
+                    <xs:element name="pricepersqm" type="common:PriceRange" minOccurs="0" maxOccurs="1"/>
+                    <xs:element name="pricemultiplier" type="types:PriceMultiplierRange" minOccurs="0" maxOccurs="1"/>
+                    <xs:element name="investmenttypes" type="types:InvestmentTypeList" minOccurs="0" maxOccurs="1"/>
+                    <xs:element name="freeofcourtageonly" type="TrueType" minOccurs="0" maxOccurs="1"/>
+                </xs:all>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:complexType name="seniorcare">
+        <xs:complexContent>
+            <xs:extension base="AbstractSearchQuery">
+                <xs:all>
+                    <xs:element name="additionalservices" type="types:SeniorCareAdditionalServicesTypeList" minOccurs="0" maxOccurs="1"/>
+                    <xs:element name="equipment" type="types:SeniorCareEquipmentList" minOccurs="0" maxOccurs="1"/>
+                    <xs:element name="roomtype" type="types:SeniorCareRoomTypeList" minOccurs="0" maxOccurs="1"/>
+                    <xs:element name="caretype" type="types:SeniorCareTypeList" minOccurs="0" maxOccurs="1"/>
+                    <xs:element name="seniorcarelevel" type="types:SeniorCareLevelList" minOccurs="0" maxOccurs="1"/>
+                    <xs:element name="careof" type="types:SeniorCareCareOfList" minOccurs="0" maxOccurs="1"/>
+                </xs:all>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:complexType name="assistedliving">
+        <xs:complexContent>
+            <xs:extension base="AbstractSearchQuery">
+                <xs:all>
+                    <xs:element name="additionalservices" type="types:AssistedLivingAdditionalServicesList" minOccurs="0" maxOccurs="1"/>
+                    <xs:element name="equipment" type="types:AssistedLivingEquipmentList" minOccurs="0" maxOccurs="1"/>
+                    <xs:element name="medicalservices" type="types:AssistedLivingMedicalServicesType" minOccurs="0" maxOccurs="1"/>
+                    <xs:element name="pricetype" type="priceTypes:AssistedLivingPriceTypeList" minOccurs="0" maxOccurs="1"/>
+                </xs:all>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:complexType name="flatshareroom">
+        <xs:complexContent>
+            <xs:extension base="AbstractSearchQuery">
+                <xs:all>
+                    <xs:element name="equipment" type="types:FlatShareRoomEquipmentList" minOccurs="0" maxOccurs="1"/>
+                    <xs:element name="flatsharesize" type="types:FlatShareRoomFlatSizeType" minOccurs="0" maxOccurs="1"/>
+                    <xs:element name="freeofcourtageonly" type="TrueType" minOccurs="0" maxOccurs="1"/>
+                    <xs:element name="furniture" type="TrueFalseType" minOccurs="0" maxOccurs="1"/>
+                    <xs:element name="gender" type="types:FlatShareRoomGenderType" minOccurs="0" maxOccurs="1"/>
+                    <xs:element name="price" type="common:PriceRange" minOccurs="0" maxOccurs="1"/>
+                    <xs:element name="livingspace" type="common:AreaRange" minOccurs="0" maxOccurs="1"/> 
+                    <xs:element name="smokingallowed" type="types:FlatShareRoomSmokingAllowedType" minOccurs="0" maxOccurs="1"/>
+                    <xs:element name="startrentaldate" type="types:DMYDate" minOccurs="0" maxOccurs="1"/>
+                    <xs:element name="rentalduration" type="types:FlatShareRoomRentalDurationType"  minOccurs="0" maxOccurs="1"/>
+                </xs:all>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+    <xs:complexType name="shorttermaccommodation">
+        <xs:complexContent>
+            <xs:extension base="AbstractSearchQuery">
+                <xs:all>
+                    <xs:element name="shorttermaccommodationtype" type="types:ShortTermAccommodationType" minOccurs="0" maxOccurs="1"/>
+                    <xs:element name="startrentaldate" type="types:DMYDate" minOccurs="0" maxOccurs="1"/>
+                    <xs:element name="price" type="common:PriceRange" minOccurs="0" maxOccurs="1"/>
+                    <xs:element name="priceinterval" type="types:ShortTermAccommodationIntervalType" minOccurs="0" maxOccurs="1"/>
+                    <xs:element name="equipment" type="types:ShortTermAccommodationEquipmentList" minOccurs="0" maxOccurs="1"/>
+                    <xs:element name="nonsmoker" type="TrueFalseType" minOccurs="0" maxOccurs="1"/>  <!-- ???? -->
+                    <xs:element name="furniture" type="TrueFalseType" minOccurs="0" maxOccurs="1"/>  <!-- ???? -->
+                    <xs:element name="freeduration" type="xs:int" minOccurs="0" maxOccurs="1"/> 
+                    <xs:element name="freeinterval" type="types:ShortTermAccommodationIntervalType" minOccurs="0" maxOccurs="1"/> 
+                    <xs:element name="minnumberofpersons" type="xs:int"  minOccurs="0" maxOccurs="1"/>
+                    <xs:element name="freeofcourtageonly" type="TrueType" minOccurs="0" maxOccurs="1"/>
+                </xs:all>
+            </xs:extension>
+        </xs:complexContent>
+    </xs:complexType>
+
+</xs:schema>
