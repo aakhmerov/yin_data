@@ -1,203 +1,120 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-	<modelVersion>4.0.0</modelVersion>
-	<parent>
-		<groupId>com.yin</groupId>
-		<artifactId>big_data</artifactId>
-		<version>1.0-SNAPSHOT</version>
-	</parent>
-	
-	<packaging>jar</packaging>
-	<groupId>com.yin</groupId>
-	<name>is24 access</name>
-	<artifactId>is24</artifactId>
- <!-- <repositories>
-    <repository>
-      <id>wadl-repository</id>
-      <name>WADL Maven Repository</name>
-      <url>https://wadl.dev.java.net/nonav/repository/</url>
-    </repository>
-    <repository>
-      <id>maven2-repository.dev.java.net</id>
-      <name>Java.net Repository for Maven</name>
-      <url>http://download.java.net/maven/2/</url>
-    </repository>
-    <repository>
-      <id>wadl-snapshots</id>
-      <name>WADL Snapshots Repository</name>
-      <url>https://wadl.dev.java.net/nonav/snapshots</url>
-      <snapshots>
-        <enabled>true</enabled>
-      </snapshots>
-      <releases>
-        <enabled>false</enabled>
-      </releases>
-    </repository> 
-  </repositories>
-  <pluginRepositories>
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>com.yin</groupId>
+        <artifactId>big_data</artifactId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
 
-    <pluginRepository>
-      <id>wadl-snapshots</id>
-      <name>WADL Snapshots Repository</name>
-      <url>https://wadl.dev.java.net/nonav/snapshots</url>
-      <snapshots>
-        <enabled>true</enabled>
-      </snapshots>
-      <releases>
-        <enabled>false</enabled>
-      </releases>
-    </pluginRepository>
+    <packaging>jar</packaging>
+    <groupId>com.yin</groupId>
+    <name>is24 access</name>
+    <artifactId>is24</artifactId>
 
-  </pluginRepositories> -->
-  <dependencies>
- 
-   
-		
-    <dependency>
-			<groupId>oauth.signpost</groupId>
-			<artifactId>signpost-core</artifactId>
-			<version>1.2.1.1</version>
-		</dependency>
-		<dependency>
-			<groupId>oauth.signpost</groupId>
-			<artifactId>signpost-commonshttp4</artifactId>
-			<version>1.2.1.1</version>
-		</dependency>
-	
-		<dependency>
-	        <groupId>commons-httpclient</groupId>
-	        <artifactId>commons-httpclient</artifactId>
-	        <version>3.1</version>
-	    </dependency>
-	    <dependency>
-			<groupId>org.apache.httpcomponents</groupId>
-			<artifactId>httpclient</artifactId>
-			<version>4.3.2</version>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.httpcomponents</groupId>
-			<artifactId>httpcore</artifactId>
-			<version>4.3.2</version>
-		</dependency>
-            
-            
-		 <dependency>
+    <dependencies>
+
+
+        <dependency>
+            <groupId>oauth.signpost</groupId>
+            <artifactId>signpost-core</artifactId>
+            <version>1.2.1.1</version>
+        </dependency>
+        <dependency>
+            <groupId>oauth.signpost</groupId>
+            <artifactId>signpost-commonshttp4</artifactId>
+            <version>1.2.1.1</version>
+        </dependency>
+
+        <dependency>
+            <groupId>commons-httpclient</groupId>
+            <artifactId>commons-httpclient</artifactId>
+            <version>3.1</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.httpcomponents</groupId>
+            <artifactId>httpclient</artifactId>
+            <version>4.3.2</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.httpcomponents</groupId>
+            <artifactId>httpcore</artifactId>
+            <version>4.3.2</version>
+        </dependency>
+
+
+        <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
             <scope>test</scope>
         </dependency>
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-web</artifactId>
-			<version>${spring.version}</version>
-		</dependency>
-		
-		<dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-web</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+
+        <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-log4j12</artifactId>
             <version>1.6.1</version>
         </dependency>
-      <dependency>
-			<groupId>commons-codec</groupId>
-			<artifactId>commons-codec</artifactId>
-			<version>1.7</version>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-test</artifactId>
-			<version>${spring.version}</version>
-			<scope>Test</scope>
-		</dependency>
-  </dependencies>
-  <build>
-    <plugins>
-       <!-- <plugin>
-        <groupId>org.apache.cxf</groupId>
-        <artifactId>cxf-wadl2java-plugin</artifactId>
-        <version>2.7.1</version>
-        <executions>
-          <execution>
-            <configuration>
-              <wadlOptions>
-                <wadlOption>
-                  <wadl>src/main/wadl/realestate.xml</wadl>
-                  <packagename>com.groupestate.is24</packagename> defaults to "application"
-				  
-				   <extraargs>
-                    <extraarg>-b</extraarg>
-					<extraarg>${basedir}/src/main/resources/javabindings.xml</extraarg>
-                </extraargs>
-		   
-                </wadlOption>
-				
-              </wadlOptions>
-            </configuration>
-            <goals>
-              <goal>wadl2java</goal>
-            </goals>
-          </execution>
-        </executions>
-      </plugin> -->
-      
-      <plugin>
-          <groupId>org.jvnet.jaxb2.maven2</groupId>
-          <artifactId>maven-jaxb2-plugin</artifactId>
-          <version>0.8.1</version>
-          <executions>
-              <execution>
-                  <phase>generate-sources</phase>
-                  <goals>
-                      <goal>generate</goal>
-                  </goals>
-              </execution>
-          </executions>
-          <configuration>
-              <schemaDirectory>
-                  src/main/resources/schema
-              </schemaDirectory>
-              <schemaIncludes>
-              	  <include>common-1.0.xsd</include>
-                  <include>expose-1.0.xsd</include>
-              </schemaIncludes>
-              <!-- <schemas>                                                                                      
-			        <schema><url>http://rest.immobilienscout24.de/restapi/api/search/v1.0/?_wadl&_schema&_file=classpath:/de/is24/common/webservice/xml/xlink.xsd</schema></url>
-					<schema><url>http://rest.immobilienscout24.de/restapi/api/search/v1.0/?_wadl&_schema&_file=classpath:/de/is24/common/webservice/xml/common-1.0.xsd</schema></url>
-					<schema><url>http://rest.immobilienscout24.de/restapi/api/search/v1.0/?_wadl&_schema&_file=classpath:/de/is24/search/webservice/xml/common-1.0.xsd</schema></url>
-					<schema><url>http://rest.immobilienscout24.de/restapi/api/search/v1.0/?_wadl&_schema&_file=classpath:/de/is24/search/webservice/xml/searcher-1.0.xsd</schema></url>
-					<schema><url>http://rest.immobilienscout24.de/restapi/api/search/v1.0/?_wadl&_schema&_file=classpath:/de/is24/search/webservice/xml/search-1.0.xsd</schema></url>
-					<schema><url>http://rest.immobilienscout24.de/restapi/api/search/v1.0/?_wadl&_schema&_file=classpath:/de/is24/search/webservice/xml/savedSearch-1.0.xsd</schema></url>
-					<schema><url>http://rest.immobilienscout24.de/restapi/api/search/v1.0/?_wadl&_schema&_file=classpath:/de/is24/search/webservice/xml/saved_search_2_0/savedSearch-2.0.xsd</schema></url>
-					<schema><url>http://rest.immobilienscout24.de/restapi/api/search/v1.0/?_wadl&_schema&_file=classpath:/de/is24/search/webservice/xml/saved_search_2_0/savedSearch-livingTypes-2.0.xsd</schema></url>
-					<schema><url>http://rest.immobilienscout24.de/restapi/api/search/v1.0/?_wadl&_schema&_file=classpath:/de/is24/search/webservice/xml/saved_search_2_0/savedSearch-priceTypes-2.0.xsd</schema></url>
-					<schema><url>http://rest.immobilienscout24.de/restapi/api/search/v1.0/?_wadl&_schema&_file=classpath:/de/is24/search/webservice/xml/saved_search_2_0/savedSearch-types-2.0.xsd</schema></url>
-					<schema><url>http://rest.immobilienscout24.de/restapi/api/search/v1.0/?_wadl&_schema&_file=classpath:/de/is24/search/webservice/xml/saved_search_2_0/savedSearch-sites-2.0.xsd</schema></url>
-					<schema><url>http://rest.immobilienscout24.de/restapi/api/search/v1.0/?_wadl&_schema&_file=classpath:/de/is24/search/webservice/xml/shortlist-1.0.xsd</schema></url>
-					<schema><url>http://rest.immobilienscout24.de/restapi/api/search/v1.0/?_wadl&_schema&_file=classpath:/de/is24/search/webservice/xml/region-1.0.xsd</schema></url>
-					<schema><url>http://rest.immobilienscout24.de/restapi/api/search/v1.0/?_wadl&_schema&_file=classpath:/de/is24/search/webservice/xml/expose-1.0.xsd</schema></url>
-					 <schema><url>http://rest.immobilienscout24.de//restapi/api/search/v1.0/?_wadl&_schema&_file=classpath:/de/is24/platform/user/webservice/xml/user-1.0.xsd</schema></url>
-                                                                             
-			    </schemas>  -->
-              <generateDirectory />
-              <generatePackage>com.yin.bigdata.is24</generatePackage>
-              <extension>true</extension>
-              <bindingDirectory>${project.basedir}/src/main/resources/xjb</bindingDirectory>
-              <args>
-                  <arg>-Xannotate</arg>
-               </args>
-          </configuration>
-          <dependencies>
-	        <dependency>
-	            <groupId>org.jvnet.jaxb2_commons</groupId>
-	            <artifactId>jaxb2-basics-annotate</artifactId>
-	            <version>0.6.4</version>
-	        </dependency>
-	        <dependency>
-	            <groupId>com.sun.codemodel</groupId>
-	            <artifactId>codemodel</artifactId>
-	            <version>2.6</version>
-	        </dependency>
-	    </dependencies>
-      </plugin>
-    </plugins>
-  </build>
+        <dependency>
+            <groupId>commons-codec</groupId>
+            <artifactId>commons-codec</artifactId>
+            <version>1.7</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-test</artifactId>
+            <version>${spring.version}</version>
+            <scope>Test</scope>
+        </dependency>
+    </dependencies>
+    <build>
+        <plugins>
+
+            <plugin>
+                <groupId>org.jvnet.jaxb2.maven2</groupId>
+                <artifactId>maven-jaxb2-plugin</artifactId>
+                <version>0.8.1</version>
+                <executions>
+                    <execution>
+                        <phase>generate-sources</phase>
+                        <goals>
+                            <goal>generate</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <schemaDirectory>
+                        src/main/resources/schema
+                    </schemaDirectory>
+                    <schemaIncludes>
+                        <include>common-1.0.xsd</include>
+                        <include>expose-1.0.xsd</include>
+                    </schemaIncludes>
+                    <generateDirectory/>
+                    <generatePackage>com.yin.bigdata.is24</generatePackage>
+                    <extension>true</extension>
+                    <bindingDirectory>${project.basedir}/src/main/resources/xjb</bindingDirectory>
+                    <args>
+                        <arg>-Xannotate</arg>
+                    </args>
+                </configuration>
+                <dependencies>
+                    <dependency>
+                        <groupId>org.jvnet.jaxb2_commons</groupId>
+                        <artifactId>jaxb2-basics-annotate</artifactId>
+                        <version>0.6.4</version>
+                    </dependency>
+                    <dependency>
+                        <groupId>com.sun.codemodel</groupId>
+                        <artifactId>codemodel</artifactId>
+                        <version>2.6</version>
+                    </dependency>
+                </dependencies>
+            </plugin>
+        </plugins>
+    </build>
 </project>
