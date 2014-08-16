@@ -41,9 +41,6 @@ public class Is24Client{
 	
 	
 	private String mainUrl = "http://rest.immobilienscout24.de/restapi/";
-	
-	
-	
 
 	private RestTemplate restTemplate;
 	
@@ -153,7 +150,7 @@ public class Is24Client{
 			cre.setConstrYear(constrYear);
 			cre.setHeatingType(((ApartmentBuy)expose.getRealEstate()).getHeatingType().name());
 			cre.setBalcony(((ApartmentBuy)expose.getRealEstate()).isBalcony());
-			cre.setExposeeId(exposeeId);
+			cre.setExposeeId(exposseId);
 		}
 		
 		return cre;
