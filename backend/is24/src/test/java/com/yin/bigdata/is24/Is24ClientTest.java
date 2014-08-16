@@ -1,5 +1,9 @@
 package com.yin.bigdata.is24;
 
+import java.io.BufferedReader;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,10 +16,23 @@ public class Is24ClientTest {
 
 	@Autowired
 	private Is24Client client;
-
+	
 	@Test
+	public void testLoad(){
+		client.getExposees("1276003001046");
+	}
+	
 	public void test() throws Exception{
 		
-		client.getExposeData("http://www.immobilienscout24.de/expose/74831504?referrer=RESULT_LIST_LISTING&navigationServiceUrl=%2FSuche%2Fcontroller%2FexposeNavigation%2Fnavigate.go%3FsearchUrl%3D%2FSuche%2FS-T%2FHaus-Kauf%2FBerlin%2FBerlin%26exposeId%3D74831504&navigationHasPrev=false&navigationHasNext=true&navigationBarType=RESULT_LIST&searchId=91158670-1412-364c-ac92-a27d1aa9bcb1&resultListPosition=1");
+		
+		InputStream mitte1 = this.getClass().getResourceAsStream("/mitte1.txt");
+		
+		BufferedReader in = new BufferedReader(new InputStreamReader(mitte1));
+		String line = null;
+
+		while((line = in.readLine()) != null) {
+		    client.getExposeData("http://www.immobilienscout24.de/expose/" + line);
+}
+		
 	}
 }

@@ -93,6 +93,10 @@
                     <schemaIncludes>
                         <include>common-1.0.xsd</include>
                         <include>expose-1.0.xsd</include>
+                         
+                        
+                        <!--<include>search-1.0.xsd</include> -->
+                        
                     </schemaIncludes>
                     <generateDirectory/>
                     <generatePackage>com.yin.bigdata.is24</generatePackage>
