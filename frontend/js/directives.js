@@ -8,7 +8,7 @@
  * @param  {object} moment
  * @private
  */
-define(['globals', 'angular', 'moment', './configs', './services'],
+define(['globals', 'angular', 'moment', './configs', './services', 'async!https://maps.googleapis.com/maps/api/js?key=AIzaSyCBZEaZXYeqrpAOom_ww7fSHJX0VJ8pj0c&sensor=true&region=GE&libraries=places&language=EN', 'infobox'],
     function(globals, angular, moment) {
 
         /**

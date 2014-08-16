@@ -32,10 +32,10 @@ define(['globals', 'angular', './controllers', 'angular-ui-router'], function(gl
                         }
                     }
                 })
-                .state('search', {
+                .state('home.search', {
                     url: '/search',
                     views: {
-                        'main': {
+                        'results': {
                             templateUrl: basePartialsUrl + 'search.html',
                             controller: controllers.SearchController
                         }

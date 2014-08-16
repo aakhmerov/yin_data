@@ -8,6 +8,8 @@
  */
 requirejs.config({
     paths: {
+        'async': '../components/requirejs-plugins/async',
+        'infobox': '../components/gmaps-utility-library/infobox',
         'jquery': 'http://code.jquery.com/jquery-2.1.1.min',
         'bootstrap': 'http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min',
         'angular': 'https://ajax.googleapis.com/ajax/libs/angularjs/1.3.0-beta.18/angular.min',
@@ -15,7 +17,7 @@ requirejs.config({
         'angular-sanitize': 'https://ajax.googleapis.com/ajax/libs/angularjs/1.3.0-beta.18/angular-sanitize.min',
         // 'angular-ui-router': 'http://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.10/angular-ui-router.min',
         'angular-ui-router': '../components/angular-ui-router/angular-ui-router',
-        'moment': 'http://cdnjs.cloudflare.com/ajax/libs/moment.js/2.7.0/moment.min',
+        'moment': 'http://cdnjs.cloudflare.com/ajax/libs/moment.js/2.7.0/moment.min'
     },
     shim: {
         'bootstrap': {
@@ -35,6 +37,9 @@ requirejs.config({
         },
         'angular-ui-router': {
             deps: ['angular']
+        },
+        'infobox': {
+            deps: ['async', 'async!https://maps.googleapis.com/maps/api/js?key=AIzaSyCBZEaZXYeqrpAOom_ww7fSHJX0VJ8pj0c&sensor=true&region=GE&libraries=places&language=EN']
         }
     }
 });
@@ -62,7 +67,8 @@ require(['globals',
         './configs', 
         'angular-animate', 
         'angular-sanitize', 
-        'angular-ui-router'],
+        'angular-ui-router',
+        'infobox'],
     function(globals, 
             $, 
             moment, 
