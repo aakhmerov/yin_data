@@ -2,13 +2,13 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
-		<groupId>com.groupestate.webapp</groupId>
-		<artifactId>groupestate-parent</artifactId>
+		<groupId>com.yin</groupId>
+		<artifactId>big_data</artifactId>
 		<version>1.0-SNAPSHOT</version>
 	</parent>
 	
 	<packaging>jar</packaging>
-	<groupId>com.groupestate.webapp</groupId>
+	<groupId>com.yin</groupId>
 	<name>is24 access</name>
 	<artifactId>is24</artifactId>
  <!-- <repositories>
@@ -50,11 +50,7 @@
 
   </pluginRepositories> -->
   <dependencies>
-  <dependency>
-            <groupId>com.groupestate.webapp</groupId>
-            <artifactId>groupestate-realestate-portal-access</artifactId>
-			<version>${project.version}</version>
-        </dependency>
+ 
    
 		
     <dependency>
@@ -85,12 +81,27 @@
 		</dependency>
             
             
-		<dependency>
+		 <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
-            <version>${junit.version}</version>
-            <scope>Test</scope>
+            <scope>test</scope>
         </dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-web</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+		
+		<dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-log4j12</artifactId>
+            <version>1.6.1</version>
+        </dependency>
+      <dependency>
+			<groupId>commons-codec</groupId>
+			<artifactId>commons-codec</artifactId>
+			<version>1.7</version>
+		</dependency>
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-test</artifactId>
@@ -167,7 +178,7 @@
                                                                              
 			    </schemas>  -->
               <generateDirectory />
-              <generatePackage>com.groupestate.is24</generatePackage>
+              <generatePackage>com.yin.bigdata.is24</generatePackage>
               <extension>true</extension>
               <bindingDirectory>${project.basedir}/src/main/resources/xjb</bindingDirectory>
               <args>
