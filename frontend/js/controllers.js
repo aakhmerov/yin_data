@@ -27,28 +27,30 @@ define(['angular', 'moment', './filters'], function(angular, moment) {
             $scope.api = api;
 
             $scope.timeFilter = {
-                start: [0, 10000],
+                start: $scope.Data.search.history.year,
                 range: {
-                    'min': [ 0 ],
-                    'max': [ 10000 ]
+                    'min': [ 2008 ],
+                    'max': [ 2014 ]
                 },
-                connect: true,
-                step: 100,
-                margin: 1000,
+                step: 1,
                 serialization: {
-                    upper: [$.Link({
+                    lower: [$.Link({
                         target: '-tooltip-<div class="sb-nus-tooltip"></div>',
                         method: function ( value ) {
                             $(this).html(
                                 '<span>' + value + '</span>'
                             );
                         }
-                    })]
+                    })],
+                    format: {
+                        decimals: 0,
+                        mark: ','
+                    }
                 }
             };
             $scope.timeFilter.set = function(e, slider) {
-                angular.noop(); // TODO api call
-            }
+                this.Data.search.history.year = Number(slider);
+            }.bind($scope);
             $scope.timeFilter.slide = function(e, slider) {
                 // var slider = angular.element(e.currentTarget);
                 // var sliderWidth = angular.element(e.currentTarget).width();
