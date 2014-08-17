@@ -6,7 +6,9 @@ import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
+import com.yin.bigdata.api.domain.entities.AveragePriceObject;
 import com.yin.bigdata.api.domain.entities.EstateObject;
+import com.yin.bigdata.api.domain.repositories.AveragePriceObjectRepository;
 import com.yin.bigdata.api.domain.repositories.ObjectsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -33,6 +35,9 @@ public class AllDataRestService {
     @Autowired
     private RealEstatesRepository realEstatesRepository;
 
+    @Autowired
+    private AveragePriceObjectRepository averagePriceObjectRepository;
+
     @GET
     @Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
     @Consumes({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
@@ -57,5 +62,12 @@ public class AllDataRestService {
     public Iterable<EstateObject> getAll3() {
         Page <EstateObject> p1 = this.objectsRepository.findAll(new PageRequest(1, 20));
         return p1.getContent();
+    }
+    @GET
+    @Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
+    @Consumes({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
+    @Path("/all4")
+    public Iterable<AveragePriceObject> getAll4() {
+        return averagePriceObjectRepository.findAll();
     }
 }
