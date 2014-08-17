@@ -436,5 +436,17 @@ define(['globals', 'angular', 'moment', './configs', './services', 'async!https:
                         });
                     }
                 }
+            }]).
+            directive('leftBlock', ['$window', function($window) {
+                return {
+                    restrict: 'A',
+                    link: function (scope, elm, attr) {
+                        scope.resizeFn = function() {
+                            elm.height(angular.element($window).height() - 132);
+                        }
+                        scope.resizeFn();
+                        angular.element($window).resize(scope.resizeFn);
+                    }
+                }
             }]);
     });

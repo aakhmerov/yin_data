@@ -94,11 +94,12 @@ define(['globals', 'angular', 'moment', './configs'],
                         get: function() {
                             return $http({
                                 method: 'GET',
-                                url: $window.location.origin + '/yin-api/services/offers/skylines', // replace with real api url
+                                // url: $window.location.origin + '/yin-api/services/offers/skylines', // replace with real api url
+                                url: $window.location.origin + '/dummy_data/skylines.json', // replace with real api url
                                 data: {
                                     lat: lat,
                                     lng: lng,
-                                    limit: 5
+                                    limit: 20
                                 }
                             });
                         }

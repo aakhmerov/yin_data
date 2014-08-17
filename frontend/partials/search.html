@@ -1,16 +1,24 @@
 <div class="row">
-	<div class="col-sm-6 search-left apartment_row" ng-repeat="result in apartments">
-		<div>
-			<img src="/img/apartment.png" />
+	<div class="col-sm-6 search-left apartment_row">
+		<div class="media margin-top-20" ng-repeat="result in apartments">
+		  <a class="pull-left" href="#">
+		    <img class="media-object" src="/img/apartment.png" />
+		  </a>
+		  <div class="media-body">
+		    <h4 class="media-heading">{{result.ueberschrift}}</h4>
+		    <div class="row">
+		    	<div class="col-xs-6">
+					<strong>{{result.strasse}} {{result.hausnr}}</strong><br />
+					<strong>Size:</strong> {{result.wohnflaeche}}m<sup>2</sup>, <strong>Rooms:</strong> {{result.zimmeranzahl}}<br />		    		
+		    	</div>
+		    	<div class="col-xs-6">
+					<strong>Floors:</strong> {{result.etage}}
+					<strong>Price to buy:</strong> {{result.kaufpreis}} &#8364;<br />
+					<strong>Utilities:</strong> {{result.nebenkosten}} &#8364;, <strong>Brokerage:</strong> {{result.mieteinnahmenpromonat}} &#8364;
+		    	</div>
+		    </div>
+		  </div>
 		</div>
-		<div class="apartment_details">
-
-			<strong>{{result.ueberschrift}}</strong><br />
-			<strong>{{result.strasse}} {{result.hausnr}}</strong><br />
-			<strong>Size:</strong> {{result.wohnflaeche}}m<sup>2</sup>, <strong>Rooms:</strong> {{result.zimmeranzahl}}<br />
-			<strong>Floors:</strong> {{result.etage}}
-			<strong>Price to buy:</strong> {{result.kaufpreis}} &#8364;<br />
-			<strong>Utilities:</strong> {{result.nebenkosten}} &#8364;, <strong>Brokerage:</strong> {{result.mieteinnahmenpromonat}} &#8364;
-		</div>
+		<div>			
 	</div>
 </div>
