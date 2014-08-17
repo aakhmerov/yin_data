@@ -22,7 +22,7 @@ public class Is24ClientTest {
 	public void testLoad(){
 		List<String> s = client.getExposees("1276003001046");
 		for(String id :s ){
-			REExpose ret=  client.getExposeData("http://www.immobilienscout24.de/expose/" + id);
+			REExpose ret=  client.getExposeData("http://www.immobilienscout24.de/expose/" + id, "1276003001046");
 			if(ret != null){
 				System.out.println(ret.getConstrYear());
 			}
@@ -39,7 +39,7 @@ public class Is24ClientTest {
 		String line = null;
 
 //		while((line = in.readLine()) != null) {
-		REExpose ret=  client.getExposeData("http://www.immobilienscout24.de/expose/76111956");
+		REExpose ret=  client.getExposeData("http://www.immobilienscout24.de/expose/76111956", "1276003001046");
 //}
 		System.out.println(ret.getConstrYear());
 	}

@@ -65,7 +65,16 @@ public class Is24Client{
 	
 
 	public List<String> getExposees(String geoCode){
-		InputStream mitte1 = this.getClass().getResourceAsStream("/mitte1.txt");
+		InputStream mitte1 = null;
+		if ( "1276003001046".equals(geoCode)){
+			mitte1 = this.getClass().getResourceAsStream("/mitte1.txt");
+		}
+		if ( "1276003001034".equals(geoCode)){
+			mitte1 = this.getClass().getResourceAsStream("/xberg1.txt");
+		}
+		if("1276003001017".equals(geoCode)){
+			mitte1 = this.getClass().getResourceAsStream("/fh1.txt");
+		}
 		List<String> list = new ArrayList<String>();
 		BufferedReader in = new BufferedReader(new InputStreamReader(mitte1));
 		String line = null;
@@ -81,7 +90,7 @@ public class Is24Client{
 		return list;
 	}
 //		List<String> list = new ArrayList<String>();
-//		
+		
 //		String request = mainUrl +"api/search/v1.0/search/region?realestatetype=apartmentbuy&geocodes=" + geoCode+ "&pageSize=200";
 //		LOGGER.info(request);
 //		ResponseEntity<String> resp = restTemplate.getForEntity(request , String.class);
@@ -124,7 +133,7 @@ public class Is24Client{
 //		return list ;
 //	}
 	
-	public REExpose getExposeData(String url){
+	public REExpose getExposeData(String url, String geoCode){
 		try {
 			
 			LOGGER.info("accessing: " + url);
@@ -136,7 +145,7 @@ public class Is24Client{
 				exposeeId = tokenizer.nextToken();
 			}
 			
-			return getExposeData( Long.parseLong(exposeeId));
+			return getExposeData( Long.parseLong(exposeeId),geoCode);
 		} catch (Exception e) {
 			LOGGER.error("problem accessing is24", e);
 			
@@ -146,7 +155,7 @@ public class Is24Client{
 	}
 	
 	
-	public REExpose getExposeData(Long exposseId) throws Exception{
+	public REExpose getExposeData(Long exposseId, String geoCode) throws Exception{
 		
 		REExpose cre = new REExpose();
 		ResponseEntity<Expose> response = restTemplate.getForEntity(mainUrl +"/api/search/v1.0/expose/" + exposseId, Expose.class);
@@ -184,6 +193,7 @@ public class Is24Client{
 			}
 			cre.setBalcony(((ApartmentBuy)expose.getRealEstate()).isBalcony());
 			cre.setExposeeId(exposseId);
+			cre.setGeoCode(geoCode);
 		}
 		
 		return cre;

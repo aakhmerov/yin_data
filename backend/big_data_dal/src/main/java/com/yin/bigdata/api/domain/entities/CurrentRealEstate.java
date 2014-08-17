@@ -22,6 +22,8 @@ public class CurrentRealEstate extends AbstractPersistable<Long> {
 	private String heatingType;
 	private boolean balcony;
 	private boolean courtage;
+	private String geoCode;
+	
 	public long getExposeeId() {
 		return exposeeId;
 	}
@@ -89,6 +91,16 @@ public class CurrentRealEstate extends AbstractPersistable<Long> {
 	}
 	public void setCourtage(boolean courtage) {
 		this.courtage = courtage;
+	}
+
+
+	public String getGeoCode() {
+		return geoCode;
+	}
+
+
+	public void setGeoCode(String geoCode) {
+		this.geoCode = geoCode;
 	}
 	
 	

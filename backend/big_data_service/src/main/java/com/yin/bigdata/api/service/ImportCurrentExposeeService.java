@@ -24,24 +24,29 @@ public class ImportCurrentExposeeService {
 
 	@Transactional
 	public void importExposees(String geoCode){
+		//MITTE: 1276003001046
+		//KREUZBERG : 1276003001034
 		
+		//FH: 1276003001017
+		geoCode = "1276003001046";
 		List<String> ids = is24Client.getExposees(geoCode);
 		for( String id: ids){
 			
 			if ( currentRealEstateRepository.findForIsExposeeID(Long.parseLong(id)).size() == 0){
-				REExpose expose = is24Client.getExposeData("http://www.immobilienscout24.de/expose/" + id);
+				REExpose expose = is24Client.getExposeData("http://www.immobilienscout24.de/expose/" + id, geoCode);
 				if (expose != null){
 					CurrentRealEstate cre = new CurrentRealEstate();
 					cre.setBalcony(expose.isBalcony());
 					cre.setCondition(expose.getCondition());
 					cre.setConstrYear(expose.getConstrYear());
-					cre.setExposeeId(expose.getExposeeId());
+					cre.setExposeeId(Long.parseLong(id));
 					cre.setHeatingType(expose.getHeatingType());
 					cre.setLatitude(expose.getLatitude());
 					cre.setLongitude(expose.getLongitude());
 					cre.setPrices(expose.getPrices());
 					cre.setRooms(expose.getRooms());
 					cre.setSize(expose.getSize());
+					cre.setGeoCode(geoCode);
 					currentRealEstateRepository.save(cre);
 				}
 			}

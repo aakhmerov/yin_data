@@ -9,6 +9,7 @@
         <param-value>
             classpath:webContext.xml
             classpath:securityContext.xml
+            classpath:is24-context.xml
         </param-value>
     </context-param>
 

@@ -1,13 +1,15 @@
 create table current_real_estate (
+id serial NOT NULL,
 exposeeId	NUMERIC(20,0),
 prices	NUMERIC(20,0),
-longitude NUMERIC(20,0),
-latitude NUMERIC(20,0),
+longitude NUMERIC(20,10),
+latitude NUMERIC(20,10),
 size NUMERIC(20,0),
 rooms NUMERIC(20,0),
-constrYear INT
-condition VARCHAR(30),
-heatingType VARCHAR(30),
+constrYear INTEGER,
+condition VARCHAR(300),
+heatingType VARCHAR(300),
 balcony BOOLEAN,
-courtage BOOLEAN
+courtage BOOLEAN,
+geocode VARCHAR(300)
 );

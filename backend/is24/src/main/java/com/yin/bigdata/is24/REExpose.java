@@ -14,6 +14,10 @@ public class REExpose {
 	private String heatingType;
 	private boolean balcony;
 	private boolean courtage;
+	/**
+	 * 
+	 */
+	private String geoCode;
 	public double getPrices() {
 		return prices;
 	}
@@ -79,6 +83,12 @@ public class REExpose {
 	}
 	public void setExposeeId(long exposeeId) {
 		this.exposeeId = exposeeId;
+	}
+	public String getGeoCode() {
+		return geoCode;
+	}
+	public void setGeoCode(String geoCode) {
+		this.geoCode = geoCode;
 	}
 	
 	
