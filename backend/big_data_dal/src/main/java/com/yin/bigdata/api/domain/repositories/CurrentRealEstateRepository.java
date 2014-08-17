@@ -15,5 +15,8 @@ public interface CurrentRealEstateRepository extends PagingAndSortingRepository<
 	@Query("SELECT e FROM CurrentRealEstate e WHERE e.exposeeId = (:exposeeId)")
 	public List<CurrentRealEstate> findForIsExposeeID(@Param("exposeeId") long exposeeId);
 	
+	@Query("SELECT e FROM CurrentRealEstate e WHERE e.geoCode = (:geocode)")
+	public List<CurrentRealEstate> findForGeocode(@Param("geocode") String geocode);
+	
 
 }
