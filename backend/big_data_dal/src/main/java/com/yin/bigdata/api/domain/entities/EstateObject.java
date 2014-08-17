@@ -46,7 +46,10 @@ public class EstateObject {
     private Boolean keller;
     private Boolean barrierefrei;
     private Boolean denkmalobjekt;
-
+    @Column(name = "o_is_skyline")
+    private Boolean isSkyline;
+    @Column(name = "o_dominated_by")
+    private Long dominatedBy;
 
     public Long getId() {
         return id;
@@ -286,5 +289,21 @@ public class EstateObject {
 
     public void setDenkmalobjekt(Boolean denkmalobjekt) {
         this.denkmalobjekt = denkmalobjekt;
+    }
+
+    public Boolean getIsSkyline() {
+        return isSkyline;
+    }
+
+    public void setIsSkyline(Boolean isSkyline) {
+        this.isSkyline = isSkyline;
+    }
+
+    public Long getDominatedBy() {
+        return dominatedBy;
+    }
+
+    public void setDominatedBy(Long dominatedBy) {
+        this.dominatedBy = dominatedBy;
     }
 }
