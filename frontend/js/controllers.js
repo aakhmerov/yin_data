@@ -92,6 +92,7 @@ define(['angular', 'moment', './filters'], function(angular, moment) {
      */
     controllers.SearchController = ['$scope', 'Data', 'api',
         function($scope, Data, api) {
+            var lat = 1, lng = 1, timestamp = 0, sideLength = 1;
 
             api.apartments.get().then(
                 // success
@@ -102,34 +103,16 @@ define(['angular', 'moment', './filters'], function(angular, moment) {
                 function () {}
             );
 
-
-            //var lat, lng, radius;
-
-            // api.predictions.get(lat, lng, radius).then(
-            //     // success rseponse
-            //     function (response) {
-                    /*
-                     * response object will look like this:
-                     {
-                        // one entry for each grid containing all the price values
-                        // for the past years
-                        {
-                            lat1: Number,
-                            lng1: Number,
-                            lat2: Number,
-                            lng2: Number,
-                            prices: {
-                                averageSellprices...
-                            }
-                        }
-                     }
-                    **/
-                // },
-                // // error response
-                // function (response) {
-                //     // think about error handling
-                // }
-            // );
+            api.predictions.get(lat, lng, timestamp, sideLength).then(
+                // success rseponse
+                function (response) {
+                    angular.noop();
+                },
+                // error response
+                function (error) {
+                    // think about error handling
+                }
+            );
         }
     ];
 
