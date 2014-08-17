@@ -7,7 +7,7 @@ import java.util.Date;
 /**
  * Created by aakhmerov on 16/08/14.
  */
-public class DistrictData extends AbstractPersistable<Long> {
+public class DistrictData {
 
     private String GKZ;
     private Long OBID;

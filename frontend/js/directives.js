@@ -8,7 +8,7 @@
  * @param  {object} moment
  * @private
  */
-define(['globals', 'angular', 'moment', './configs', './services', 'async!https://maps.googleapis.com/maps/api/js?key=AIzaSyCBZEaZXYeqrpAOom_ww7fSHJX0VJ8pj0c&sensor=true&region=GE&libraries=places&language=EN', 'infobox', 'typeaheadjs'],
+define(['globals', 'angular', 'moment', './configs', './services', 'async!https://maps.googleapis.com/maps/api/js?key=AIzaSyCBZEaZXYeqrpAOom_ww7fSHJX0VJ8pj0c&sensor=true&region=GE&libraries=places&language=EN', 'infobox', 'typeaheadjs', 'nouislider'],
     function(globals, angular, moment) {
 
         /**
@@ -33,7 +33,7 @@ define(['globals', 'angular', 'moment', './configs', './services', 'async!https:
             /**
             * TODO: add description
             */
-            directive('sbSearchInput', [ "$window", "$location", "Data", function($window, $location, Data) {
+            directive('sbSearchInput', [ "$window", "$location", '$state', "Data", function($window, $location, $state, Data ) {
                 return {
                     restrict: 'EA',
                     require: 'ngModel',
@@ -45,7 +45,6 @@ define(['globals', 'angular', 'moment', './configs', './services', 'async!https:
                         scope.Data = Data;
                         scope.Data.sbSearchInput = {};
                         scope.Data.sbSearchInput.BloodhoundFactory = {};
-                        scope.lang = Data.getLang();
 
                         scope.autocomplete = new google.maps.places.AutocompleteService();
                         
@@ -61,7 +60,7 @@ define(['globals', 'angular', 'moment', './configs', './services', 'async!https:
                                     if (scope.autocomplete) {
                                         scope.autocomplete.getPlacePredictions({ 
                                             input: query, 
-                                            // componentRestrictions : scope.countryRestrict,
+                                            componentRestrictions : {country: 'de'},
                                             types: ['geocode']
                                         }, function(predictions, status) {
                                           if (status != google.maps.places.PlacesServiceStatus.OK) {
@@ -73,32 +72,44 @@ define(['globals', 'angular', 'moment', './configs', './services', 'async!https:
                                     }
                                 },
                                 templates: {
-                                    suggestion: Handlebars.compile([
-                                        '<p class="repo-name">{{description}}</p>'
-                                    ].join('')),
+                                    suggestion: function(suggestionObj) {
+                                        var element = [
+                                            '<p class="repo-name">' + suggestionObj.description + '</p>'
+                                        ].join('\n');
+                                        return element;
+                                    },
                                     header: '<h5 class="autocomplete-header">' + '<img class="pull-right" src="' + $location.protocol() + "://" + $location.host()+ ":" + $location.port() + '/img/pbg.png"></></h5>'
                                 }
                             });
 
-                        // scope._onAutoCompletion = function($e, data, data_set) {
-                        //     if (!$.isEmptyObject(data)){
-                        //         scope.Data.search.type = data_set;
-                        //         if (data_set === "business") {
-                        //             scope.Data.search.id = data.id;
-                        //         } else {
-                        //             scope.Data.search.id = data.description;
-                        //         }
-                        //         scope.Data.search.location = data;
-                        //         scope.$apply();
-                        //     }
-                        // }
+                        scope._onAutoCompletion = function($e, data, data_set) {
+                            if (!$.isEmptyObject(data)){
+                                scope.Data.search.query = data.description;
+                                scope.Data.search.location = data;
+                                var address = "";
+                                var geocoder = new google.maps.Geocoder();
+                                geocoder.geocode({ address: scope.Data.search.query }, function(results, status) {
+                                    if (status == google.maps.GeocoderStatus.OK) {
+                                        var latlng = results[0].geometry.location;
+                                        scope.Data.search.latlng = latlng;
+                                        if (!scope.Data.search.date) {
+                                            scope.Data.search.date = moment();
+                                        }
+                                        $state.go('home.search', {latlng:'@' + latlng.lat() + "," + latlng.lng(), timestamp: scope.Data.search.date.valueOf()});
+                                    } else {
+                                        alert('Geocode was not successful for the following reason: ' + status);
+                                    }
+                                });
+                                scope.$apply();
+                            }
+                        }
 
                         // elm.keyup(function (e) {
                         //     scope._onAutoCompletion(e, {}, "");
                         // });
-                        // // when selected item or autocompleted
-                        // elm.on('typeahead:autocompleted', scope._onAutoCompletion);
-                        // elm.on('typeahead:selected', scope._onAutoCompletion);
+                        // when selected item or autocompleted
+                        elm.on('typeahead:autocompleted', scope._onAutoCompletion);
+                        elm.on('typeahead:selected', scope._onAutoCompletion);
 
                         // // fixing typeahead width
                         // // angular.element('.twitter-typeahead .tt-hint').addClass('col-md-12');
@@ -139,7 +150,6 @@ define(['globals', 'angular', 'moment', './configs', './services', 'async!https:
                         scope.Data.sbMap.loaded = false;
                     
                         scope.coords = {};
-                        scope.coords = data;
 
                         if (!scope.Data.search.query) {
                             scope.coords.lat = "52.5075419";
@@ -147,10 +157,10 @@ define(['globals', 'angular', 'moment', './configs', './services', 'async!https:
                             scope.coords.city = "Berlin, Germany";
                             scope.Data.search.query = scope.coords.city;
                             scope.Data.search.type = "query";
-                            scope.Data.search.latlng = scope.coords.lat + "," + scope.coords.lng;                            
+                            scope.Data.search.latlng = new google.maps.LatLng(Number(scope.coords.lat), Number(scope.coords.lng));
                         }
                         scope.Data.sbMap.map = new google.maps.Map(elm.get(0), {
-                          center: new google.maps.LatLng(scope.Data.search.latlng.split(",")[0], scope.Data.search.latlng.split(",")[1]),
+                          center: scope.Data.search.latlng,
                           scrollwheel: false
                         });
                         if (scope.coords.city) {
@@ -181,25 +191,25 @@ define(['globals', 'angular', 'moment', './configs', './services', 'async!https:
 
                         google.maps.event.addListenerOnce(scope.Data.sbMap.map, 'tilesloaded', function(){
                             scope.Data.sbMap.loaded = true;
-                            scope.clearMarkers(scope.markers);
-                            scope.getBusinessMarkers(scope.coords.lat, scope.coords.lng, 
-                                scope.Data.sbMap.map.getBounds().getSouthWest().lat(), scope.Data.sbMap.map.getBounds().getSouthWest().lng(), 
-                                scope.Data.sbMap.map.getBounds().getNorthEast().lat(), scope.Data.sbMap.map.getBounds().getNorthEast().lng(), scope.Data.sbMap.map.getZoom());
+                            // scope.clearMarkers(scope.markers);
+                            // scope.getBusinessMarkers(scope.coords.lat, scope.coords.lng, 
+                            //     scope.Data.sbMap.map.getBounds().getSouthWest().lat(), scope.Data.sbMap.map.getBounds().getSouthWest().lng(), 
+                            //     scope.Data.sbMap.map.getBounds().getNorthEast().lat(), scope.Data.sbMap.map.getBounds().getNorthEast().lng(), scope.Data.sbMap.map.getZoom());
                             scope.$apply();
                         });                
 
                         // if we move or zoom map then reget markers
                         google.maps.event.addListener(scope.Data.sbMap.map, 'dragend', function() {
                             scope.clearMarkers(scope.markers);
-                            scope.getBusinessMarkers(scope.Data.sbMap.map.getCenter().lat(), scope.Data.sbMap.map.getCenter().lng(), 
-                                scope.Data.sbMap.map.getBounds().getSouthWest().lat(), scope.Data.sbMap.map.getBounds().getSouthWest().lng(), 
-                                scope.Data.sbMap.map.getBounds().getNorthEast().lat(), scope.Data.sbMap.map.getBounds().getNorthEast().lng(), scope.Data.sbMap.map.getZoom());
+                            // scope.getBusinessMarkers(scope.Data.sbMap.map.getCenter().lat(), scope.Data.sbMap.map.getCenter().lng(), 
+                            //     scope.Data.sbMap.map.getBounds().getSouthWest().lat(), scope.Data.sbMap.map.getBounds().getSouthWest().lng(), 
+                            //     scope.Data.sbMap.map.getBounds().getNorthEast().lat(), scope.Data.sbMap.map.getBounds().getNorthEast().lng(), scope.Data.sbMap.map.getZoom());
                         });
                         google.maps.event.addListener(scope.Data.sbMap.map, 'zoom_changed', function() {
                             scope.clearMarkers(scope.markers);
-                            scope.getBusinessMarkers(scope.Data.sbMap.map.getCenter().lat(), scope.Data.sbMap.map.getCenter().lng(), 
-                                scope.Data.sbMap.map.getBounds().getSouthWest().lat(), scope.Data.sbMap.map.getBounds().getSouthWest().lng(), 
-                                scope.Data.sbMap.map.getBounds().getNorthEast().lat(), scope.Data.sbMap.map.getBounds().getNorthEast().lng(), scope.Data.sbMap.map.getZoom());
+                            // scope.getBusinessMarkers(scope.Data.sbMap.map.getCenter().lat(), scope.Data.sbMap.map.getCenter().lng(), 
+                            //     scope.Data.sbMap.map.getBounds().getSouthWest().lat(), scope.Data.sbMap.map.getBounds().getSouthWest().lng(), 
+                            //     scope.Data.sbMap.map.getBounds().getNorthEast().lat(), scope.Data.sbMap.map.getBounds().getNorthEast().lng(), scope.Data.sbMap.map.getZoom());
                         });
 
                         scope.clearMarkers = function(markersArray) {
@@ -313,7 +323,7 @@ define(['globals', 'angular', 'moment', './configs', './services', 'async!https:
                                                 scope.infobox.setContent(scope.loadingElem);
                                                 scope.infobox.open(scope.Data.sbMap.map, marker);
                                                 scope.infobox.setVisible(true);
-                                                scope.showBusinessMarker(scope.lang, val).then(function() {
+                                                scope.showBusinessMarker(val).then(function() {
                                                     scope.infobox.setContent(val.elem);
                                                 });
                                             });
@@ -329,8 +339,8 @@ define(['globals', 'angular', 'moment', './configs', './services', 'async!https:
                         }
 
                         // Load Business info for the marker and generate html
-                        scope.showBusinessMarker = function(lang, business) {
-                            return api.Business.getBusinessById(lang, business.id).then(function(data) {
+                        scope.showBusinessMarker = function(business) {
+                            return api.Business.getBusinessById(business.id).then(function(data) {
                                 scope.Data.sbMap.showPhone = false;
                                 scope.business = data;
                                 if (!data.description) {
@@ -371,7 +381,7 @@ define(['globals', 'angular', 'moment', './configs', './services', 'async!https:
                         // sets height to visual area
                         if (scope.listenResize !== "false") {
                             scope.resizeFn = function() {
-                                elm.height(angular.element($window).height() - 80);
+                                elm.height(angular.element($window).height() - 51);
                             }
                             scope.resizeFn();
                             angular.element($window).resize(scope.resizeFn);                
@@ -387,55 +397,41 @@ define(['globals', 'angular', 'moment', './configs', './services', 'async!https:
                             scope.Data.search.type = "business";
 
                             var timestamp = moment(scope.Data.search.date).valueOf() || moment().add('days',1).hours(10).minutes(0).seconds(0).milliseconds(0).valueOf();
-                            $state.go('lang.business.search', {slug: business.slug, timestamp: timestamp, serviceId: scope.Data.search.serviceId});
+                            // $state.go('home.search.apartment', {slug: business.slug, timestamp: timestamp, serviceId: scope.Data.search.serviceId});
                             // scope.Data.sbMap.map.setCenter(scope.activeMarker.getPosition());
                         }
 
-                        scope.$watch('Data.search.location', function (newVal, oldVal, scope) {
+                        scope.$watch('Data.search.latlng', function (newVal, oldVal, scope) {
                             if (newVal !== oldVal && !$.isEmptyObject(newVal)) {
-                                var address = "";
-                                var geocoder = new google.maps.Geocoder();
-                                if (Data.search.type == "query"){
-                                    scope.Data.search.query = newVal.description;
-                                    geocoder.geocode({ address: scope.Data.search.query }, function(results, status) {
-                                        if (status == google.maps.GeocoderStatus.OK) {
-                                            var latlng = results[0].geometry.location;
-                                            scope.Data.search.latlng = latlng.lat() + "," + latlng.lng(); //so that we get lat lng to the server
-                                            scope.Data.sbMap.map.setCenter(latlng);
-                                            scope.Data.sbMap.map.setZoom(11);
-                                        } else {
-                                            alert('Geocode was not successful for the following reason: ' + status);
-                                        }
-                                    });
-                                } else if (Data.search.type == "employee") {
-                                    scope.Data.search.query = newVal.name;
-                                    address = "";
-                                    scope.Data.search.id = newVal.id; //so that we get id to the server
-                                } else if (Data.search.type == "business") {
-                                    scope.Data.search.query = newVal.name;
-                                    address = newVal.address.line1; 
-                                    if (newVal.address.line2 != "" && newVal.address.line2 != null) {
-                                        address += ', ' + newVal.address.line2;
-                                    }
-                                    address += ', ' + newVal.address.city.name;
-                                    if (newVal.address.zip) {
-                                        address += ' ' + newVal.address.zip.code;
-                                    }
-                                    address += ', ' + newVal.address.country.name;
-                                    scope.Data.search.id = newVal.id; //so that we get id to the server
-                                    geocoder.geocode({ address: address }, function(results, status) {
-                                        if (status == google.maps.GeocoderStatus.OK) {
-                                            var latlng = results[0].geometry.location;
-                                            scope.Data.sbMap.map.setCenter(latlng);
-                                            scope.Data.sbMap.map.setZoom(14);
-                                        } else {
-                                            alert('Geocode was not successful for the following reason: ' + status);
-                                        }
-                                    });
-                                }
+                                scope.Data.sbMap.map.setCenter(scope.Data.search.latlng);
+                                scope.Data.sbMap.map.setZoom(11);
                             }
                         }, true);
 
+                    }
+                }
+            }]).
+            /**
+             * [description]
+             * @param  {[type]} $timeout
+             * @param  {[type]} Notification
+             * @return {[type]}
+             */
+            directive('sbNoUiSlider', [ "$timeout", "$location", function ($timeout, $location) {
+                return {
+                    restrict: 'A',
+                    // require: 'ngModel',
+                    scope: {
+                        options: '=',
+                        set: '=',
+                        slide: '=sbNusSlide'
+                    },
+                    link: function (scope, element, attr) {
+                        element.noUiSlider(scope.options);
+                        element.on({
+                            set: scope.set,
+                            slide: scope.slide
+                        });
                     }
                 }
             }]);

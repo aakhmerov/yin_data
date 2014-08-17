@@ -33,9 +33,9 @@ define(['globals', 'angular', './controllers', 'angular-ui-router'], function(gl
                     }
                 })
                 .state('home.search', {
-                    url: '/search',
+                    url: 'search/{latlng:\@[-+]?[0-9]*\.?[0-9]*,[-+]?[0-9]*\.?[0-9]*}/:timestamp',
                     views: {
-                        'results': {
+                        'search': {
                             templateUrl: basePartialsUrl + 'search.html',
                             controller: controllers.SearchController
                         }

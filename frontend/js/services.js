@@ -52,6 +52,11 @@ define(['globals', 'angular', 'moment', './configs'],
         factory('Data', ['api',
             function(api) {
                 var model = {
+                    search: {
+                        history: {
+                            year: 2013
+                        }
+                    }
                 };
                 return model;
             }
@@ -67,14 +72,16 @@ define(['globals', 'angular', 'moment', './configs'],
             function($http, $state) {
                 var api = {
                     predictions: {
-                        get: function(lat, lng, radius) {
+                        get: function(lat, lng, timestamp, sideLength) {
                             return $http({
-                                method: 'POST',
-                                url: '/api/getPredictions',
-                                data: {
+                                method: 'GET',
+                                // url: '/api/predictions',
+                                url: '../dummy_data/predictions.json',
+                                params: {
                                     lat: lat,
                                     lng: lng,
-                                    radius: radius
+                                    timestamp: timestamp,
+                                    sideLength: sideLength
                                 }
                             });
                         }

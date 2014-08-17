@@ -39,11 +39,17 @@
         </div>
     </div>
 
-    <div class="container">
-        <div ui-view="main"></div>
+    <div ng-class="{'container': $state.is('home'), 'container-fluid': !$state.is('home')}">
+        <div class="row">
+            <div ui-view="main" ng-class="{'col-sm-6':!$state.is('home'), 'col-sm-12':$state.is('home')}"></div>
+            <div ng-if="$state.is('home.search')||$state.is('home.search.apartment')" class="col-sm-6 sb-map">
+                <div sb-no-ui-slider class="map-time-filter col-xs-7 col-xs-offset-2" options="timeFilter" sb-nus-slide="timeFilter.slide" set="timeFilter.set" ng-if="timeFilter"></div>
+                <div sb-map ng-model="search"></div>
+            </div>
+        </div>
     </div>
     <!-- /container -->
-    <div class="container">
+    <div ng-if="$state.is('home')" class="container">
         <hr />
         <footer>
             <p>&copy; Aakhmet 2014</p>
