@@ -92,8 +92,18 @@ define(['angular', 'moment', './filters'], function(angular, moment) {
      */
     controllers.SearchController = ['$scope', 'Data', 'api',
         function($scope, Data, api) {
-            var lat, lng, radius;
 
+            api.apartments.get().then(
+                // success
+                function (response) {
+                    $scope.apartments = response.data;
+                },
+                // error
+                function () {}
+            );
+
+
+            //var lat, lng, radius;
 
             api.predictions.get(1, 1, 1, 1).then(
                  // success rseponse

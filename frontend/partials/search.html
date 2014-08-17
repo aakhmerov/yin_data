@@ -1,5 +1,15 @@
 <div class="row">
-	<div class="col-sm-6 search-left">
-		Something
+	<div class="col-sm-6 search-left apartment_row" ng-repeat="result in apartments">
+		<div>
+			<img src="/img/apartment.png" />
+		</div>
+		<div class="apartment_details">
+			<strong>{{result.headline}}</strong><br />
+			<strong>{{result.STRASSE}} {{result.HAUSNR}}</strong><br />
+			<strong>Size:</strong> {{result.WOHNFLAECHE}}m<sup>2</sup>, <strong>Rooms:</strong> {{result.ZIMMERANZAHL}}<br />
+			<strong>Floors:</strong> {{result.ETAGE}}, <strong>Build Year:</strong> {{result.BAUJAHR}}<br />
+			<strong>Price to buy:</strong> {{result.KAUFPREIS}} &#8364;<br />
+			<strong>Utilities:</strong> {{result.NEBENKOSTEN}} &#8364;, <strong>Brokerage:</strong> {{result.COURTAGE}} &#8364;
+		</div>
 	</div>
 </div>

@@ -1,0 +1,10 @@
+.apartment_row {
+  width: 100% !important;
+  height: 90px !important;
+}
+
+.apartment_details {
+  top: -110px;
+  position: relative;
+  left: 150px;
+}

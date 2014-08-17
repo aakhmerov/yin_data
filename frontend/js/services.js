@@ -70,6 +70,9 @@ define(['globals', 'angular', 'moment', './configs'],
          */
         factory('api', ['$http', '$state',
             function($http, $state) {
+                
+                var lat, lng, timestamp, sideLength, limit;
+
                 var api = {
                     predictions: {
                         get: function(lat, lng, timestamp, sideLength) {
@@ -85,7 +88,20 @@ define(['globals', 'angular', 'moment', './configs'],
                                 }
                             });
                         }
-                    }    
+                    },
+                    apartments: {
+                        get: function() {
+                            return $http({
+                                method: 'GET',
+                                url: '/dummy_data/best_apartments.json', // replace with real api url
+                                data: {
+                                    lat: lat,
+                                    lng: lng,
+                                    limit: 5
+                                }
+                            });
+                        }
+                    }
                 };
                 return api;
             }

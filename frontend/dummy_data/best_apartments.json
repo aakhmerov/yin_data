@@ -1,0 +1,67 @@
+{
+	"0001": {
+		"headline": "Super awesome super apartment is awesome",
+		"STRASSE": "Fakestreet",
+		"HAUSNR": "10",
+		"PLZ": "12345",
+		"WOHNFLAECHE": "100",
+		"ZIMMERANZAHL": "2",
+		"BAUJAHR": "1999",
+		"COURTAGE": "5000",
+		"KAUFPREIS": "75000",
+		"NEBENKOSTEN": "500",
+		"ETAGE": "2"
+	},
+	"0002": {
+		"headline": "Super awesome super apartment is awesome",
+		"STRASSE": "Fakestreet",
+		"HAUSNR": "10",
+		"PLZ": "12345",
+		"WOHNFLAECHE": "100",
+		"ZIMMERANZAHL": "2",
+		"BAUJAHR": "1999",
+		"COURTAGE": "5000",
+		"KAUFPREIS": "75000",
+		"NEBENKOSTEN": "500",
+		"ETAGE": "2"
+	},
+	"0003": {
+		"headline": "Super awesome super apartment is awesome",
+		"STRASSE": "Fakestreet",
+		"HAUSNR": "10",
+		"PLZ": "12345",
+		"WOHNFLAECHE": "100",
+		"ZIMMERANZAHL": "2",
+		"BAUJAHR": "1999",
+		"COURTAGE": "5000",
+		"KAUFPREIS": "75000",
+		"NEBENKOSTEN": "500",
+		"ETAGE": "2"
+	},
+	"0004": {
+		"headline": "Super awesome super apartment is awesome",
+		"STRASSE": "Fakestreet",
+		"HAUSNR": "10",
+		"PLZ": "12345",
+		"WOHNFLAECHE": "100",
+		"ZIMMERANZAHL": "2",
+		"BAUJAHR": "1999",
+		"COURTAGE": "5000",
+		"KAUFPREIS": "75000",
+		"NEBENKOSTEN": "500",
+		"ETAGE": "2"
+	},
+	"0005": {
+		"headline": "Super awesome super apartment is awesome",
+		"STRASSE": "Fakestreet",
+		"HAUSNR": "10",
+		"PLZ": "12345",
+		"WOHNFLAECHE": "100",
+		"ZIMMERANZAHL": "2",
+		"BAUJAHR": "1999",
+		"COURTAGE": "5000",
+		"KAUFPREIS": "75000",
+		"NEBENKOSTEN": "500",
+		"ETAGE": "2"
+	}
+}
