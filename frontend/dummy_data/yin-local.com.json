@@ -1,0 +1,1433 @@
+[{
+    "sectorId": "225391-2513475",
+    "yearDataTOList": {
+        "2014": {
+            "id": 64,
+            "geox": 225391,
+            "geoy": 2513475,
+            "avg": 690000,
+            "date_part": 2014,
+            "new": false
+        },
+        "2012": {
+            "id": 99,
+            "geox": 225391,
+            "geoy": 2513475,
+            "avg": 482383,
+            "date_part": 2012,
+            "new": false
+        },
+        "2013": {
+            "id": 112,
+            "geox": 225391,
+            "geoy": 2513475,
+            "avg": 500604,
+            "date_part": 2013,
+            "new": false
+        }
+    }
+}, {
+    "sectorId": "227699-2510804",
+    "yearDataTOList": {
+        "2010": {
+            "id": 111,
+            "geox": 227699,
+            "geoy": 2510804,
+            "avg": 617457,
+            "date_part": 2010,
+            "new": false
+        },
+        "2011": {
+            "id": 65,
+            "geox": 227699,
+            "geoy": 2510804,
+            "avg": 518590,
+            "date_part": 2011,
+            "new": false
+        },
+        "2009": {
+            "id": 76,
+            "geox": 227699,
+            "geoy": 2510804,
+            "avg": 651630,
+            "date_part": 2009,
+            "new": false
+        },
+        "2012": {
+            "id": 17,
+            "geox": 227699,
+            "geoy": 2510804,
+            "avg": 722100,
+            "date_part": 2012,
+            "new": false
+        }
+    }
+}, {
+    "sectorId": "232002-2512134",
+    "yearDataTOList": {
+        "2014": {
+            "id": 117,
+            "geox": 232002,
+            "geoy": 2512134,
+            "avg": 237541,
+            "date_part": 2014,
+            "new": false
+        },
+        "2012": {
+            "id": 61,
+            "geox": 232002,
+            "geoy": 2512134,
+            "avg": 285577,
+            "date_part": 2012,
+            "new": false
+        },
+        "2013": {
+            "id": 70,
+            "geox": 232002,
+            "geoy": 2512134,
+            "avg": 278913,
+            "date_part": 2013,
+            "new": false
+        }
+    }
+}, {
+    "sectorId": "227532-2510149",
+    "yearDataTOList": {
+        "2007": {
+            "id": 10,
+            "geox": 227532,
+            "geoy": 2510149,
+            "avg": 193227,
+            "date_part": 2007,
+            "new": false
+        },
+        "2010": {
+            "id": 6,
+            "geox": 227532,
+            "geoy": 2510149,
+            "avg": 159114,
+            "date_part": 2010,
+            "new": false
+        },
+        "2008": {
+            "id": 52,
+            "geox": 227532,
+            "geoy": 2510149,
+            "avg": 163750,
+            "date_part": 2008,
+            "new": false
+        },
+        "2009": {
+            "id": 25,
+            "geox": 227532,
+            "geoy": 2510149,
+            "avg": 155167,
+            "date_part": 2009,
+            "new": false
+        }
+    }
+}, {
+    "sectorId": "230919-2512394",
+    "yearDataTOList": {
+        "2014": {
+            "id": 85,
+            "geox": 230919,
+            "geoy": 2512394,
+            "avg": 308449,
+            "date_part": 2014,
+            "new": false
+        },
+        "2012": {
+            "id": 137,
+            "geox": 230919,
+            "geoy": 2512394,
+            "avg": 314553,
+            "date_part": 2012,
+            "new": false
+        },
+        "2013": {
+            "id": 128,
+            "geox": 230919,
+            "geoy": 2512394,
+            "avg": 301258,
+            "date_part": 2013,
+            "new": false
+        }
+    }
+}, {
+    "sectorId": "228683-2511315",
+    "yearDataTOList": {
+        "2014": {
+            "id": 40,
+            "geox": 228683,
+            "geoy": 2511315,
+            "avg": 516284,
+            "date_part": 2014,
+            "new": false
+        },
+        "2013": {
+            "id": 155,
+            "geox": 228683,
+            "geoy": 2511315,
+            "avg": 553966,
+            "date_part": 2013,
+            "new": false
+        }
+    }
+}, {
+    "sectorId": "228885-2511136",
+    "yearDataTOList": {
+        "2014": {
+            "id": 2,
+            "geox": 228885,
+            "geoy": 2511136,
+            "avg": 576150,
+            "date_part": 2014,
+            "new": false
+        }
+    }
+}, {
+    "sectorId": "232338-2511238",
+    "yearDataTOList": {
+        "2010": {
+            "id": 101,
+            "geox": 232338,
+            "geoy": 2511238,
+            "avg": 255760,
+            "date_part": 2010,
+            "new": false
+        },
+        "2011": {
+            "id": 54,
+            "geox": 232338,
+            "geoy": 2511238,
+            "avg": 264357,
+            "date_part": 2011,
+            "new": false
+        },
+        "2008": {
+            "id": 73,
+            "geox": 232338,
+            "geoy": 2511238,
+            "avg": 208716,
+            "date_part": 2008,
+            "new": false
+        },
+        "2009": {
+            "id": 91,
+            "geox": 232338,
+            "geoy": 2511238,
+            "avg": 240535,
+            "date_part": 2009,
+            "new": false
+        },
+        "2012": {
+            "id": 27,
+            "geox": 232338,
+            "geoy": 2511238,
+            "avg": 100143,
+            "date_part": 2012,
+            "new": false
+        }
+    }
+}, {
+    "sectorId": "229493-2511355",
+    "yearDataTOList": {
+        "2009": {
+            "id": 38,
+            "geox": 229493,
+            "geoy": 2511355,
+            "avg": 10000000000,
+            "date_part": 2009,
+            "new": false
+        },
+        "2014": {
+            "id": 116,
+            "geox": 229493,
+            "geoy": 2511355,
+            "avg": 508681399483,
+            "date_part": 2014,
+            "new": false
+        },
+        "2013": {
+            "id": 71,
+            "geox": 229493,
+            "geoy": 2511355,
+            "avg": 133410956920,
+            "date_part": 2013,
+            "new": false
+        }
+    }
+}, {
+    "sectorId": "225402-2513481",
+    "yearDataTOList": {
+        "2014": {
+            "id": 36,
+            "geox": 225402,
+            "geoy": 2513481,
+            "avg": 504599,
+            "date_part": 2014,
+            "new": false
+        },
+        "2013": {
+            "id": 8,
+            "geox": 225402,
+            "geoy": 2513481,
+            "avg": 476937,
+            "date_part": 2013,
+            "new": false
+        }
+    }
+}, {
+    "sectorId": "232170-2512003",
+    "yearDataTOList": {
+        "2007": {
+            "id": 132,
+            "geox": 232170,
+            "geoy": 2512003,
+            "avg": 43628,
+            "date_part": 2007,
+            "new": false
+        },
+        "2010": {
+            "id": 139,
+            "geox": 232170,
+            "geoy": 2512003,
+            "avg": 154752,
+            "date_part": 2010,
+            "new": false
+        },
+        "2011": {
+            "id": 95,
+            "geox": 232170,
+            "geoy": 2512003,
+            "avg": 62948,
+            "date_part": 2011,
+            "new": false
+        },
+        "2008": {
+            "id": 84,
+            "geox": 232170,
+            "geoy": 2512003,
+            "avg": 99959,
+            "date_part": 2008,
+            "new": false
+        },
+        "2009": {
+            "id": 59,
+            "geox": 232170,
+            "geoy": 2512003,
+            "avg": 51539,
+            "date_part": 2009,
+            "new": false
+        },
+        "2012": {
+            "id": 37,
+            "geox": 232170,
+            "geoy": 2512003,
+            "avg": 77387,
+            "date_part": 2012,
+            "new": false
+        },
+        "2013": {
+            "id": 51,
+            "geox": 232170,
+            "geoy": 2512003,
+            "avg": 235000,
+            "date_part": 2013,
+            "new": false
+        }
+    }
+}, {
+    "sectorId": "228768-2510660",
+    "yearDataTOList": {
+        "2014": {
+            "id": 78,
+            "geox": 228768,
+            "geoy": 2510660,
+            "avg": 397723,
+            "date_part": 2014,
+            "new": false
+        },
+        "2012": {
+            "id": 129,
+            "geox": 228768,
+            "geoy": 2510660,
+            "avg": 308680,
+            "date_part": 2012,
+            "new": false
+        },
+        "2013": {
+            "id": 122,
+            "geox": 228768,
+            "geoy": 2510660,
+            "avg": 368420,
+            "date_part": 2013,
+            "new": false
+        }
+    }
+}, {
+    "sectorId": "230433-2512385",
+    "yearDataTOList": {
+        "2014": {
+            "id": 57,
+            "geox": 230433,
+            "geoy": 2512385,
+            "avg": 372328,
+            "date_part": 2014,
+            "new": false
+        },
+        "2013": {
+            "id": 108,
+            "geox": 230433,
+            "geoy": 2512385,
+            "avg": 318258,
+            "date_part": 2013,
+            "new": false
+        }
+    }
+}, {
+    "sectorId": "231962-2509668",
+    "yearDataTOList": {
+        "2014": {
+            "id": 21,
+            "geox": 231962,
+            "geoy": 2509668,
+            "avg": 382018,
+            "date_part": 2014,
+            "new": false
+        },
+        "2013": {
+            "id": 147,
+            "geox": 231962,
+            "geoy": 2509668,
+            "avg": 456930,
+            "date_part": 2013,
+            "new": false
+        }
+    }
+}, {
+    "sectorId": "231971-2509618",
+    "yearDataTOList": {
+        "2014": {
+            "id": 105,
+            "geox": 231971,
+            "geoy": 2509618,
+            "avg": 369821,
+            "date_part": 2014,
+            "new": false
+        }
+    }
+}, {
+    "sectorId": "232013-2509603",
+    "yearDataTOList": {
+        "2014": {
+            "id": 106,
+            "geox": 232013,
+            "geoy": 2509603,
+            "avg": 346349,
+            "date_part": 2014,
+            "new": false
+        }
+    }
+}, {
+    "sectorId": "225347-2513495",
+    "yearDataTOList": {
+        "2011": {
+            "id": 41,
+            "geox": 225347,
+            "geoy": 2513495,
+            "avg": 464066,
+            "date_part": 2011,
+            "new": false
+        },
+        "2012": {
+            "id": 80,
+            "geox": 225347,
+            "geoy": 2513495,
+            "avg": 452852,
+            "date_part": 2012,
+            "new": false
+        }
+    }
+}, {
+    "sectorId": "226311-2513378",
+    "yearDataTOList": {
+        "2007": {
+            "id": 28,
+            "geox": 226311,
+            "geoy": 2513378,
+            "avg": 230135,
+            "date_part": 2007,
+            "new": false
+        },
+        "2010": {
+            "id": 29,
+            "geox": 226311,
+            "geoy": 2513378,
+            "avg": 161166,
+            "date_part": 2010,
+            "new": false
+        },
+        "2008": {
+            "id": 141,
+            "geox": 226311,
+            "geoy": 2513378,
+            "avg": 339748,
+            "date_part": 2008,
+            "new": false
+        },
+        "2009": {
+            "id": 152,
+            "geox": 226311,
+            "geoy": 2513378,
+            "avg": 275557,
+            "date_part": 2009,
+            "new": false
+        }
+    }
+}, {
+    "sectorId": "226538-2512825",
+    "yearDataTOList": {
+        "2014": {
+            "id": 60,
+            "geox": 226538,
+            "geoy": 2512825,
+            "avg": 405119,
+            "date_part": 2014,
+            "new": false
+        },
+        "2013": {
+            "id": 104,
+            "geox": 226538,
+            "geoy": 2512825,
+            "avg": 397991,
+            "date_part": 2013,
+            "new": false
+        }
+    }
+}, {
+    "sectorId": "232307-2511113",
+    "yearDataTOList": {
+        "2014": {
+            "id": 135,
+            "geox": 232307,
+            "geoy": 2511113,
+            "avg": 338751,
+            "date_part": 2014,
+            "new": false
+        },
+        "2013": {
+            "id": 89,
+            "geox": 232307,
+            "geoy": 2511113,
+            "avg": 274739,
+            "date_part": 2013,
+            "new": false
+        }
+    }
+}, {
+    "sectorId": "227698-2510803",
+    "yearDataTOList": {
+        "2008": {
+            "id": 124,
+            "geox": 227698,
+            "geoy": 2510803,
+            "avg": 562131,
+            "date_part": 2008,
+            "new": false
+        },
+        "2009": {
+            "id": 102,
+            "geox": 227698,
+            "geoy": 2510803,
+            "avg": 513376,
+            "date_part": 2009,
+            "new": false
+        }
+    }
+}, {
+    "sectorId": "227794-2510975",
+    "yearDataTOList": {
+        "2007": {
+            "id": 58,
+            "geox": 227794,
+            "geoy": 2510975,
+            "avg": 381174,
+            "date_part": 2007,
+            "new": false
+        },
+        "2008": {
+            "id": 114,
+            "geox": 227794,
+            "geoy": 2510975,
+            "avg": 446225,
+            "date_part": 2008,
+            "new": false
+        },
+        "2009": {
+            "id": 131,
+            "geox": 227794,
+            "geoy": 2510975,
+            "avg": 575694,
+            "date_part": 2009,
+            "new": false
+        }
+    }
+}, {
+    "sectorId": "230950-2510318",
+    "yearDataTOList": {
+        "2010": {
+            "id": 148,
+            "geox": 230950,
+            "geoy": 2510318,
+            "avg": 118516,
+            "date_part": 2010,
+            "new": false
+        },
+        "2011": {
+            "id": 19,
+            "geox": 230950,
+            "geoy": 2510318,
+            "avg": 88477,
+            "date_part": 2011,
+            "new": false
+        },
+        "2009": {
+            "id": 50,
+            "geox": 230950,
+            "geoy": 2510318,
+            "avg": 125588,
+            "date_part": 2009,
+            "new": false
+        },
+        "2012": {
+            "id": 72,
+            "geox": 230950,
+            "geoy": 2510318,
+            "avg": 75799,
+            "date_part": 2012,
+            "new": false
+        }
+    }
+}, {
+    "sectorId": "227666-2513837",
+    "yearDataTOList": {
+        "2014": {
+            "id": 31,
+            "geox": 227666,
+            "geoy": 2513837,
+            "avg": 259768,
+            "date_part": 2014,
+            "new": false
+        },
+        "2013": {
+            "id": 149,
+            "geox": 227666,
+            "geoy": 2513837,
+            "avg": 271724,
+            "date_part": 2013,
+            "new": false
+        }
+    }
+}, {
+    "sectorId": "231281-2511986",
+    "yearDataTOList": {
+        "2012": {
+            "id": 39,
+            "geox": 231281,
+            "geoy": 2511986,
+            "avg": 303267,
+            "date_part": 2012,
+            "new": false
+        }
+    }
+}, {
+    "sectorId": "227037-2513076",
+    "yearDataTOList": {
+        "2007": {
+            "id": 47,
+            "geox": 227037,
+            "geoy": 2513076,
+            "avg": 229316,
+            "date_part": 2007,
+            "new": false
+        },
+        "2010": {
+            "id": 43,
+            "geox": 227037,
+            "geoy": 2513076,
+            "avg": 262096,
+            "date_part": 2010,
+            "new": false
+        },
+        "2008": {
+            "id": 153,
+            "geox": 227037,
+            "geoy": 2513076,
+            "avg": 225019,
+            "date_part": 2008,
+            "new": false
+        },
+        "2009": {
+            "id": 142,
+            "geox": 227037,
+            "geoy": 2513076,
+            "avg": 229687,
+            "date_part": 2009,
+            "new": false
+        },
+        "2012": {
+            "id": 120,
+            "geox": 227037,
+            "geoy": 2513076,
+            "avg": 255000,
+            "date_part": 2012,
+            "new": false
+        }
+    }
+}, {
+    "sectorId": "231667-2511905",
+    "yearDataTOList": {
+        "2007": {
+            "id": 154,
+            "geox": 231667,
+            "geoy": 2511905,
+            "avg": 159000,
+            "date_part": 2007,
+            "new": false
+        },
+        "2010": {
+            "id": 16,
+            "geox": 231667,
+            "geoy": 2511905,
+            "avg": 124981,
+            "date_part": 2010,
+            "new": false
+        },
+        "2011": {
+            "id": 46,
+            "geox": 231667,
+            "geoy": 2511905,
+            "avg": 89041,
+            "date_part": 2011,
+            "new": false
+        },
+        "2008": {
+            "id": 33,
+            "geox": 231667,
+            "geoy": 2511905,
+            "avg": 172224,
+            "date_part": 2008,
+            "new": false
+        },
+        "2009": {
+            "id": 22,
+            "geox": 231667,
+            "geoy": 2511905,
+            "avg": 141390,
+            "date_part": 2009,
+            "new": false
+        },
+        "2014": {
+            "id": 140,
+            "geox": 231667,
+            "geoy": 2511905,
+            "avg": 139987,
+            "date_part": 2014,
+            "new": false
+        },
+        "2012": {
+            "id": 87,
+            "geox": 231667,
+            "geoy": 2511905,
+            "avg": 212629,
+            "date_part": 2012,
+            "new": false
+        },
+        "2013": {
+            "id": 93,
+            "geox": 231667,
+            "geoy": 2511905,
+            "avg": 115272,
+            "date_part": 2013,
+            "new": false
+        }
+    }
+}, {
+    "sectorId": "228972-2510958",
+    "yearDataTOList": {
+        "2010": {
+            "id": 110,
+            "geox": 228972,
+            "geoy": 2510958,
+            "avg": 376698,
+            "date_part": 2010,
+            "new": false
+        },
+        "2011": {
+            "id": 69,
+            "geox": 228972,
+            "geoy": 2510958,
+            "avg": 383240,
+            "date_part": 2011,
+            "new": false
+        },
+        "2009": {
+            "id": 74,
+            "geox": 228972,
+            "geoy": 2510958,
+            "avg": 440134,
+            "date_part": 2009,
+            "new": false
+        }
+    }
+}, {
+    "sectorId": "225541-2513224",
+    "yearDataTOList": {
+        "2008": {
+            "id": 12,
+            "geox": 225541,
+            "geoy": 2513224,
+            "avg": 259831,
+            "date_part": 2008,
+            "new": false
+        },
+        "2009": {
+            "id": 5,
+            "geox": 225541,
+            "geoy": 2513224,
+            "avg": 267986,
+            "date_part": 2009,
+            "new": false
+        }
+    }
+}, {
+    "sectorId": "226810-2512965",
+    "yearDataTOList": {
+        "2007": {
+            "id": 82,
+            "geox": 226810,
+            "geoy": 2512965,
+            "avg": 327250,
+            "date_part": 2007,
+            "new": false
+        },
+        "2010": {
+            "id": 86,
+            "geox": 226810,
+            "geoy": 2512965,
+            "avg": 245891,
+            "date_part": 2010,
+            "new": false
+        },
+        "2011": {
+            "id": 126,
+            "geox": 226810,
+            "geoy": 2512965,
+            "avg": 679204,
+            "date_part": 2011,
+            "new": false
+        },
+        "2008": {
+            "id": 133,
+            "geox": 226810,
+            "geoy": 2512965,
+            "avg": 147888,
+            "date_part": 2008,
+            "new": false
+        },
+        "2009": {
+            "id": 115,
+            "geox": 226810,
+            "geoy": 2512965,
+            "avg": 240135,
+            "date_part": 2009,
+            "new": false
+        },
+        "2012": {
+            "id": 15,
+            "geox": 226810,
+            "geoy": 2512965,
+            "avg": 688538,
+            "date_part": 2012,
+            "new": false
+        },
+        "2013": {
+            "id": 9,
+            "geox": 226810,
+            "geoy": 2512965,
+            "avg": 250000,
+            "date_part": 2013,
+            "new": false
+        }
+    }
+}, {
+    "sectorId": "231977-2509584",
+    "yearDataTOList": {
+        "2014": {
+            "id": 92,
+            "geox": 231977,
+            "geoy": 2509584,
+            "avg": 419830,
+            "date_part": 2014,
+            "new": false
+        },
+        "2013": {
+            "id": 130,
+            "geox": 231977,
+            "geoy": 2509584,
+            "avg": 394583,
+            "date_part": 2013,
+            "new": false
+        }
+    }
+}, {
+    "sectorId": "225372-2513462",
+    "yearDataTOList": {
+        "2010": {
+            "id": 136,
+            "geox": 225372,
+            "geoy": 2513462,
+            "avg": 321935,
+            "date_part": 2010,
+            "new": false
+        },
+        "2008": {
+            "id": 81,
+            "geox": 225372,
+            "geoy": 2513462,
+            "avg": 282541,
+            "date_part": 2008,
+            "new": false
+        },
+        "2009": {
+            "id": 56,
+            "geox": 225372,
+            "geoy": 2513462,
+            "avg": 272629,
+            "date_part": 2009,
+            "new": false
+        }
+    }
+}, {
+    "sectorId": "227772-2513029",
+    "yearDataTOList": {
+        "2010": {
+            "id": 42,
+            "geox": 227772,
+            "geoy": 2513029,
+            "avg": 425308,
+            "date_part": 2010,
+            "new": false
+        },
+        "2011": {
+            "id": 14,
+            "geox": 227772,
+            "geoy": 2513029,
+            "avg": 517490,
+            "date_part": 2011,
+            "new": false
+        },
+        "2009": {
+            "id": 1,
+            "geox": 227772,
+            "geoy": 2513029,
+            "avg": 493672,
+            "date_part": 2009,
+            "new": false
+        },
+        "2012": {
+            "id": 119,
+            "geox": 227772,
+            "geoy": 2513029,
+            "avg": 1350000,
+            "date_part": 2012,
+            "new": false
+        }
+    }
+}, {
+    "sectorId": "231982-2509626",
+    "yearDataTOList": {
+        "2014": {
+            "id": 83,
+            "geox": 231982,
+            "geoy": 2509626,
+            "avg": 475388,
+            "date_part": 2014,
+            "new": false
+        },
+        "2012": {
+            "id": 134,
+            "geox": 231982,
+            "geoy": 2509626,
+            "avg": 425574,
+            "date_part": 2012,
+            "new": false
+        },
+        "2013": {
+            "id": 118,
+            "geox": 231982,
+            "geoy": 2509626,
+            "avg": 489722,
+            "date_part": 2013,
+            "new": false
+        }
+    }
+}, {
+    "sectorId": "231959-2509672",
+    "yearDataTOList": {
+        "2012": {
+            "id": 150,
+            "geox": 231959,
+            "geoy": 2509672,
+            "avg": 362089,
+            "date_part": 2012,
+            "new": false
+        },
+        "2013": {
+            "id": 144,
+            "geox": 231959,
+            "geoy": 2509672,
+            "avg": 446060,
+            "date_part": 2013,
+            "new": false
+        }
+    }
+}, {
+    "sectorId": "231715-2512088",
+    "yearDataTOList": {
+        "2007": {
+            "id": 146,
+            "geox": 231715,
+            "geoy": 2512088,
+            "avg": 208683,
+            "date_part": 2007,
+            "new": false
+        },
+        "2010": {
+            "id": 143,
+            "geox": 231715,
+            "geoy": 2512088,
+            "avg": 198053,
+            "date_part": 2010,
+            "new": false
+        },
+        "2011": {
+            "id": 18,
+            "geox": 231715,
+            "geoy": 2512088,
+            "avg": 150066,
+            "date_part": 2011,
+            "new": false
+        },
+        "2008": {
+            "id": 30,
+            "geox": 231715,
+            "geoy": 2512088,
+            "avg": 150916,
+            "date_part": 2008,
+            "new": false
+        },
+        "2009": {
+            "id": 44,
+            "geox": 231715,
+            "geoy": 2512088,
+            "avg": 217403,
+            "date_part": 2009,
+            "new": false
+        },
+        "2014": {
+            "id": 103,
+            "geox": 231715,
+            "geoy": 2512088,
+            "avg": 139180,
+            "date_part": 2014,
+            "new": false
+        },
+        "2012": {
+            "id": 66,
+            "geox": 231715,
+            "geoy": 2512088,
+            "avg": 165150,
+            "date_part": 2012,
+            "new": false
+        },
+        "2013": {
+            "id": 53,
+            "geox": 231715,
+            "geoy": 2512088,
+            "avg": 188250,
+            "date_part": 2013,
+            "new": false
+        }
+    }
+}, {
+    "sectorId": "227224-2513994",
+    "yearDataTOList": {
+        "2008": {
+            "id": 23,
+            "geox": 227224,
+            "geoy": 2513994,
+            "avg": 337502,
+            "date_part": 2008,
+            "new": false
+        },
+        "2009": {
+            "id": 49,
+            "geox": 227224,
+            "geoy": 2513994,
+            "avg": 498518,
+            "date_part": 2009,
+            "new": false
+        }
+    }
+}, {
+    "sectorId": "228903-2511025",
+    "yearDataTOList": {
+        "2014": {
+            "id": 109,
+            "geox": 228903,
+            "geoy": 2511025,
+            "avg": 445642,
+            "date_part": 2014,
+            "new": false
+        },
+        "2013": {
+            "id": 68,
+            "geox": 228903,
+            "geoy": 2511025,
+            "avg": 398222,
+            "date_part": 2013,
+            "new": false
+        }
+    }
+}, {
+    "sectorId": "227067-2513297",
+    "yearDataTOList": {
+        "2010": {
+            "id": 48,
+            "geox": 227067,
+            "geoy": 2513297,
+            "avg": 341153,
+            "date_part": 2010,
+            "new": false
+        },
+        "2008": {
+            "id": 151,
+            "geox": 227067,
+            "geoy": 2513297,
+            "avg": 305284,
+            "date_part": 2008,
+            "new": false
+        },
+        "2009": {
+            "id": 145,
+            "geox": 227067,
+            "geoy": 2513297,
+            "avg": 325682,
+            "date_part": 2009,
+            "new": false
+        }
+    }
+}, {
+    "sectorId": "227722-2508965",
+    "yearDataTOList": {
+        "2014": {
+            "id": 77,
+            "geox": 227722,
+            "geoy": 2508965,
+            "avg": 439684,
+            "date_part": 2014,
+            "new": false
+        },
+        "2013": {
+            "id": 121,
+            "geox": 227722,
+            "geoy": 2508965,
+            "avg": 428848,
+            "date_part": 2013,
+            "new": false
+        }
+    }
+}, {
+    "sectorId": "228878-2511122",
+    "yearDataTOList": {
+        "2014": {
+            "id": 13,
+            "geox": 228878,
+            "geoy": 2511122,
+            "avg": 448692,
+            "date_part": 2014,
+            "new": false
+        },
+        "2013": {
+            "id": 45,
+            "geox": 228878,
+            "geoy": 2511122,
+            "avg": 705166,
+            "date_part": 2013,
+            "new": false
+        }
+    }
+}, {
+    "sectorId": "231196-2511335",
+    "yearDataTOList": {
+        "2010": {
+            "id": 7,
+            "geox": 231196,
+            "geoy": 2511335,
+            "avg": 398473,
+            "date_part": 2010,
+            "new": false
+        },
+        "2011": {
+            "id": 34,
+            "geox": 231196,
+            "geoy": 2511335,
+            "avg": 404211,
+            "date_part": 2011,
+            "new": false
+        },
+        "2009": {
+            "id": 26,
+            "geox": 231196,
+            "geoy": 2511335,
+            "avg": 393230,
+            "date_part": 2009,
+            "new": false
+        },
+        "2012": {
+            "id": 90,
+            "geox": 231196,
+            "geoy": 2511335,
+            "avg": 352900,
+            "date_part": 2012,
+            "new": false
+        }
+    }
+}, {
+    "sectorId": "232309-2511705",
+    "yearDataTOList": {
+        "2007": {
+            "id": 100,
+            "geox": 232309,
+            "geoy": 2511705,
+            "avg": 175952,
+            "date_part": 2007,
+            "new": false
+        },
+        "2010": {
+            "id": 107,
+            "geox": 232309,
+            "geoy": 2511705,
+            "avg": 138340,
+            "date_part": 2010,
+            "new": false
+        },
+        "2008": {
+            "id": 63,
+            "geox": 232309,
+            "geoy": 2511705,
+            "avg": 162143,
+            "date_part": 2008,
+            "new": false
+        },
+        "2009": {
+            "id": 96,
+            "geox": 232309,
+            "geoy": 2511705,
+            "avg": 152752,
+            "date_part": 2009,
+            "new": false
+        },
+        "2012": {
+            "id": 32,
+            "geox": 232309,
+            "geoy": 2511705,
+            "avg": 260000,
+            "date_part": 2012,
+            "new": false
+        }
+    }
+}, {
+    "sectorId": "231937-2509695",
+    "yearDataTOList": {
+        "2011": {
+            "id": 11,
+            "geox": 231937,
+            "geoy": 2509695,
+            "avg": 507594,
+            "date_part": 2011,
+            "new": false
+        },
+        "2012": {
+            "id": 138,
+            "geox": 231937,
+            "geoy": 2509695,
+            "avg": 448429,
+            "date_part": 2012,
+            "new": false
+        }
+    }
+}, {
+    "sectorId": "231661-2511274",
+    "yearDataTOList": {
+        "2007": {
+            "id": 4,
+            "geox": 231661,
+            "geoy": 2511274,
+            "avg": 114166,
+            "date_part": 2007,
+            "new": false
+        },
+        "2010": {
+            "id": 3,
+            "geox": 231661,
+            "geoy": 2511274,
+            "avg": 225000,
+            "date_part": 2010,
+            "new": false
+        },
+        "2011": {
+            "id": 24,
+            "geox": 231661,
+            "geoy": 2511274,
+            "avg": 396037,
+            "date_part": 2011,
+            "new": false
+        },
+        "2008": {
+            "id": 20,
+            "geox": 231661,
+            "geoy": 2511274,
+            "avg": 242986,
+            "date_part": 2008,
+            "new": false
+        },
+        "2009": {
+            "id": 35,
+            "geox": 231661,
+            "geoy": 2511274,
+            "avg": 223198,
+            "date_part": 2009,
+            "new": false
+        },
+        "2014": {
+            "id": 113,
+            "geox": 231661,
+            "geoy": 2511274,
+            "avg": 440550,
+            "date_part": 2014,
+            "new": false
+        },
+        "2012": {
+            "id": 55,
+            "geox": 231661,
+            "geoy": 2511274,
+            "avg": 341511,
+            "date_part": 2012,
+            "new": false
+        },
+        "2013": {
+            "id": 62,
+            "geox": 231661,
+            "geoy": 2511274,
+            "avg": 325121,
+            "date_part": 2013,
+            "new": false
+        }
+    }
+}, {
+    "sectorId": "231966-2509664",
+    "yearDataTOList": {
+        "2014": {
+            "id": 75,
+            "geox": 231966,
+            "geoy": 2509664,
+            "avg": 489982,
+            "date_part": 2014,
+            "new": false
+        }
+    }
+}, {
+    "sectorId": "232058-2509591",
+    "yearDataTOList": {
+        "2007": {
+            "id": 125,
+            "geox": 232058,
+            "geoy": 2509591,
+            "avg": 227578,
+            "date_part": 2007,
+            "new": false
+        },
+        "2010": {
+            "id": 123,
+            "geox": 232058,
+            "geoy": 2509591,
+            "avg": 289323,
+            "date_part": 2010,
+            "new": false
+        },
+        "2011": {
+            "id": 79,
+            "geox": 232058,
+            "geoy": 2509591,
+            "avg": 382060,
+            "date_part": 2011,
+            "new": false
+        },
+        "2008": {
+            "id": 94,
+            "geox": 232058,
+            "geoy": 2509591,
+            "avg": 712261,
+            "date_part": 2008,
+            "new": false
+        },
+        "2009": {
+            "id": 67,
+            "geox": 232058,
+            "geoy": 2509591,
+            "avg": 175193,
+            "date_part": 2009,
+            "new": false
+        }
+    }
+}, {
+    "sectorId": "228948-2513054",
+    "yearDataTOList": {
+        "2007": {
+            "id": 97,
+            "geox": 228948,
+            "geoy": 2513054,
+            "avg": 190000,
+            "date_part": 2007,
+            "new": false
+        },
+        "2010": {
+            "id": 88,
+            "geox": 228948,
+            "geoy": 2513054,
+            "avg": 180257,
+            "date_part": 2010,
+            "new": false
+        },
+        "2008": {
+            "id": 127,
+            "geox": 228948,
+            "geoy": 2513054,
+            "avg": 299344,
+            "date_part": 2008,
+            "new": false
+        },
+        "2009": {
+            "id": 98,
+            "geox": 228948,
+            "geoy": 2513054,
+            "avg": 186524,
+            "date_part": 2009,
+            "new": false
+        }
+    }
+}]

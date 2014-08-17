@@ -41,7 +41,7 @@ requirejs.config({
             deps: ['angular']
         },
         'infobox': {
-            deps: ['async', 'async!https://maps.googleapis.com/maps/api/js?key=AIzaSyCBZEaZXYeqrpAOom_ww7fSHJX0VJ8pj0c&sensor=true&region=GE&libraries=places&language=EN']
+            deps: ['async', 'async!https://maps.googleapis.com/maps/api/js?key=AIzaSyCBZEaZXYeqrpAOom_ww7fSHJX0VJ8pj0c&sensor=true&region=GE&libraries=places,geometry&language=EN']
         },
         'typeaheadjs': {
             deps: ['jquery']

@@ -7,7 +7,7 @@
  * @return {object}         Collection of controllers
  * @private
  */
-define(['angular', 'moment', './filters'], function(angular, moment) {
+define(['angular', 'moment', './filters', 'async!https://maps.googleapis.com/maps/api/js?key=AIzaSyCBZEaZXYeqrpAOom_ww7fSHJX0VJ8pj0c&sensor=true&region=GE&libraries=places,geometry&language=EN'], function(angular, moment) {
 
     var controllers = {};
 
@@ -106,7 +106,46 @@ define(['angular', 'moment', './filters'], function(angular, moment) {
             api.predictions.get(lat, lng, timestamp, sideLength).then(
                 // success rseponse
                 function (response) {
-                    angular.noop();
+                    var horiz = 0;
+                    var startPoint = new google.maps.LatLng(52.5199475,13.4279873); 
+                    var initPoint = new google.maps.LatLng(52.5199475,13.4279873);
+                    angular.forEach(response.data, function(el, i) {
+                        angular.forEach(el.yearDataTOList, function(subEl, j) {
+                            if (subEl["date_part"] === Data.search.history.year) {
+                                // Define the LatLng coordinates for the polygon's path.
+                                var eastPoint = google.maps.geometry.spherical.computeOffset(initPoint, 1000, 90);
+                                var southPoint = google.maps.geometry.spherical.computeOffset(eastPoint, 1000, 180);
+                                var westPoint = google.maps.geometry.spherical.computeOffset(initPoint, 1000, 180);
+                                var squareCoords = [
+                                    initPoint,
+                                    eastPoint,
+                                    southPoint,
+                                    westPoint,
+                                    initPoint
+                                ];
+
+                                // Construct the polygon.
+                                var square = new google.maps.Polygon({
+                                    paths: squareCoords,
+                                    // strokeColor: '#FF0000',
+                                    // strokeOpacity: 0.6,
+                                    strokeWeight: 0,
+                                    fillColor: '#00FF00',
+                                    fillOpacity: 0.3
+                                });
+
+                                square.setMap(Data.sbMap.map);
+
+                                horiz++;
+                                if (horiz % 7 !== 0) {
+                                    initPoint = google.maps.geometry.spherical.computeOffset(initPoint, 1000, 90);
+                                } else {
+                                    initPoint = google.maps.geometry.spherical.computeOffset(startPoint, 1000, 180);
+                                    startPoint = angular.copy(initPoint);
+                                }
+                            }
+                        });
+                    });
                 },
                 // error response
                 function (error) {

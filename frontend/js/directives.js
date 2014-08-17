@@ -8,7 +8,7 @@
  * @param  {object} moment
  * @private
  */
-define(['globals', 'angular', 'moment', './configs', './services', 'async!https://maps.googleapis.com/maps/api/js?key=AIzaSyCBZEaZXYeqrpAOom_ww7fSHJX0VJ8pj0c&sensor=true&region=GE&libraries=places&language=EN', 'infobox', 'typeaheadjs', 'nouislider'],
+define(['globals', 'angular', 'moment', './configs', './services', 'async!https://maps.googleapis.com/maps/api/js?key=AIzaSyCBZEaZXYeqrpAOom_ww7fSHJX0VJ8pj0c&sensor=true&region=GE&libraries=places,geometry&language=EN', 'infobox', 'typeaheadjs', 'nouislider'],
     function(globals, angular, moment) {
 
         /**
@@ -188,6 +188,8 @@ define(['globals', 'angular', 'moment', './configs', './services', 'async!https:
                         };
 
                         scope.infobox = new InfoBox(myOptions);
+
+                        scope.Data.sbMap.map.data.loadGeoJson($window.location.origin + '/dummy_data/google.json');
 
                         google.maps.event.addListenerOnce(scope.Data.sbMap.map, 'tilesloaded', function(){
                             scope.Data.sbMap.loaded = true;
