@@ -97,7 +97,7 @@ define(['angular', 'moment', './filters'], function(angular, moment) {
             api.apartments.get().then(
                 // success
                 function (response) {
-                    $scope.apartments = response.data;
+                    $scope.apartments = response.data.objectList;
                 },
                 // error
                 function () {}
