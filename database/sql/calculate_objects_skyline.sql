@@ -8,15 +8,10 @@ $BODY$
         Column         |          Type          |                             Modifiers                             
 -----------------------+------------------------+-------------------------------------------------------------------
  o_id                  | integer                | not null default nextval('yin_data.t_objects_o_id_seq'::regclass)
- obid                  | bigint                 | not null
- ok2id                 | integer                | 
+...
  geox                  | bigint                 | 
  geoy                  | bigint                 | 
- bgid                  | integer                | 
- strasse               | character varying(100) | 
- hausnr                | character varying(30)  | 
- plz                   | character varying(20)  | 
- ort                   | character varying(50)  | 
+... 
  wohnflaeche           | double precision       | 
  zimmeranzahl          | double precision       | 
  baujahr               | integer                | 
@@ -25,8 +20,6 @@ $BODY$
  kaufvermietet         | boolean                | 
  nebenkosten           | double precision       | 
  zusatzkosten          | double precision       | 
- ueberschrift          | character varying(100) | 
- url                   | character varying(300) | 
  edatum                | date                   | not null
  parkflaechenzahl      | bigint                 | 
  parkflaechenpreis     | double precision       | 
@@ -50,10 +43,11 @@ BEGIN
     BEGIN
         return_value = FALSE;
 
-	FOR l_o1 IN SELECT * FROM yin_data.t_objects --LIMIT 10
+	FOR l_o1 IN SELECT * FROM yin_data.t_objects --ORDER BY random() LIMIT 10
 	  LOOP
 --		RAISE INFO 'o_id: %', l_o1.o_id;
 		l_is_skyline = TRUE;
+		l_dominated_by = NULL;
 		FOR l_o2 IN SELECT * FROM yin_data.t_objects 
 	  	  LOOP
 			--RAISE INFO '	Checking % against %', l_o1.o_id, l_o2.o_id;
@@ -68,13 +62,18 @@ BEGIN
 				l_dominated_by = l_o2.o_id;
 			END IF;
 		END LOOP;
-
+/*
 		IF l_is_skyline THEN
---			RAISE INFO ' *** SKYLINE ***';
+			RAISE INFO ' *** SKYLINE ***';
 		ELSE
---			RAISE INFO '   Dominated by o_id %', l_dominated_by;
+			RAISE INFO '   Dominated by o_id %', l_dominated_by;
 		END IF;
+*/
+
+		UPDATE yin_data.t_objects SET o_is_skyline = l_is_skyline, o_dominated_by = l_dominated_by 
+		WHERE o_id = l_o1.o_id;
     	END LOOP;
+	return_value = TRUE;
         
     EXCEPTION WHEN OTHERS THEN
         RAISE INFO 'Exception in calculate_objects_skyline with SQL_ERRCODE % SQL_ERRM %', SQLSTATE, SQLERRM;

@@ -1,4 +1,4 @@
-DROP TABLE IF EXISTS yin_data.t_objects;
+DROP TABLE IF EXISTS yin_data.t_objects CASCADE;
 
 CREATE TABLE yin_data.t_objects
 (
