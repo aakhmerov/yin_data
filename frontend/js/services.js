@@ -79,8 +79,8 @@ define(['globals', 'angular', 'moment', './configs'],
                             return $http({
                                 method: 'GET',
                                 // url: '/api/predictions',
-                                url: $window.location.origin + '/dummy_data/predictions.json',
-                                // url: '/yin-api/services/growth/historical',
+//                                url: $window.location.origin + '/dummy_data/predictions.json',
+                                url: '/yin-api/services/growth/historical',
                                 params: {
                                     lat: lat,
                                     lng: lng,
