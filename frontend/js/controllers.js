@@ -109,6 +109,8 @@ define(['angular', 'moment', './filters', 'async!https://maps.googleapis.com/map
                     var horiz = 0;
                     var startPoint = new google.maps.LatLng(52.5199475,13.4279873); 
                     var initPoint = new google.maps.LatLng(52.5199475,13.4279873);
+                    var Color = net.brehaut.Color;
+                    var Red = Color("#FF0000");
                     angular.forEach(response.data, function(el, i) {
                         angular.forEach(el.yearDataTOList, function(subEl, j) {
                             if (subEl["date_part"] === Data.search.history.year) {
@@ -124,13 +126,17 @@ define(['angular', 'moment', './filters', 'async!https://maps.googleapis.com/map
                                     initPoint
                                 ];
 
+                                var ratio = subEl.avg/10000;
+                                var coolColor =  Red.shiftHue(ratio);
+                                Red =coolColor;
+
                                 // Construct the polygon.
                                 var square = new google.maps.Polygon({
                                     paths: squareCoords,
                                     // strokeColor: '#FF0000',
                                     // strokeOpacity: 0.6,
                                     strokeWeight: 0,
-                                    fillColor: '#00FF00',
+                                    fillColor: coolColor.toCSS(),
                                     fillOpacity: 0.3
                                 });
 

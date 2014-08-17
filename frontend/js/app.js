@@ -19,6 +19,7 @@ requirejs.config({
         'angular-ui-router': '../components/angular-ui-router/angular-ui-router',
         'moment': 'http://cdnjs.cloudflare.com/ajax/libs/moment.js/2.8.1/moment.min',
         'typeaheadjs': '../components/typeaheadjs/typeahead.bundle',
+        'color': '../components/color/color',
         'nouislider': '../components/jquery.nouislider/jquery.nouislider.min'
     },
     shim: {
@@ -77,7 +78,8 @@ require(['globals',
         'angular-sanitize', 
         'angular-ui-router',
         'infobox',
-        'nouislider'],
+        'nouislider',
+        'color'],
     function(globals, 
             $, 
             moment, 
