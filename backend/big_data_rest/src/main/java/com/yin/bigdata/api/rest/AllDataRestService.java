@@ -6,7 +6,11 @@ import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
+import com.yin.bigdata.api.domain.entities.EstateObject;
+import com.yin.bigdata.api.domain.repositories.ObjectsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Component;
 
 import com.yin.bigdata.api.domain.entities.RealEstates;
@@ -20,6 +24,9 @@ import com.yin.bigdata.api.domain.repositories.RealEstatesRepository;
 @Path("/data")
 @Component
 public class AllDataRestService {
+    @Autowired
+    private ObjectsRepository objectsRepository;
+
     @Autowired
     private RealEstatesHistRepository realEstatesHistRepository;
 
@@ -41,6 +48,14 @@ public class AllDataRestService {
     @Path("/all2")
     public Iterable<RealEstates> getAll2() {
         Page <RealEstates> p1 = this.realEstatesRepository.findAll(new PageRequest(1, 20));
+        return p1.getContent();
+    }
+    @GET
+    @Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
+    @Consumes({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
+    @Path("/all3")
+    public Iterable<EstateObject> getAll3() {
+        Page <EstateObject> p1 = this.objectsRepository.findAll(new PageRequest(1, 20));
         return p1.getContent();
     }
 }
