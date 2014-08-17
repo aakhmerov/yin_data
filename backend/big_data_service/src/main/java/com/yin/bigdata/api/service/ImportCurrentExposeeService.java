@@ -1,5 +1,6 @@
 package com.yin.bigdata.api.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -10,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.yin.bigdata.api.domain.entities.CurrentRealEstate;
 import com.yin.bigdata.api.domain.repositories.CurrentRealEstateRepository;
+import com.yin.bigdata.api.service.tos.OfferTo;
 import com.yin.bigdata.is24.Is24Client;
 import com.yin.bigdata.is24.REExpose;
 
@@ -51,5 +53,15 @@ public class ImportCurrentExposeeService {
 				}
 			}
 		}
+	}
+	
+	public List<OfferTo> getOffers(String geocode){
+		List<OfferTo> ret = new ArrayList<OfferTo>();
+		List<CurrentRealEstate> offers = currentRealEstateRepository.findForGeocode(geocode);
+	
+		for(CurrentRealEstate offer : offers){
+			ret.add(new OfferTo(offer));
+		}
+		return ret;
 	}
 }

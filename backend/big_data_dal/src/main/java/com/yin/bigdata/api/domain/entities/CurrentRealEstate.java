@@ -62,7 +62,7 @@ public class CurrentRealEstate extends AbstractPersistable<Long> {
 	public void setRooms(double rooms) {
 		this.rooms = rooms;
 	}
-	public double getConstrYear() {
+	public int getConstrYear() {
 		return constrYear;
 	}
 	public void setConstrYear(int constrYear) {
