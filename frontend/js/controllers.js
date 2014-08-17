@@ -95,9 +95,10 @@ define(['angular', 'moment', './filters'], function(angular, moment) {
             var lat, lng, radius;
 
 
-            // api.predictions.get(lat, lng, radius).then(
-            //     // success rseponse
-            //     function (response) {
+            api.predictions.get(1, 1, 1, 1).then(
+                 // success rseponse
+                 function (response) {
+			angular.noop();
                     /*
                      * response object will look like this:
                      {
@@ -114,12 +115,12 @@ define(['angular', 'moment', './filters'], function(angular, moment) {
                         }
                      }
                     **/
-                // },
-                // // error response
-                // function (response) {
-                //     // think about error handling
-                // }
-            // );
+                 },
+                // error response
+                function (error) {
+                    // think about error handling
+                }
+            );
         }
     ];
 

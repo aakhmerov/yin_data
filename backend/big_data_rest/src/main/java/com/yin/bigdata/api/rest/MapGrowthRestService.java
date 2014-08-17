@@ -13,6 +13,7 @@ import org.springframework.stereotype.Component;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -29,7 +30,7 @@ public class MapGrowthRestService {
     @Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
     @Consumes({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
     @Path("/historical")
-    public java.util.List<SectorTO> getSectorGrowth() {
+    public List<SectorTO> getSectorGrowth() {
         return mapGrowthService.getSectorGrowth(null);
     }
 }

@@ -75,8 +75,8 @@ define(['globals', 'angular', 'moment', './configs'],
                         get: function(lat, lng, timestamp, sideLength) {
                             return $http({
                                 method: 'GET',
-                                // url: '/api/predictions',
-                                url: '../dummy_data/predictions.json',
+                                url: '/yin-api/services/growth/historical',
+                                // url: '../dummy_data/predictions.json',
                                 params: {
                                     lat: lat,
                                     lng: lng,
