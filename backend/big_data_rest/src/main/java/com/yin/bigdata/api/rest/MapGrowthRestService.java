@@ -1,5 +1,6 @@
 package com.yin.bigdata.api.rest;
 
+import com.yin.bigdata.api.domain.entities.AveragePriceObject;
 import com.yin.bigdata.api.domain.entities.RealEstatesHist;
 import com.yin.bigdata.api.service.MapGrowthService;
 import com.yin.bigdata.api.service.tos.SectorRequestTO;
@@ -11,6 +12,8 @@ import org.springframework.stereotype.Component;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Created by aakhmerov on 16/08/14.
@@ -22,11 +25,11 @@ public class MapGrowthRestService {
     @Autowired
     private MapGrowthService mapGrowthService;
 
-    @PUT
+    @GET
     @Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
     @Consumes({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
     @Path("/historical")
-    public Iterable<SectorTO> getSectorGrowth(SectorRequestTO request) {
-        return mapGrowthService.getSectorGrowth(request);
+    public java.util.List<SectorTO> getSectorGrowth() {
+        return mapGrowthService.getSectorGrowth(null);
     }
 }

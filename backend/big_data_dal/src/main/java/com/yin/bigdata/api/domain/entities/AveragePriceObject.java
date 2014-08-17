@@ -15,8 +15,8 @@ import javax.xml.bind.annotation.XmlRootElement;
 public class AveragePriceObject extends AbstractPersistable<Long> {
     private Long geox;
     private Long geoy;
-    private Long kp;
-    private Integer year;
+    private Long avg;
+    private Integer date_part;
 
     public Long getGeox() {
         return geox;
@@ -34,19 +34,19 @@ public class AveragePriceObject extends AbstractPersistable<Long> {
         this.geoy = geoy;
     }
 
-    public Long getKp() {
-        return kp;
+    public Long getAvg() {
+        return avg;
     }
 
-    public void setKp(Long kp) {
-        this.kp = kp;
+    public void setAvg(Long avg) {
+        this.avg = avg;
     }
 
-    public Integer getYear() {
-        return year;
+    public Integer getDate_part() {
+        return date_part;
     }
 
-    public void setYear(Integer year) {
-        this.year = year;
+    public void setDate_part(Integer date_part) {
+        this.date_part = date_part;
     }
 }
