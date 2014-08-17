@@ -164,9 +164,9 @@ define(['globals', 'angular', 'moment', './configs', './services', 'async!https:
                           scrollwheel: false
                         });
                         if (scope.coords.city) {
-                            scope.Data.sbMap.map.setZoom(12);
+                            scope.Data.sbMap.map.setZoom(13);
                         } else {
-                            scope.Data.sbMap.map.setZoom(6);
+                            scope.Data.sbMap.map.setZoom(13);
                         }
 
                         // global loading elem for infowindow
@@ -406,7 +406,7 @@ define(['globals', 'angular', 'moment', './configs', './services', 'async!https:
                         scope.$watch('Data.search.latlng', function (newVal, oldVal, scope) {
                             if (newVal !== oldVal && !$.isEmptyObject(newVal)) {
                                 scope.Data.sbMap.map.setCenter(scope.Data.search.latlng);
-                                scope.Data.sbMap.map.setZoom(11);
+                                scope.Data.sbMap.map.setZoom(13);
                             }
                         }, true);
 
