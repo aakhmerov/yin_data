@@ -68,8 +68,8 @@ define(['globals', 'angular', 'moment', './configs'],
          * @description API
          * @return {[type]}
          */
-        factory('api', ['$http', '$state',
-            function($http, $state) {
+        factory('api', ['$http', '$state', '$window',
+            function($http, $state, $window) {
                 
                 var lat, lng, timestamp, sideLength, limit;
 
@@ -78,8 +78,9 @@ define(['globals', 'angular', 'moment', './configs'],
                         get: function(lat, lng, timestamp, sideLength) {
                             return $http({
                                 method: 'GET',
-                                url: '/yin-api/services/growth/historical',
-                                // url: '../dummy_data/predictions.json',
+                                // url: '/api/predictions',
+                                url: $window.location.origin + '/dummy_data/predictions.json',
+                                // url: '/yin-api/services/growth/historical',
                                 params: {
                                     lat: lat,
                                     lng: lng,
@@ -93,7 +94,7 @@ define(['globals', 'angular', 'moment', './configs'],
                         get: function() {
                             return $http({
                                 method: 'GET',
-                                url: '/dummy_data/best_apartments.json', // replace with real api url
+                                url: $window.location.origin + '/dummy_data/best_apartments.json', // replace with real api url
                                 data: {
                                     lat: lat,
                                     lng: lng,
